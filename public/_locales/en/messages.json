@@ -1,0 +1,83 @@
+{
+  "extName": {
+    "message": "Viikko Nro – ISO Week Number in Your Toolbar",
+    "description": "Extension name in the stores and browser UI. Max 75 characters."
+  },
+  "extShortName": { "message": "Viikko Nro" },
+  "extDescription": {
+    "message": "What week is it? The current ISO week number in your toolbar, plus week dates, Finnish flag days and school holidays. Works offline.",
+    "description": "Store and manifest description. Max 132 characters."
+  },
+  "siteLinkLabel": { "message": "viikkonro.fi" },
+  "settings": { "message": "Settings" },
+
+  "nowLabel": { "message": "Right now it is" },
+  "selectedWeekLabel": { "message": "Selected week" },
+  "backToCurrent": { "message": "This week" },
+  "weekWord": { "message": "Week" },
+  "prevWeek": { "message": "Previous week" },
+  "nextWeek": { "message": "Next week" },
+  "yearLabel": { "message": "Year" },
+  "weekOfTotal": {
+    "message": "Week $WEEK$ / $TOTAL$",
+    "placeholders": { "week": { "content": "$1", "example": "37" }, "total": { "content": "$2", "example": "53" } }
+  },
+
+  "todayLabel": { "message": "Today" },
+  "flagDayLabel": { "message": "Flag day" },
+  "nameDayLabel": { "message": "Name day" },
+
+  "nextHolidayLabel": { "message": "Next school holiday" },
+  "holidayHiihtoloma": { "message": "Winter holiday" },
+  "holidaySyysloma": { "message": "Autumn holiday" },
+  "holidayStartsToday": { "message": "starts today" },
+  "holidayStartsTomorrow": { "message": "starts tomorrow" },
+  "holidayStartsInDays": {
+    "message": "starts in $DAYS$ days",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
+  "holidayOngoing": { "message": "on now" },
+  "holidayNotConfirmed": { "message": "Date not confirmed yet" },
+  "confidenceEstimated": { "message": "⚠ Estimate" },
+  "confidenceUnknown": { "message": "— Not confirmed" },
+  "chooseCity": { "message": "Choose a city" },
+  "chooseCityHint": { "message": "Show the next school holiday for your city." },
+
+  "dataDate": {
+    "message": "Data $DATE$",
+    "placeholders": { "date": { "content": "$1", "example": "11 Sept 2026" } }
+  },
+  "dataStale": { "message": "The data is over four months old. Update the extension." },
+
+  "badgePrefix": { "message": "wk", "description": "Badge prefix. With a two-digit week the badge must stay within 4 characters." },
+  "badgeTooltip": {
+    "message": "Week $WEEK$ · $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
+  "omniboxWeek": {
+    "message": "Week $WEEK$: $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
+  "omniboxInvalid": { "message": "Not a valid week" },
+
+  "optionsEyebrow": { "message": "Viikko Nro extension" },
+  "optionsTitle": { "message": "Settings" },
+  "optionsIntro": { "message": "The extension works fully offline and collects no data. Settings are stored in your browser." },
+  "cityLabel": { "message": "City" },
+  "cityHint": { "message": "The popup shows the next school holiday for this city." },
+  "citySearch": { "message": "Search cities" },
+  "cityNone": { "message": "No city" },
+  "cityNoResults": { "message": "No matches." },
+  "badgeFormatLabel": { "message": "Badge format" },
+  "badgeFormatHint": { "message": "What the toolbar icon shows." },
+  "languageLabel": { "message": "Language" },
+  "languageAuto": { "message": "Browser language" },
+  "languageFi": { "message": "Suomi" },
+  "languageEn": { "message": "English" },
+  "omniboxHelpTitle": { "message": "Address bar" },
+  "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027) or a date (13.10.2026)." },
+  "reset": { "message": "Reset to defaults" },
+  "saved": { "message": "Saved" },
+  "resetDone": { "message": "Defaults restored" },
+  "privacyLink": { "message": "Privacy (in Finnish)" }
+}

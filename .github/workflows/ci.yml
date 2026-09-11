@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Tag matches package.json version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: test "${GITHUB_REF_NAME#v}" = "$(node -p 'require("./package.json").version')"
+
+      - run: pnpm compile
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm size
+      - run: pnpm build:firefox
+      - run: pnpm lint:firefox
+
+      - name: Package
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          pnpm zip && pnpm zip:firefox
+          # AMO rejects a sources zip it can't build from.
+          for f in package.json pnpm-lock.yaml wxt.config.ts REVIEWER_NOTES.md src/entrypoints/background.ts; do
+            unzip -l .output/*-sources.zip | grep -q " $f$" || { echo "sources zip is missing $f"; exit 1; }
+          done
+
+      - uses: actions/upload-artifact@v4
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          name: store-zips
+          path: .output/*.zip

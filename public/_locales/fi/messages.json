@@ -1,0 +1,83 @@
+{
+  "extName": {
+    "message": "Viikko Nro – Viikkonumero työkalupalkissa",
+    "description": "Extension name in the stores and browser UI. Max 75 characters."
+  },
+  "extShortName": { "message": "Viikko Nro" },
+  "extDescription": {
+    "message": "Mikä viikko nyt on? Kuluvan viikon numero työkalupalkissa, viikon päivämäärät, liputuspäivät ja koululomat. Toimii ilman verkkoa.",
+    "description": "Store and manifest description. Max 132 characters."
+  },
+  "siteLinkLabel": { "message": "viikkonro.fi" },
+  "settings": { "message": "Asetukset" },
+
+  "nowLabel": { "message": "Juuri nyt on" },
+  "selectedWeekLabel": { "message": "Valittu viikko" },
+  "backToCurrent": { "message": "Kuluva viikko" },
+  "weekWord": { "message": "Viikko" },
+  "prevWeek": { "message": "Edellinen viikko" },
+  "nextWeek": { "message": "Seuraava viikko" },
+  "yearLabel": { "message": "Vuosi" },
+  "weekOfTotal": {
+    "message": "Viikko $WEEK$ / $TOTAL$",
+    "placeholders": { "week": { "content": "$1", "example": "37" }, "total": { "content": "$2", "example": "53" } }
+  },
+
+  "todayLabel": { "message": "Tänään" },
+  "flagDayLabel": { "message": "Liputuspäivä" },
+  "nameDayLabel": { "message": "Nimipäivä" },
+
+  "nextHolidayLabel": { "message": "Seuraava koululoma" },
+  "holidayHiihtoloma": { "message": "Hiihtoloma" },
+  "holidaySyysloma": { "message": "Syysloma" },
+  "holidayStartsToday": { "message": "alkaa tänään" },
+  "holidayStartsTomorrow": { "message": "alkaa huomenna" },
+  "holidayStartsInDays": {
+    "message": "alkaa $DAYS$ päivän päästä",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
+  "holidayOngoing": { "message": "käynnissä nyt" },
+  "holidayNotConfirmed": { "message": "Päivämäärää ei ole vielä vahvistettu" },
+  "confidenceEstimated": { "message": "⚠ Arvio" },
+  "confidenceUnknown": { "message": "— Ei vahvistettu" },
+  "chooseCity": { "message": "Valitse kaupunki" },
+  "chooseCityHint": { "message": "Näytä oman kaupunkisi seuraava koululoma." },
+
+  "dataDate": {
+    "message": "Tiedot $DATE$",
+    "placeholders": { "date": { "content": "$1", "example": "11.9.2026" } }
+  },
+  "dataStale": { "message": "Tiedot ovat yli neljä kuukautta vanhoja. Päivitä laajennus." },
+
+  "badgePrefix": { "message": "vk", "description": "Badge prefix. With a two-digit week the badge must stay within 4 characters." },
+  "badgeTooltip": {
+    "message": "Viikko $WEEK$ · $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12.–18.10.2026" } }
+  },
+  "omniboxWeek": {
+    "message": "Viikko $WEEK$: $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12.–18.10.2026" } }
+  },
+  "omniboxInvalid": { "message": "Ei kelvollinen viikko" },
+
+  "optionsEyebrow": { "message": "Viikko Nro -laajennus" },
+  "optionsTitle": { "message": "Asetukset" },
+  "optionsIntro": { "message": "Laajennus toimii kokonaan ilman verkkoyhteyttä eikä kerää mitään tietoja. Asetukset tallentuvat selaimeesi." },
+  "cityLabel": { "message": "Kaupunki" },
+  "cityHint": { "message": "Ponnahdusikkuna näyttää valitun kaupungin seuraavan koululoman." },
+  "citySearch": { "message": "Hae kaupunkia" },
+  "cityNone": { "message": "Ei kaupunkia" },
+  "cityNoResults": { "message": "Ei osumia." },
+  "badgeFormatLabel": { "message": "Kuvakkeen merkintä" },
+  "badgeFormatHint": { "message": "Mitä työkalupalkin kuvakkeessa näytetään." },
+  "languageLabel": { "message": "Kieli" },
+  "languageAuto": { "message": "Selaimen kieli" },
+  "languageFi": { "message": "Suomi" },
+  "languageEn": { "message": "English" },
+  "omniboxHelpTitle": { "message": "Osoiterivi" },
+  "omniboxHelp": { "message": "Kirjoita osoiteriville vk ja välilyönti, sitten viikon numero (42), viikko ja vuosi (42 2027) tai päivämäärä (13.10.2026)." },
+  "reset": { "message": "Palauta oletukset" },
+  "saved": { "message": "Tallennettu" },
+  "resetDone": { "message": "Oletukset palautettu" },
+  "privacyLink": { "message": "Tietosuoja" }
+}

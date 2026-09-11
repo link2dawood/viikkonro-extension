@@ -1,0 +1,41 @@
+/* The site's own self-hosted faces (weekdays/src/fonts.css), bundled so no
+   page ever loads a remote font. The files are Google's "latin" subsets,
+   shipped unmodified: IBM Plex carries a Reserved Font Name, so re-subsetting
+   it ourselves would count as a modified version under the OFL. */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 200 800;
+  font-optical-sizing: auto;
+  font-display: block;
+  src: url("../assets/fonts/bricolage-grotesque-variable-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block;
+  src: url("../assets/fonts/inter-variable-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../assets/fonts/ibm-plex-mono-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url("../assets/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("../assets/fonts/ibm-plex-mono-600-latin.woff2") format("woff2");
+}

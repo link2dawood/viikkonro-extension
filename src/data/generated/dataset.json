@@ -1,0 +1,405 @@
+{
+  "generatedAt": "2026-09-11",
+  "source": {
+    "site": "viikkonro.fi",
+    "commit": "d9cb579"
+  },
+  "years": [
+    2026,
+    2027
+  ],
+  "schoolHolidays": {
+    "years": [
+      2026,
+      2027
+    ],
+    "cities": [
+      "Espoo",
+      "Helsinki",
+      "Hämeenlinna",
+      "Joensuu",
+      "Jyväskylä",
+      "Kajaani",
+      "Kokkola",
+      "Kotka",
+      "Kouvola",
+      "Kuopio",
+      "Lahti",
+      "Lappeenranta",
+      "Mikkeli",
+      "Oulu",
+      "Pori",
+      "Rovaniemi",
+      "Seinäjoki",
+      "Tampere",
+      "Turku",
+      "Vaasa",
+      "Vantaa"
+    ],
+    "dated": [
+      {
+        "type": "hiihtoloma",
+        "year": 2026,
+        "week": 8,
+        "start": "2026-02-16",
+        "end": "2026-02-20",
+        "cities": [
+          "Helsinki",
+          "Espoo",
+          "Vantaa",
+          "Pori",
+          "Turku"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2025/koulujen-tyo-ja-loma-ajat-lukuvuonna-2025-2026"
+      },
+      {
+        "type": "hiihtoloma",
+        "year": 2026,
+        "week": 9,
+        "start": "2026-02-23",
+        "end": "2026-02-27",
+        "cities": [
+          "Hämeenlinna",
+          "Jyväskylä",
+          "Kokkola",
+          "Kotka",
+          "Kouvola",
+          "Lahti",
+          "Lappeenranta",
+          "Mikkeli",
+          "Seinäjoki",
+          "Tampere",
+          "Vaasa"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2025/koulujen-tyo-ja-loma-ajat-lukuvuonna-2025-2026"
+      },
+      {
+        "type": "hiihtoloma",
+        "year": 2026,
+        "week": 10,
+        "start": "2026-03-02",
+        "end": "2026-03-06",
+        "cities": [
+          "Joensuu",
+          "Kajaani",
+          "Kuopio",
+          "Oulu",
+          "Rovaniemi"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2025/koulujen-tyo-ja-loma-ajat-lukuvuonna-2025-2026"
+      },
+      {
+        "type": "syysloma",
+        "year": 2026,
+        "week": 42,
+        "start": "2026-10-12",
+        "end": "2026-10-16",
+        "cities": [
+          "Helsinki",
+          "Espoo",
+          "Vantaa",
+          "Hämeenlinna",
+          "Joensuu",
+          "Jyväskylä",
+          "Kajaani",
+          "Kokkola",
+          "Kuopio",
+          "Rovaniemi",
+          "Seinäjoki",
+          "Tampere",
+          "Turku",
+          "Vaasa"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2026/koulujen-tyo-ja-loma-ajat-lukuvuonna-2026-2027"
+      },
+      {
+        "type": "syysloma",
+        "year": 2026,
+        "week": 43,
+        "start": "2026-10-19",
+        "end": "2026-10-25",
+        "cities": [
+          "Kotka",
+          "Kouvola",
+          "Lahti",
+          "Lappeenranta",
+          "Mikkeli",
+          "Oulu",
+          "Pori"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2026/koulujen-tyo-ja-loma-ajat-lukuvuonna-2026-2027"
+      },
+      {
+        "type": "hiihtoloma",
+        "year": 2027,
+        "week": 8,
+        "start": "2027-02-22",
+        "end": "2027-02-26",
+        "cities": [
+          "Helsinki",
+          "Espoo",
+          "Vantaa",
+          "Pori",
+          "Turku"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2026/koulujen-tyo-ja-loma-ajat-lukuvuonna-2026-2027"
+      },
+      {
+        "type": "hiihtoloma",
+        "year": 2027,
+        "week": 9,
+        "start": "2027-03-01",
+        "end": "2027-03-05",
+        "cities": [
+          "Hämeenlinna",
+          "Jyväskylä",
+          "Kokkola",
+          "Kotka",
+          "Kouvola",
+          "Lahti",
+          "Lappeenranta",
+          "Mikkeli",
+          "Seinäjoki",
+          "Tampere",
+          "Vaasa"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2026/koulujen-tyo-ja-loma-ajat-lukuvuonna-2026-2027"
+      },
+      {
+        "type": "hiihtoloma",
+        "year": 2027,
+        "week": 10,
+        "start": "2027-03-08",
+        "end": "2027-03-12",
+        "cities": [
+          "Joensuu",
+          "Kajaani",
+          "Kuopio",
+          "Oulu",
+          "Rovaniemi"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.oph.fi/fi/uutiset/2026/koulujen-tyo-ja-loma-ajat-lukuvuonna-2026-2027"
+      },
+      {
+        "type": "syysloma",
+        "year": 2027,
+        "week": 42,
+        "start": "2027-10-18",
+        "end": "2027-10-22",
+        "cities": [
+          "Helsinki"
+        ],
+        "confidence": "confirmed",
+        "sourceUrl": "https://www.hel.fi/fi/kasvatus-ja-koulutus/koulujen-ja-oppilaitosten-tyo-ja-loma-ajat"
+      }
+    ],
+    "undated": [
+      {
+        "type": "syysloma",
+        "year": 2027,
+        "cities": [
+          "Espoo",
+          "Vantaa",
+          "Hämeenlinna",
+          "Joensuu",
+          "Jyväskylä",
+          "Kajaani",
+          "Kokkola",
+          "Kotka",
+          "Kouvola",
+          "Kuopio",
+          "Lahti",
+          "Lappeenranta",
+          "Mikkeli",
+          "Oulu",
+          "Pori",
+          "Rovaniemi",
+          "Seinäjoki",
+          "Tampere",
+          "Turku",
+          "Vaasa"
+        ],
+        "confidence": "unknown"
+      }
+    ]
+  },
+  "flagDays": [
+    {
+      "date": "2026-02-05",
+      "name": "J. L. Runebergin päivä",
+      "altName": null,
+      "slug": "runebergin-paiva"
+    },
+    {
+      "date": "2026-02-28",
+      "name": "Kalevalan päivä",
+      "altName": null,
+      "slug": "kalevalan-paiva"
+    },
+    {
+      "date": "2026-03-19",
+      "name": "Minna Canthin päivä",
+      "altName": null,
+      "slug": "minna-canthin-paiva"
+    },
+    {
+      "date": "2026-04-09",
+      "name": "Mikael Agricolan päivä / Suomen kielen päivä",
+      "altName": null,
+      "slug": "suomen-kielen-paiva"
+    },
+    {
+      "date": "2026-05-09",
+      "name": "Eurooppa-päivä",
+      "altName": null,
+      "slug": "eurooppa-paiva"
+    },
+    {
+      "date": "2026-05-10",
+      "name": "Äitienpäivä",
+      "altName": null,
+      "slug": "aitienpaiva"
+    },
+    {
+      "date": "2026-05-12",
+      "name": "J. V. Snellmanin päivä",
+      "altName": null,
+      "slug": "snellmanin-paiva"
+    },
+    {
+      "date": "2026-06-04",
+      "name": "Puolustusvoimain lippujuhlan päivä",
+      "altName": "Suomen lipun päivä",
+      "slug": "suomen-lipun-paiva"
+    },
+    {
+      "date": "2026-07-06",
+      "name": "Eino Leinon päivä",
+      "altName": null,
+      "slug": "eino-leinon-paiva"
+    },
+    {
+      "date": "2026-10-10",
+      "name": "Aleksis Kiven päivä",
+      "altName": null,
+      "slug": "aleksis-kiven-paiva"
+    },
+    {
+      "date": "2026-10-24",
+      "name": "YK:n päivä",
+      "altName": null,
+      "slug": "ykn-paiva"
+    },
+    {
+      "date": "2026-11-06",
+      "name": "Ruotsalaisuuden päivä",
+      "altName": null,
+      "slug": "ruotsalaisuuden-paiva"
+    },
+    {
+      "date": "2026-11-08",
+      "name": "Isänpäivä",
+      "altName": null,
+      "slug": "isanpaiva"
+    },
+    {
+      "date": "2026-12-08",
+      "name": "Jean Sibeliuksen päivä",
+      "altName": null,
+      "slug": "sibeliuksen-paiva"
+    },
+    {
+      "date": "2027-02-05",
+      "name": "J. L. Runebergin päivä",
+      "altName": null,
+      "slug": "runebergin-paiva"
+    },
+    {
+      "date": "2027-02-28",
+      "name": "Kalevalan päivä",
+      "altName": null,
+      "slug": "kalevalan-paiva"
+    },
+    {
+      "date": "2027-03-19",
+      "name": "Minna Canthin päivä",
+      "altName": null,
+      "slug": "minna-canthin-paiva"
+    },
+    {
+      "date": "2027-04-09",
+      "name": "Mikael Agricolan päivä / Suomen kielen päivä",
+      "altName": null,
+      "slug": "suomen-kielen-paiva"
+    },
+    {
+      "date": "2027-05-09",
+      "name": "Eurooppa-päivä",
+      "altName": null,
+      "slug": "eurooppa-paiva"
+    },
+    {
+      "date": "2027-05-09",
+      "name": "Äitienpäivä",
+      "altName": null,
+      "slug": "aitienpaiva"
+    },
+    {
+      "date": "2027-05-12",
+      "name": "J. V. Snellmanin päivä",
+      "altName": null,
+      "slug": "snellmanin-paiva"
+    },
+    {
+      "date": "2027-06-04",
+      "name": "Puolustusvoimain lippujuhlan päivä",
+      "altName": "Suomen lipun päivä",
+      "slug": "suomen-lipun-paiva"
+    },
+    {
+      "date": "2027-07-06",
+      "name": "Eino Leinon päivä",
+      "altName": null,
+      "slug": "eino-leinon-paiva"
+    },
+    {
+      "date": "2027-10-10",
+      "name": "Aleksis Kiven päivä",
+      "altName": null,
+      "slug": "aleksis-kiven-paiva"
+    },
+    {
+      "date": "2027-10-24",
+      "name": "YK:n päivä",
+      "altName": null,
+      "slug": "ykn-paiva"
+    },
+    {
+      "date": "2027-11-06",
+      "name": "Ruotsalaisuuden päivä",
+      "altName": null,
+      "slug": "ruotsalaisuuden-paiva"
+    },
+    {
+      "date": "2027-11-14",
+      "name": "Isänpäivä",
+      "altName": null,
+      "slug": "isanpaiva"
+    },
+    {
+      "date": "2027-12-08",
+      "name": "Jean Sibeliuksen päivä",
+      "altName": null,
+      "slug": "sibeliuksen-paiva"
+    }
+  ],
+  "nameDays": null
+}

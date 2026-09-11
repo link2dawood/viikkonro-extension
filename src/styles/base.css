@@ -1,0 +1,276 @@
+/* Design tokens and components ported from the site (weekdays/src/App.css),
+   trimmed to what the popup and options page use. Class names match the site
+   so the two stay recognisably the same product. */
+@import "./fonts.css";
+
+:root {
+  --paper: #e7eceb;
+  --card: #f5f8f7;
+  --ink: #15211f;
+  --ink-soft: #56655f;
+  --line: rgba(21, 33, 31, 0.12);
+  --accent: #1f7a5c;
+  --accent-deep: #16573f;
+  --accent-soft: rgba(31, 122, 92, 0.12);
+  --amber: #e0a23b;
+  --radius: 16px;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 560px at 85% -12%, rgba(31, 122, 92, 0.09), transparent 60%),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(31, 122, 92, 0.4);
+  outline-offset: 2px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  margin: 0.1em 0 0.3em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.lead {
+  font-size: 16px;
+  color: #243430;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.brand img {
+  display: block;
+}
+
+.panel,
+.hero-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.now-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.week-big {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.12em;
+  color: var(--ink);
+}
+.week-big .vk {
+  font-size: 0.33em;
+  font-weight: 700;
+  color: var(--accent-deep);
+  letter-spacing: 0.02em;
+}
+
+.progress-head {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+}
+.progress-head b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* The site's signature week comb: one bar per week of the year. */
+.comb {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 58px;
+}
+.comb i {
+  flex: 1;
+  background: rgba(21, 33, 31, 0.14);
+  border-radius: 2px;
+  height: 38%;
+  transition:
+    height 0.3s,
+    background 0.3s;
+}
+.comb i.past {
+  background: var(--accent);
+  height: 60%;
+}
+.comb i.now {
+  background: var(--amber);
+  height: 100%;
+}
+
+.ql {
+  display: block;
+  text-decoration: none;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+a.ql:hover {
+  border-color: var(--accent);
+}
+
+.pills {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: transparent;
+  cursor: pointer;
+}
+.pill:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.pill[aria-pressed="true"] {
+  background: var(--accent-deep);
+  color: #fff;
+  border-color: var(--accent-deep);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-deep);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 12px 20px;
+  border-radius: 11px;
+  border: 1px solid var(--accent-deep);
+  cursor: pointer;
+}
+.btn:hover {
+  background: #11432f;
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-deep);
+}
+.btn-secondary:hover {
+  background: var(--accent-soft);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  white-space: nowrap;
+}
+
+.confidence-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.confidence-estimated {
+  background: rgba(224, 162, 59, 0.16);
+  color: #8a6414;
+}
+.confidence-unknown {
+  background: rgba(120, 120, 120, 0.14);
+  color: #5a5a5a;
+}
+
+.note-soft {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comb i {
+    transition: none;
+  }
+}

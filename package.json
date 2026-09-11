@@ -1,0 +1,57 @@
+{
+  "name": "viikkonro-extension",
+  "description": "Viikko Nro browser extension: current ISO week in the toolbar, popup and address bar.",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "compile": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:firefox": "web-ext lint --source-dir .output/firefox-mv3",
+    "test": "vitest run",
+    "size": "node scripts/check-size.mjs",
+    "data:sync": "node scripts/sync-data.mjs",
+    "icons": "node scripts/generate-icons.mjs",
+    "store:assets": "wxt build && node scripts/store-assets.mjs",
+    "check": "pnpm compile && pnpm lint && pnpm test && pnpm build && pnpm size && pnpm build:firefox && pnpm lint:firefox",
+    "postinstall": "wxt prepare"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@wxt-dev/module-react": "^1.2.2",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "playwright": "1.58.2",
+    "sharp": "^0.35.4",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^4.1.10",
+    "web-ext": "^10.6.0",
+    "wxt": "^0.21.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "spawn-sync"
+    ]
+  }
+}

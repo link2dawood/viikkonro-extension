@@ -1,0 +1,205 @@
+body {
+  width: 360px;
+}
+
+.popup {
+  display: grid;
+  gap: 10px;
+  padding: 12px 12px 10px;
+}
+
+.pop-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+.pop-head .brand {
+  font-size: 17px;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: rgba(21, 33, 31, 0.05);
+  color: var(--ink);
+}
+
+/* Week hero */
+.hero-card {
+  padding: 14px 14px 12px;
+}
+.hero-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  min-height: 20px;
+}
+.hero-top .now-label {
+  font-size: 11px;
+}
+.text-btn {
+  border: 0;
+  padding: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: 34px 1fr 34px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.step {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+.step:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+.hero-row .week-big {
+  justify-content: center;
+  font-size: 66px;
+  text-decoration: none;
+}
+a.week-big:hover .num {
+  color: var(--accent-deep);
+}
+.hero-card .range {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.progress {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.progress .progress-head {
+  font-size: 11.5px;
+  margin-bottom: 8px;
+}
+.progress .comb {
+  height: 30px;
+  gap: 2px;
+}
+
+/* Section eyebrows are smaller than the site's page-level ones. */
+.popup .eyebrow {
+  font-size: 11px;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.popup .eyebrow::before {
+  width: 16px;
+}
+
+/* Today */
+.today {
+  padding: 11px 14px 12px;
+}
+.today-date {
+  font-weight: 600;
+  font-size: 15px;
+}
+.today-date .mono {
+  margin-left: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.today-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 13.5px;
+  text-decoration: none;
+}
+.today-row:hover .today-text {
+  text-decoration: underline;
+}
+
+/* Next school holiday */
+.holiday {
+  padding: 11px 14px 12px;
+}
+.holiday-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+.holiday-row b {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+.holiday-when {
+  display: block;
+  margin-top: 1px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.holiday .hint {
+  margin: 2px 0 10px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+.holiday .btn {
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+/* Footer */
+.pop-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.pop-foot a {
+  color: var(--accent-deep);
+  font-weight: 600;
+  text-decoration: none;
+}
+.pop-foot a:hover {
+  text-decoration: underline;
+}
+.stale-note {
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(224, 162, 59, 0.16);
+  color: #8a6414;
+  font-size: 12px;
+}
