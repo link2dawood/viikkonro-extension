@@ -1,57 +1,35 @@
-What week is it? Viikko Nro shows the current week number in your browser toolbar, so the week number is always in view. Viikko Nro is a free browser extension for Google Chrome, Microsoft Edge and Mozilla Firefox. Week numbers follow the international ISO 8601 standard, which Finland and many other European countries use in calendars, work schedules and school planning.
+Viikko Nro shows the current week number in your browser toolbar. Week numbers follow the international ISO 8601 standard used in Finland and much of Europe. The extension is made by viikkonro.fi.
 
-The extension is made by viikkonro.fi, a Finnish week number and calendar service.
+TOOLBAR
+The icon shows the current week number, for example 42 or wk42. It updates by itself at midnight, and hovering over the icon shows the week's dates.
 
-WEEK NUMBER IN THE TOOLBAR
-The icon shows the current week number, for example 42 or wk42. It changes by itself at midnight on Monday. Hover over the icon to see the week's dates.
+POPUP
+• The week's dates from Monday to Sunday and how far the year has come
+• Arrows to step to earlier and later weeks
+• Today's Finnish flag day, for example Aleksis Kivi Day
+• The next winter or autumn school holiday in the city you choose, with a countdown
 
-WEEK DATES
-Open the icon to see the week from Monday to Sunday and every week of the year. Step to earlier and later weeks with the arrows. Weeks around New Year are handled correctly: week 53 of 2026, for example, runs from 28 December 2026 to 3 January 2027.
+School holiday dates come from official decisions by the Finnish National Agency for Education and the cities. The extension covers 21 Finnish cities. If a city has not confirmed a holiday yet, the extension says so instead of guessing.
 
-FINNISH FLAG DAYS
-On a Finnish flag day the popup shows its name, for example Aleksis Kivi Day (Aleksis Kiven päivä) or Jean Sibelius Day (Jean Sibeliuksen päivä).
-
-FINNISH SCHOOL HOLIDAYS BY CITY
-Choose a city in the settings to see the dates of its next winter holiday (hiihtoloma) or autumn holiday (syysloma) and how many days are left. Dates come from official decisions by the Finnish National Agency for Education (Opetushallitus) and the cities. If a city has not confirmed a holiday yet, the extension says so instead of guessing.
-
-Cities: Espoo, Helsinki, Hämeenlinna, Joensuu, Jyväskylä, Kajaani, Kokkola, Kotka, Kouvola, Kuopio, Lahti, Lappeenranta, Mikkeli, Oulu, Pori, Rovaniemi, Seinäjoki, Tampere, Turku, Vaasa and Vantaa.
-
-WEEK LOOKUP IN THE ADDRESS BAR
-Type vk and a space in the address bar:
-• vk 42 shows the dates of week 42
-• vk 42 2027 shows week 42 of 2027
-• vk 13.10.2026 tells you which week a date falls in
+ADDRESS BAR
+Type vk, a space and a week number or date in the address bar:
+• vk 42 – the dates of week 42
+• vk 42 2027 – week 42 of 2027
+• vk 13.10.2026 – the week a date falls in
 Press Enter to open that week's page on viikkonro.fi.
 
 PRIVACY
-• No data collection, no analytics and no ads.
-• Works offline: week numbers are calculated on your device, and flag days and school holidays ship inside the extension.
-• Only two permissions: storage for your settings and alarms for the midnight update. The extension cannot see the content of the pages you visit.
+The extension collects no data and has no analytics or ads. It works offline and asks for only two permissions: storage for your settings and alarms for the midnight update. It cannot see the content of the pages you visit.
 
 FREQUENTLY ASKED QUESTIONS
 
-What week is it now?
-The current week number is shown on the Viikko Nro icon in your browser toolbar. Open the icon to see the week's exact dates.
-
 How are week numbers calculated?
-Under ISO 8601, weeks start on Monday, and week 1 is the week that contains the year's first Thursday. That is why the first days of January can belong to the last week of the previous year.
+Weeks start on Monday, and week 1 is the week that contains the year's first Thursday. That is why the first days of January can belong to the last week of the previous year.
 
 How many weeks are in a year?
-A year has 52 or 53 ISO weeks. 2026 has 53 weeks and 2027 has 52.
-
-When is the winter holiday in Finland?
-Finnish schools stagger the winter holiday across weeks 8, 9 and 10 by region. In 2027, for example, Helsinki, Espoo, Vantaa, Turku and Pori have it in week 8, Tampere, Jyväskylä and Lahti in week 9, and Oulu, Kuopio and Rovaniemi in week 10.
-
-When is the autumn holiday in Finland?
-In most cities the autumn holiday is in week 42 or 43. In autumn 2026, for example, Helsinki, Tampere and Turku have it in week 42, and Oulu and Lahti in week 43.
-
-Does it work offline?
-Yes. All data ships inside the extension, and it never contacts a server.
-
-Does it collect any data?
-No. Your settings (city, badge format and language) stay in your browser.
+52 or 53. 2026 has 53 weeks, and week 53 runs from 28 December 2026 to 3 January 2027.
 
 Which languages does it support?
 Finnish and English. It follows your browser's language, and you can change it in the settings.
 
-More week numbers, calendars and public holidays: https://viikkonro.fi
+More information: https://viikkonro.fi

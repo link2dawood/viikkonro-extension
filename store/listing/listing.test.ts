@@ -15,8 +15,16 @@ describe.each(["fi", "en"])("store listing (%s)", (lang) => {
     expect(description.length).toBeLessThanOrEqual(10_000); // Edge maximum (CWS allows 16,000)
   });
 
-  it("names every city the extension ships, and no stale count", () => {
-    for (const city of dataset.schoolHolidays.cities) expect(description).toContain(city);
-    expect(summary + description).not.toMatch(/\b(?!21\b)\d{2} (kaupunki|cities)/);
+  // The Chrome Web Store rejected a version that listed every supported city
+  // as "excessive keywords" (violation Yellow Argon). Coverage is a count.
+  it("contains no keyword lists", () => {
+    const cityNames = dataset.schoolHolidays.cities.filter((city) => (summary + description).includes(city));
+    expect(cityNames).toEqual([]);
+    for (const line of description.split("\n")) expect(line.split(",").length).toBeLessThan(5);
+  });
+
+  it("states the city count the extension ships", () => {
+    const match = /(\d+) (suomalaista kaupunkia|Finnish cities)/.exec(description);
+    expect(Number(match?.[1])).toBe(dataset.schoolHolidays.cities.length);
   });
 });

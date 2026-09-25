@@ -144,7 +144,7 @@ The credentials it asks for:
 | Store message | Fix |
 | --- | --- |
 | "Excessive or unused permissions" | The package asks only for `storage` and `alarms`. Make sure the justifications are filled in on the Privacy tab. |
-| "Keyword spam" / "misleading description" | Use the provided description as-is. Don't add keyword lists or competitor names. |
+| "Spam and Placement in the Store: excessive keywords" (for example violation Yellow Argon) | Remove lists of place names, search terms or synonyms from the description and give a count instead. Paste the corrected text in the **Store listing** tab (every language) and click **Submit for review**. No new package or version bump is needed. |
 | "Privacy policy missing or doesn't cover the extension" | Publish the extension section on `/tietosuoja` before submitting. |
 | AMO: "source code doesn't build" / "doesn't match" | Upload the sources zip from the same `pnpm zip:firefox` run as the package. If a reviewer builds after New Year, they need `SKIP_DATA_COVERAGE_CHECK=1` (explained in `REVIEWER_NOTES.md`). |
 | Screenshots rejected | Use the files from `store/` unchanged. They are the required 1280×800 size with no transparency. |

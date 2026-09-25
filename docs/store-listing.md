@@ -11,7 +11,7 @@ Everything to paste into the Chrome Web Store, Microsoft Edge Add-ons and Firefo
 | Summary, max 250 | [`store/listing/fi/summary.txt`](../store/listing/fi/summary.txt) | [`en`](../store/listing/en/summary.txt) | AMO summary |
 | Detailed description | [`store/listing/fi/description.txt`](../store/listing/fi/description.txt) | [`en`](../store/listing/en/description.txt) | CWS description, Edge description, AMO description |
 
-The descriptions are plain text (no Markdown, no HTML), because none of the three stores renders formatting. `pnpm test` checks the store length limits and that the city list matches the bundled data.
+The descriptions are plain text (no Markdown, no HTML), because none of the three stores renders formatting. `pnpm test` checks the store length limits, that the stated city count matches the bundled data, and that no keyword lists have crept back in.
 
 Current values:
 
@@ -28,21 +28,25 @@ Current values:
 | --- | --- | --- | --- |
 | Primary | viikkonumero, mikä viikko nyt on, kuluva viikko | what week is it, ISO week number, current week number | Name, first words of the short description and summary, first sentence and first FAQ of the description |
 | Secondary | viikon päivämäärät, montako viikkoa vuodessa, viikko 53 | week dates, weeks in a year, week 53 | Feature sections and FAQ |
-| Long tail | koululomat, hiihtoloma, syysloma, liputuspäivät, *kaupunki* + koululoma | Finnish school holidays, Finland flag days | Holiday section, city list, FAQ |
+| Long tail | koululomat, hiihtoloma, syysloma, liputuspäivät | Finnish school holidays, Finland flag days | Popup section and FAQ |
 
-**Meaning (semantic SEO).** The description names the entities the product relates to, so search and store ranking understand what it is about: ISO 8601, Google Chrome, Microsoft Edge, Mozilla Firefox, Opetushallitus (Finnish National Agency for Education), all 21 cities by name, named flag days, and viikkonro.fi as the publisher. Related concepts (week starts on Monday, the first Thursday rule, 52 or 53 weeks, weeks 8–10 and 42–43) sit next to each other, as they would on a topic page.
+**Meaning (semantic SEO).** The description names the entities the product relates to, so search understands what it is about: ISO 8601, Opetushallitus (Finnish National Agency for Education), a named flag day, and viikkonro.fi as the publisher. Related concepts (weeks start on Monday, the first Thursday rule, 52 or 53 weeks) sit next to each other, as they would on a topic page.
 
 **AI answers (GEO).** Generative search and assistants quote passages that stand on their own. The copy is written for that:
-- The first sentence defines the product: what it is, for which browsers, on which standard.
-- The FAQ uses the exact questions people ask, and each answer is complete without its question.
-- Facts are concrete and checkable: years, week numbers, city names, the data source.
+- The first sentence defines the product: what it is, where it shows, which standard it follows.
+- Each FAQ answer is complete without its question.
+- Facts are concrete and checkable: years, week numbers, the data source.
 - The brand is always written the same way ("Viikko Nro"), and the site URL closes the text.
 
-**Store rules this respects.** The Chrome Web Store and AMO reject keyword spam, so there are no keyword lists, repeated phrases, competitor names or unverifiable claims like "best" or "#1". The city list is factual coverage, not keyword stuffing.
+**Store rules this respects.** The Chrome Web Store rejected an earlier version (violation "Yellow Argon", excessive keywords) because it listed all 21 cities. Keep to these rules:
+- No lists of place names, search terms or synonyms. Give a count ("21 suomalaista kaupunkia") instead.
+- Don't repeat the same search phrase in several places.
+- No competitor names and no claims like "best" or "#1".
+- `pnpm test` fails if a city name or a long comma-separated list appears in the listing.
 
 **Keep it true.** Update these every January and after every data sync:
-- The year-specific facts: 53 weeks in 2026, week 53/2026, the holiday weeks for 2026 and 2027.
-- The city list, if the data changes. The test fails when it doesn't match.
+- The year-specific facts: 53 weeks in 2026 and week 53/2026.
+- The city count, if the data changes. The test fails when it doesn't match.
 
 The description mentions flag days only by example, without claiming every flag day, because the site's flag day list needs checking (see the note in the README).
 

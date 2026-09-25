@@ -1,57 +1,35 @@
-Mikä viikko nyt on? Viikko Nro näyttää kuluvan viikon numeron selaimen työkalupalkissa, joten viikkonumero on aina näkyvissä. Viikko Nro on ilmainen selainlaajennus Google Chromelle, Microsoft Edgelle ja Mozilla Firefoxille. Viikkonumerot lasketaan kansainvälisen ISO 8601 -standardin mukaan, jota Suomessa käytetään kalentereissa, työvuorolistoissa ja koulujen lukuvuosisuunnitelmissa.
+Viikko Nro näyttää kuluvan viikon numeron selaimen työkalupalkissa. Viikkonumero lasketaan kansainvälisen ISO 8601 -standardin mukaan, joten se vastaa suomalaisia kalentereita ja työvuorolistoja. Laajennuksen tekee viikkonro.fi.
 
-Laajennuksen tekee viikkonro.fi, suomenkielinen viikkonumero- ja kalenteripalvelu.
+TYÖKALUPALKKI
+Kuvakkeessa näkyy kuluvan viikon numero, esimerkiksi 42 tai vk42. Numero päivittyy itsestään keskiyöllä, ja kun viet hiiren kuvakkeen päälle, näet viikon päivämäärät.
 
-VIIKKONUMERO TYÖKALUPALKISSA
-Kuvake näyttää kuluvan viikon numeron, esimerkiksi 42 tai vk42. Numero vaihtuu itsestään maanantaina keskiyöllä. Kun viet hiiren kuvakkeen päälle, näet viikon päivämäärät.
+PONNAHDUSIKKUNA
+• Viikon päivämäärät maanantaista sunnuntaihin ja vuoden eteneminen
+• Nuolet edellisiin ja tuleviin viikkoihin
+• Päivän liputuspäivä, esimerkiksi Aleksis Kiven päivä
+• Valitsemasi kaupungin seuraava hiihto- tai syysloma ja päivät lomaan
 
-VIIKON PÄIVÄMÄÄRÄT
-Avaa kuvake, niin näet viikon maanantaista sunnuntaihin ja vuoden kaikki viikot. Nuolilla selaat edellisiin ja tuleviin viikkoihin. Vuodenvaihteen viikot lasketaan oikein: esimerkiksi viikko 53 vuonna 2026 on 28.12.2026–3.1.2027.
+Koululomien päivämäärät perustuvat Opetushallituksen ja kaupunkien virallisiin päätöksiin. Laajennus kattaa 21 suomalaista kaupunkia. Jos kaupunki ei ole vielä vahvistanut lomaansa, laajennus kertoo sen eikä arvaa päivämäärää.
 
-LIPUTUSPÄIVÄT
-Liputuspäivänä ikkuna näyttää päivän nimen, esimerkiksi Aleksis Kiven päivä tai Jean Sibeliuksen päivä.
-
-KOULULOMAT KAUPUNGEITTAIN
-Valitse kaupunki asetuksista, niin näet seuraavan hiihtoloman tai syysloman päivämäärät ja montako päivää lomaan on. Päivämäärät perustuvat Opetushallituksen ja kaupunkien virallisiin päätöksiin. Jos kaupunki ei ole vielä vahvistanut lomaansa, laajennus kertoo sen eikä arvaa päivämäärää.
-
-Kaupungit: Espoo, Helsinki, Hämeenlinna, Joensuu, Jyväskylä, Kajaani, Kokkola, Kotka, Kouvola, Kuopio, Lahti, Lappeenranta, Mikkeli, Oulu, Pori, Rovaniemi, Seinäjoki, Tampere, Turku, Vaasa ja Vantaa.
-
-VIIKKOHAKU OSOITERIVILLÄ
-Kirjoita osoiteriville vk ja välilyönti:
-• vk 42 näyttää viikon 42 päivämäärät
-• vk 42 2027 näyttää viikon 42 vuonna 2027
-• vk 13.10.2026 kertoo, millä viikolla päivämäärä on
-Enter avaa viikon oman sivun viikkonro.fi-palvelussa.
+OSOITERIVI
+Kirjoita osoiteriville vk, välilyönti ja viikon numero tai päivämäärä:
+• vk 42 – viikon 42 päivämäärät
+• vk 42 2027 – viikko 42 vuonna 2027
+• vk 13.10.2026 – viikko, jolle päivämäärä osuu
+Enter avaa viikon sivun viikkonro.fi-palvelussa.
 
 YKSITYISYYS
-• Ei tietojen keruuta, ei analytiikkaa eikä mainoksia.
-• Toimii ilman verkkoyhteyttä: viikkonumerot lasketaan laitteellasi, ja liputuspäivät sekä koululomat ovat laajennuksen sisällä.
-• Vain kaksi käyttöoikeutta: tallennus asetuksia varten ja ajastin keskiyön päivitystä varten. Laajennus ei näe avaamiesi sivujen sisältöä.
+Laajennus ei kerää tietoja, eikä siinä ole analytiikkaa tai mainoksia. Se toimii ilman verkkoyhteyttä ja pyytää vain kaksi käyttöoikeutta: tallennuksen asetuksia varten ja ajastimen keskiyön päivitystä varten. Laajennus ei näe avaamiesi sivujen sisältöä.
 
 USEIN KYSYTTYÄ
 
-Mikä viikko nyt on?
-Kuluvan viikon numero näkyy Viikko Nro -kuvakkeessa selaimen työkalupalkissa. Viikon tarkat päivämäärät näet avaamalla kuvakkeen.
-
 Miten viikkonumero lasketaan?
-ISO 8601 -standardin mukaan viikko alkaa maanantaista. Vuoden ensimmäinen viikko on se, jolle osuu vuoden ensimmäinen torstai. Siksi tammikuun ensimmäiset päivät voivat kuulua edellisen vuoden viimeiseen viikkoon.
+Viikko alkaa maanantaista. Vuoden ensimmäinen viikko on se, jolle osuu vuoden ensimmäinen torstai. Siksi tammikuun alun päivät voivat kuulua edellisen vuoden viimeiseen viikkoon.
 
 Montako viikkoa vuodessa on?
-Vuodessa on 52 tai 53 viikkoa. Vuonna 2026 viikkoja on 53 ja vuonna 2027 viikkoja on 52.
-
-Milloin hiihtoloma on?
-Hiihtoloma porrastetaan alueittain viikoille 8, 9 ja 10. Vuonna 2027 hiihtoloma on esimerkiksi Helsingissä, Espoossa, Vantaalla, Turussa ja Porissa viikolla 8, Tampereella, Jyväskylässä ja Lahdessa viikolla 9 sekä Oulussa, Kuopiossa ja Rovaniemellä viikolla 10.
-
-Milloin syysloma on?
-Syysloma on useimmissa kaupungeissa viikolla 42 tai 43. Syksyllä 2026 syysloma on esimerkiksi Helsingissä, Tampereella ja Turussa viikolla 42 sekä Oulussa ja Lahdessa viikolla 43.
-
-Toimiiko laajennus ilman verkkoyhteyttä?
-Toimii. Kaikki tiedot ovat laajennuksen sisällä, eikä se ota yhteyttä palvelimiin.
-
-Kerääkö laajennus tietoja?
-Ei kerää. Asetukset (kaupunki, kuvakkeen merkintä ja kieli) tallentuvat vain selaimeesi.
+52 tai 53. Vuodessa 2026 on 53 viikkoa, ja viikko 53 kestää 28.12.2026–3.1.2027.
 
 Millä kielillä laajennus toimii?
-Suomeksi ja englanniksi. Kieli valitaan selaimen kielen mukaan, ja sen voi vaihtaa asetuksista.
+Suomeksi ja englanniksi. Kieli seuraa selaimen kieltä, ja sen voi vaihtaa asetuksista.
 
-Lisää viikkonumeroita, kalentereita ja pyhäpäiviä: https://viikkonro.fi
+Lisätietoa: https://viikkonro.fi
