@@ -10,6 +10,7 @@ import {
 } from "./publicHolidays";
 import { hasWeekPage, sitePath, siteUrl } from "./site";
 import {
+  addDays,
   daysBetween,
   getISOWeekRange,
   getWeekRef,
@@ -32,10 +33,41 @@ const MAX_RELATIVE_WEEKS = 104;
 export type OmniboxMatch =
   | { kind: "week"; ref: WeekRef }
   | { kind: "range"; ref: WeekRef; end: WeekRef }
-  | { kind: "holiday"; ref: WeekRef; holiday: PublicHoliday };
+  | { kind: "holiday"; ref: WeekRef; holiday: PublicHoliday }
+  | { kind: "date"; ref: WeekRef; date: Date }
+  | { kind: "dateRange"; ref: WeekRef; start: Date; end: Date };
 
 function week(ref: WeekRef): OmniboxMatch {
   return { kind: "week", ref };
+}
+
+function onDate(date: Date | null): OmniboxMatch[] {
+  return date ? [{ kind: "date", ref: getWeekRef(date), date }] : [];
+}
+
+// "1.3.–15.6." spans at most ten years, which keeps the working-day count cheap.
+const MAX_RANGE_DAYS = 3660;
+
+function dateRange(start: Date | null, end: Date | null): OmniboxMatch[] {
+  if (!start || !end) return [];
+  const days = daysBetween(start, end);
+  if (days < 0 || days > MAX_RANGE_DAYS) return [];
+  return [{ kind: "dateRange", ref: getWeekRef(start), start, end }];
+}
+
+/** "1.3.–15.6.", "1.3.2027-15.6.", "28.12.–3.1." (rolls into the next year). */
+function parseDottedRange(match: RegExpExecArray, today: Date): OmniboxMatch[] {
+  const [, d1, m1, y1, d2, m2, y2] = match;
+  const endYear = y2 ? Number(y2) : y1 ? Number(y1) : today.getFullYear();
+  let start = makeDate(y1 ? Number(y1) : endYear, Number(m1), Number(d1));
+  let end = makeDate(endYear, Number(m2), Number(d2));
+  if (start && end && end < start) {
+    // A missing year rolls over: "28.12.–3.1." ends the January after,
+    // "15.6.–1.3.2027" starts the June before.
+    if (!y2) end = makeDate(endYear + 1, Number(m2), Number(d2));
+    else if (!y1) start = makeDate(endYear - 1, Number(m1), Number(d1));
+  }
+  return dateRange(start, end);
 }
 
 function parseRange(from: number, to: number, year: number): OmniboxMatch[] {
@@ -75,14 +107,17 @@ export function parseOmniboxQuery(input: string, today: Date): OmniboxMatch[] {
   } else if ((match = /^(\d{1,2}) ?[-–] ?(\d{1,2})(?:[ /](\d{4}))?$/.exec(text))) {
     // "42-50" or "42-50 2027": a range of weeks.
     matches = parseRange(Number(match[1]), Number(match[2]), match[3] ? Number(match[3]) : current.year);
+  } else if ((match = /^(\d{1,2})\.(\d{1,2})\.?(\d{4})? ?[-–] ?(\d{1,2})\.(\d{1,2})\.?(\d{4})?$/.exec(text))) {
+    matches = parseDottedRange(match, today);
+  } else if ((match = /^(\d{4}-\d{2}-\d{2}) ?(?:–|\.\.| - ) ?(\d{4}-\d{2}-\d{2})$/.exec(text))) {
+    // "2026-10-01..2026-12-31": ISO dates need a separator that isn't a bare hyphen.
+    matches = dateRange(parseISODate(match[1] as string), parseISODate(match[2] as string));
   } else if ((match = /^(\d{1,2})\.(\d{1,2})\.?(\d{4})?$/.exec(text))) {
     // "13.10.2026", or "13.10." for this calendar year.
     const year = match[3] === undefined ? today.getFullYear() : Number(match[3]);
-    const date = makeDate(year, Number(match[2]), Number(match[1]));
-    matches = date ? [week(getWeekRef(date))] : [];
+    matches = onDate(makeDate(year, Number(match[2]), Number(match[1])));
   } else if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
-    const date = parseISODate(text);
-    matches = date ? [week(getWeekRef(date))] : [];
+    matches = onDate(parseISODate(text));
   } else {
     // "juhannus", "joulu 2027", "pääsiäinen".
     const named = /^(.*?)(?: (\d{4}))?$/.exec(text) as RegExpExecArray;
@@ -118,17 +153,49 @@ export function describeWeek(ref: WeekRef, lang: Lang): string {
   return workdays < 5 ? `${text} · ${workdaysText(workdays, lang)}` : text;
 }
 
-export function describeMatch(match: OmniboxMatch, lang: Lang): string {
+function daysText(count: number, lang: Lang): string {
+  return count === 1 ? t(lang, "daysOne") : t(lang, "daysMany", count);
+}
+
+/** "85 päivän päästä, 58 työpäivää siihen asti" / "3 päivää sitten" / "tänään". */
+export function relativeDayText(date: Date, today: Date, lang: Lang): string {
+  const days = daysBetween(today, date);
+  if (days === 0) return t(lang, "whenToday");
+  if (days === 1) return t(lang, "countdownTomorrow");
+  if (days === -1) return t(lang, "whenYesterday");
+  if (days < 0) return t(lang, "whenAgo", -days);
+  // Working days from today up to the day before: the ones left to use.
+  const workdays = workdaysBetween(today, addDays(date, -1));
+  return t(lang, "whenAhead", t(lang, "countdownInDays", days), workdaysText(workdays, lang));
+}
+
+function weekdayAndDate(date: Date, lang: Lang): string {
+  // Finnish writes weekday names in lowercase mid-sentence; English doesn't.
+  const weekday = lang === "fi" ? formatWeekday(date, lang).toLocaleLowerCase("fi-FI") : formatWeekday(date, lang);
+  return `${weekday} ${formatDate(date, lang)}`;
+}
+
+export function describeMatch(match: OmniboxMatch, lang: Lang, today: Date): string {
   if (match.kind === "week") return describeWeek(match.ref, lang);
+  if (match.kind === "date") {
+    return t(lang, "omniboxDate", weekdayAndDate(match.date, lang), match.ref.week, relativeDayText(match.date, today, lang));
+  }
+  if (match.kind === "dateRange") {
+    return t(
+      lang,
+      "omniboxDateRange",
+      formatDateRange(match.start, match.end, lang),
+      daysText(daysBetween(match.start, match.end) + 1, lang),
+      workdaysText(workdaysBetween(match.start, match.end), lang),
+    );
+  }
   if (match.kind === "holiday") {
     const { holiday } = match;
-    // Finnish writes weekday names in lowercase mid-sentence; English doesn't.
-    const weekday = lang === "fi" ? formatWeekday(holiday.date, lang).toLocaleLowerCase("fi-FI") : formatWeekday(holiday.date, lang);
     return t(
       lang,
       "omniboxHoliday",
       t(lang, PUBLIC_HOLIDAY_NAME[holiday.key]),
-      `${weekday} ${formatDate(holiday.date, lang)}`,
+      weekdayAndDate(holiday.date, lang),
       match.ref.week,
     );
   }
@@ -154,9 +221,9 @@ export function buildSuggestions(input: string, today: Date, lang: Lang): Omnibo
   if (!first) return { defaultDescription: t(lang, "omniboxInvalid"), suggestions: [] };
   const typed = input.trim();
   return {
-    defaultDescription: describeMatch(first, lang),
+    defaultDescription: describeMatch(first, lang, today),
     suggestions: rest
-      .map((match) => ({ content: contentFor(match), description: describeMatch(match, lang) }))
+      .map((match) => ({ content: contentFor(match), description: describeMatch(match, lang, today) }))
       // The browser drops a suggestion whose content equals the typed text.
       .filter((suggestion) => suggestion.content !== typed)
       .slice(0, MAX_SUGGESTIONS),

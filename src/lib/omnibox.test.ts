@@ -32,6 +32,12 @@ describe("parseOmniboxInput", () => {
     ["juhannus 2026", [[25, 2026], [25, 2026]]],
     ["itsenäisyyspäivä", [[49, 2026]]],
     ["Paasiainen 2027", [[12, 2027]]],
+    ["1.3.–15.6.", [[9, 2026]]],
+    ["1.3.2027-15.6.", [[9, 2027]]],
+    ["28.12.-3.1.", [[53, 2026]]],
+    ["15.6.-1.3.2027", [[25, 2026]]],
+    ["2026-10-01..2026-12-31", [[40, 2026]]],
+    ["2026-10-01 – 2026-12-31", [[40, 2026]]],
   ])("%j resolves", (input, expected) => {
     expect(parseOmniboxInput(input, today)).toEqual(expected.map(([week, year]) => ({ week, year })));
   });
@@ -51,6 +57,10 @@ describe("parseOmniboxInput", () => {
     "0-5",
     "joulu 2019",
     "jo",
+    "31.2.-1.3.",
+    "1.3.2027-15.6.2026",
+    "1.1.2020-1.1.2031",
+    "2026-10-01-2026-12-31",
   ])(
     "%j is not a valid week",
     (input) => {
@@ -101,6 +111,27 @@ describe("buildSuggestions", () => {
     );
   });
 
+  it("counts days and working days to a date", () => {
+    const describe = (input: string, lang: "fi" | "en" = "fi") => buildSuggestions(input, today, lang).defaultDescription;
+    // Friday 11.9. to Tuesday 13.10.: 32 days; working days 11.9.–12.10. are 1 + 4 × 5 + 1.
+    expect(describe("13.10.2026")).toBe("tiistai 13.10.2026 · viikko 42 · 32 päivän päästä, 22 työpäivää siihen asti");
+    expect(describe("2026-12-24")).toBe("torstai 24.12.2026 · viikko 52 · 104 päivän päästä, 74 työpäivää siihen asti");
+    expect(describe("11.9.")).toBe("perjantai 11.9.2026 · viikko 37 · tänään");
+    expect(describe("12.9.")).toBe("lauantai 12.9.2026 · viikko 37 · huomenna");
+    expect(describe("10.9.")).toBe("torstai 10.9.2026 · viikko 37 · eilen");
+    expect(describe("1.9.2026")).toBe("tiistai 1.9.2026 · viikko 36 · 10 päivää sitten");
+    expect(describe("24.12.", "en")).toMatch(/^Thursday 24 Dec 2026 · week 52 · in 104 days, 74 working days until then$/);
+  });
+
+  it("counts a date range inclusively", () => {
+    const describe = (input: string, lang: "fi" | "en" = "fi") => buildSuggestions(input, today, lang).defaultDescription;
+    // March 22 + April 22 − 2 (Easter) + May 21 − 2 (Vappu, Helatorstai) + June 1–15 11.
+    expect(describe("1.3.–15.6.")).toBe("1.3.–15.6.2026 · 107 päivää, 72 työpäivää");
+    expect(describe("28.12.-3.1.")).toBe("28.12.2026–3.1.2027 · 7 päivää, 4 työpäivää");
+    expect(describe("12.10.-12.10.")).toBe("12.10.2026 · 1 päivä, 1 työpäivä");
+    expect(describe("1.3.–15.6.", "en")).toMatch(/^1 Mar\s*–\s*15 Jun 2026 · 107 days, 72 working days$/);
+  });
+
   it("names the holiday, its date and week", () => {
     const result = buildSuggestions("juhannus", today, "fi");
     expect(result.defaultDescription).toBe("Juhannuspäivä lauantai 26.6.2027 · viikko 25");
@@ -113,7 +144,7 @@ describe("buildSuggestions", () => {
   });
 
   it("never exceeds the suggestion cap or repeats the typed text", () => {
-    for (const input of ["", "1", "42", "42 2027", "13.10.2026", "+3", "42-50", "joulu", "hel"]) {
+    for (const input of ["", "1", "42", "42 2027", "13.10.2026", "+3", "42-50", "joulu", "hel", "1.3.-15.6."]) {
       const { suggestions } = buildSuggestions(input, today, "fi");
       expect(suggestions.length).toBeLessThanOrEqual(MAX_SUGGESTIONS);
       expect(suggestions.map((s) => s.content)).not.toContain(input.trim());

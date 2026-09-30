@@ -96,6 +96,29 @@
     "message": "Viikot $WEEKS$: $RANGE$ · $COUNT$ viikkoa, $WORKDAYS$",
     "placeholders": { "weeks": { "content": "$1", "example": "42–50" }, "range": { "content": "$2", "example": "12.10.–13.12.2026" }, "count": { "content": "$3", "example": "9" }, "workdays": { "content": "$4", "example": "44 työpäivää" } }
   },
+  "omniboxDate": {
+    "message": "$DATE$ · viikko $WEEK$ · $WHEN$",
+    "placeholders": { "date": { "content": "$1", "example": "torstai 24.12.2026" }, "week": { "content": "$2", "example": "52" }, "when": { "content": "$3", "example": "85 päivän päästä, 58 työpäivää siihen asti" } }
+  },
+  "omniboxDateRange": {
+    "message": "$RANGE$ · $DAYS$, $WORKDAYS$",
+    "placeholders": { "range": { "content": "$1", "example": "1.3.–15.6.2027" }, "days": { "content": "$2", "example": "107 päivää" }, "workdays": { "content": "$3", "example": "73 työpäivää" } }
+  },
+  "daysOne": { "message": "1 päivä" },
+  "daysMany": {
+    "message": "$COUNT$ päivää",
+    "placeholders": { "count": { "content": "$1", "example": "107" } }
+  },
+  "whenToday": { "message": "tänään" },
+  "whenYesterday": { "message": "eilen" },
+  "whenAgo": {
+    "message": "$DAYS$ päivää sitten",
+    "placeholders": { "days": { "content": "$1", "example": "3" } }
+  },
+  "whenAhead": {
+    "message": "$IN$, $WORKDAYS$ siihen asti",
+    "placeholders": { "in": { "content": "$1", "example": "85 päivän päästä" }, "workdays": { "content": "$2", "example": "58 työpäivää" } }
+  },
 
   "phNewYear": { "message": "Uudenvuodenpäivä" },
   "phEpiphany": { "message": "Loppiainen" },
@@ -132,7 +155,7 @@
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
   "omniboxHelpTitle": { "message": "Osoiterivi" },
-  "omniboxHelp": { "message": "Kirjoita osoiteriville vk ja välilyönti, sitten viikon numero (42), viikko ja vuosi (42 2027), päivämäärä (13.10.2026), viikkoja eteen- tai taaksepäin (+3, -2), viikkoväli (42-50) tai pyhän nimi (juhannus, joulu)." },
+  "omniboxHelp": { "message": "Kirjoita osoiteriville vk ja välilyönti, sitten viikon numero (42), viikko ja vuosi (42 2027), päivämäärä (13.10.2026), viikkoja eteen- tai taaksepäin (+3, -2), viikkoväli (42-50), pyhän nimi (juhannus, joulu) tai päivämääräväli (1.3.–15.6.). Päivämäärälle näytetään myös päivät ja työpäivät siihen asti." },
   "shortcutTitle": { "message": "Pikanäppäin" },
   "shortcutHelp": { "message": "avaa ponnahdusikkunan. Voit vaihtaa näppäimen selaimen laajennusten pikanäppäinasetuksista." },
   "shortcutNone": { "message": "Pikanäppäintä ei ole asetettu. Voit asettaa sen selaimen laajennusten pikanäppäinasetuksista." },

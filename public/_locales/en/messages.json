@@ -96,6 +96,29 @@
     "message": "Weeks $WEEKS$: $RANGE$ · $COUNT$ weeks, $WORKDAYS$",
     "placeholders": { "weeks": { "content": "$1", "example": "42–50" }, "range": { "content": "$2", "example": "12 Oct – 13 Dec 2026" }, "count": { "content": "$3", "example": "9" }, "workdays": { "content": "$4", "example": "44 working days" } }
   },
+  "omniboxDate": {
+    "message": "$DATE$ · week $WEEK$ · $WHEN$",
+    "placeholders": { "date": { "content": "$1", "example": "Thursday 24 Dec 2026" }, "week": { "content": "$2", "example": "52" }, "when": { "content": "$3", "example": "in 85 days, 58 working days until then" } }
+  },
+  "omniboxDateRange": {
+    "message": "$RANGE$ · $DAYS$, $WORKDAYS$",
+    "placeholders": { "range": { "content": "$1", "example": "1 Mar – 15 Jun 2027" }, "days": { "content": "$2", "example": "107 days" }, "workdays": { "content": "$3", "example": "73 working days" } }
+  },
+  "daysOne": { "message": "1 day" },
+  "daysMany": {
+    "message": "$COUNT$ days",
+    "placeholders": { "count": { "content": "$1", "example": "107" } }
+  },
+  "whenToday": { "message": "today" },
+  "whenYesterday": { "message": "yesterday" },
+  "whenAgo": {
+    "message": "$DAYS$ days ago",
+    "placeholders": { "days": { "content": "$1", "example": "3" } }
+  },
+  "whenAhead": {
+    "message": "$IN$, $WORKDAYS$ until then",
+    "placeholders": { "in": { "content": "$1", "example": "in 85 days" }, "workdays": { "content": "$2", "example": "58 working days" } }
+  },
 
   "phNewYear": { "message": "New Year's Day" },
   "phEpiphany": { "message": "Epiphany" },
@@ -132,7 +155,7 @@
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
   "omniboxHelpTitle": { "message": "Address bar" },
-  "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027), a date (13.10.2026), weeks ahead or back (+3, -2), a range of weeks (42-50) or a holiday name (midsummer, christmas)." },
+  "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027), a date (13.10.2026), weeks ahead or back (+3, -2), a range of weeks (42-50), a holiday name (midsummer, christmas) or a date range (1.3.–15.6.). Dates also show the days and working days until then." },
   "shortcutTitle": { "message": "Keyboard shortcut" },
   "shortcutHelp": { "message": "opens the popup. You can change it in your browser's extension shortcut settings." },
   "shortcutNone": { "message": "No shortcut is set. You can set one in your browser's extension shortcut settings." },
