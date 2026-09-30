@@ -8,7 +8,7 @@
 
 | | |
 | --- | --- |
-| **Toolbar badge** | The current ISO week (`42` or `vk42`), updated at local midnight. The tooltip shows the week's dates. |
+| **Toolbar badge** | The current ISO week (`42` or `vk42`), updated at local midnight. The tooltip shows the week's dates and working days, plus today's public holiday, flag day or school holiday. With "Highlight special days" on, the badge turns red on public holidays, blue on flag days and yellow during the chosen city's school holiday. |
 | **Popup** | Week number and date range, step to other weeks, the year's week bars, the week's working days and public holidays, a copy button (`Viikko 42 (12.–18.10.2026)`), today's flag day or public holiday, a countdown to the next public holiday, and the next school holiday (hiihtoloma or syysloma) for the chosen city. Each block links to the matching page on viikkonro.fi. |
 | **Public holidays** | Finnish pyhäpäivät computed for any year (Easter-based dates, Juhannus and Pyhäinpäivä Saturdays), plus Juhannusaatto and Jouluaatto, which count as days off. Working days are Monday–Friday minus these. |
 | **Address bar** | Keyword `vk`: `vk 42`, `vk 42 2027`, `vk 2026-W42`, `vk 13.10.2026`, `vk 2026-10-13`, relative weeks `vk +3` / `vk -2`, ranges `vk 42-50` (weeks and working days), holiday names `vk juhannus`, `vk joulu 2027`, `vk pääsiäinen`, and date ranges `vk 1.3.–15.6.` (days and working days). A date shows its weekday and the days and working days until then (`vk 24.12.`). Enter opens the (first) week page. Short weeks show their working days. |

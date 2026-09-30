@@ -1,6 +1,14 @@
 import { describe, expect, it } from "vitest";
 import type { Dataset } from "../data/types";
-import { BADGE_COLORS, BADGE_HIGHLIGHTS, badgeHighlightFor, badgeText, computeBadgeState, type BadgeOptions } from "./badge";
+import {
+  BADGE_COLORS,
+  BADGE_HIGHLIGHTS,
+  badgeHighlightFor,
+  badgeText,
+  badgeTitle,
+  computeBadgeState,
+  type BadgeOptions,
+} from "./badge";
 
 const plain: BadgeOptions = { badgeFormat: "number", badgeHighlight: true, city: null };
 
@@ -46,11 +54,26 @@ describe("badge", () => {
     expect(computeBadgeState(new Date(2026, 9, 14, 9), plain, "fi", data)).toEqual({
       date: "2026-10-14",
       text: "42",
-      title: "Viikko 42 · 12.–18.10.2026",
+      title: "Viikko 42 · 12.–18.10.2026 · 5 työpäivää",
       background: BADGE_COLORS.background,
       textColor: BADGE_COLORS.text,
     });
-    expect(computeBadgeState(new Date(2027, 0, 1), plain, "fi", data).title).toBe("Viikko 53 · 28.12.2026–3.1.2027");
+    expect(computeBadgeState(new Date(2027, 0, 2), plain, "fi", data).title).toBe(
+      "Viikko 53 · 28.12.2026–3.1.2027 · 4 työpäivää",
+    );
+  });
+
+  it("adds today's special days on a second line", () => {
+    expect(badgeTitle(new Date(2027, 0, 1), null, "fi", data)).toBe(
+      "Viikko 53 · 28.12.2026–3.1.2027 · 4 työpäivää\nTänään: Uudenvuodenpäivä",
+    );
+    expect(badgeTitle(new Date(2026, 9, 10), null, "en", data)).toMatch(
+      /^Week 41 · 5\s*–\s*11 Oct 2026 · 5 working days\nToday: Aleksis Kiven päivä$/,
+    );
+    expect(badgeTitle(new Date(2026, 9, 13), "Helsinki", "sv", data)).toBe(
+      "Vecka 42 · 12.–18.10.2026 · 5 arbetsdagar\nI dag: Höstlov",
+    );
+    expect(badgeTitle(new Date(2026, 9, 13), null, "fi", data)).toBe("Viikko 42 · 12.–18.10.2026 · 5 työpäivää");
   });
 });
 

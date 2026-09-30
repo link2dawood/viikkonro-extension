@@ -4,7 +4,7 @@ import type { Dataset } from "../data/types";
 import { formatDateRange } from "./format";
 import { flagDaysOn, schoolHolidayOn } from "./holidays";
 import { t, type Lang } from "./i18n";
-import { publicHolidaysOn } from "./publicHolidays";
+import { PUBLIC_HOLIDAY_NAME, publicHolidaysOn, weekWorkdays, workdaysText } from "./publicHolidays";
 import { BADGE_STATE_KEY, getSettings, langFor, type BadgeFormat, type Settings } from "./settings";
 import { getISOWeekRange, getWeekRef, msUntilNextMidnight, toISODate } from "./week";
 
@@ -52,20 +52,49 @@ export function badgeHighlightFor(
   return null;
 }
 
+/** Today's public holidays, flag days and the city's school holiday, by name. */
+export function specialDayNames(
+  date: Date,
+  city: string | null,
+  lang: Lang,
+  data: Pick<Dataset, "flagDays" | "schoolHolidays"> = dataset,
+): string[] {
+  const school = city === null ? null : schoolHolidayOn(data.schoolHolidays, city, date);
+  return [
+    ...publicHolidaysOn(date).map((holiday) => t(lang, PUBLIC_HOLIDAY_NAME[holiday.key])),
+    ...flagDaysOn(data.flagDays, date).map((flagDay) => flagDay.name),
+    ...(school ? [t(lang, school.type === "hiihtoloma" ? "holidayHiihtoloma" : "holidaySyysloma")] : []),
+  ];
+}
+
+/** "Viikko 52 · 21.–27.12.2026 · 3 työpäivää", plus a second line for a special day. */
+export function badgeTitle(
+  now: Date,
+  city: string | null,
+  lang: Lang,
+  data: Pick<Dataset, "flagDays" | "schoolHolidays"> = dataset,
+): string {
+  const ref = getWeekRef(now);
+  const { start, end } = getISOWeekRange(ref.week, ref.year);
+  const week = t(lang, "badgeTooltip", ref.week, formatDateRange(start, end, lang));
+  const first = `${week} · ${workdaysText(weekWorkdays(ref).workdays, lang)}`;
+  const today = specialDayNames(now, city, lang, data);
+  return today.length > 0 ? `${first}\n${t(lang, "todayLabel")}: ${today.join(", ")}` : first;
+}
+
 export function computeBadgeState(
   now: Date,
   options: BadgeOptions,
   lang: Lang,
   data: Pick<Dataset, "flagDays" | "schoolHolidays"> = dataset,
 ): BadgeState {
-  const { week, year } = getWeekRef(now);
-  const { start, end } = getISOWeekRange(week, year);
+  const { week } = getWeekRef(now);
   const highlight = options.badgeHighlight ? badgeHighlightFor(now, options.city, data) : null;
   const colors = highlight ? BADGE_HIGHLIGHTS[highlight] : BADGE_COLORS;
   return {
     date: toISODate(now),
     text: badgeText(week, options.badgeFormat, lang),
-    title: t(lang, "badgeTooltip", week, formatDateRange(start, end, lang)),
+    title: badgeTitle(now, options.city, lang, data),
     background: colors.background,
     textColor: colors.text,
   };
