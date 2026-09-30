@@ -8,12 +8,15 @@ export interface Settings {
   city: string | null;
   badgeFormat: BadgeFormat;
   language: Language;
+  /** The month view in the popup, toggled from its header. */
+  showCalendar: boolean;
 }
 
 export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
   city: null,
   badgeFormat: "number",
   language: "auto",
+  showCalendar: false,
 });
 
 // The only keys this extension ever writes; reset clears exactly these (FR-5.4).
@@ -26,6 +29,7 @@ export function normalizeSettings(raw: unknown): Settings {
     city: typeof value.city === "string" && value.city !== "" ? value.city : null,
     badgeFormat: value.badgeFormat === "prefixed" ? "prefixed" : "number",
     language: value.language === "fi" || value.language === "en" ? value.language : "auto",
+    showCalendar: value.showCalendar === true,
   };
 }
 

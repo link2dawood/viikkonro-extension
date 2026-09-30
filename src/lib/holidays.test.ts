@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Dataset } from "../data/types";
-import { flagDaysOn, isDataStale, nameDaysOn, nextSchoolHoliday } from "./holidays";
+import { flagDaysOn, isDataStale, nameDaysOn, nextSchoolHoliday, schoolHolidayOn } from "./holidays";
 
 const sourceUrl = "https://example.test/source";
 
@@ -17,6 +17,16 @@ const schoolHolidays: Dataset["schoolHolidays"] = {
   ],
   undated: [{ type: "syysloma", year: 2027, cities: ["Espoo", "Kotka"], confidence: "unknown" }],
 };
+
+describe("schoolHolidayOn", () => {
+  it("finds the city's holiday on a day, ends inclusive", () => {
+    expect(schoolHolidayOn(schoolHolidays, "Helsinki", new Date(2026, 9, 12))?.week).toBe(42);
+    expect(schoolHolidayOn(schoolHolidays, "Helsinki", new Date(2026, 9, 16))?.week).toBe(42);
+    expect(schoolHolidayOn(schoolHolidays, "Helsinki", new Date(2026, 9, 17))).toBeNull();
+    expect(schoolHolidayOn(schoolHolidays, "Kotka", new Date(2026, 9, 12))).toBeNull();
+    expect(schoolHolidayOn(schoolHolidays, "Kotka", new Date(2026, 9, 25))?.week).toBe(43);
+  });
+});
 
 describe("nextSchoolHoliday", () => {
   it("counts down to the next dated holiday", () => {

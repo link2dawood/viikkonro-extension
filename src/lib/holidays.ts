@@ -56,6 +56,16 @@ export function nextSchoolHoliday(
   return candidates[0]?.holiday ?? null;
 }
 
+/** The dated school holiday `city` is on during `date`, if any. */
+export function schoolHolidayOn(
+  schoolHolidays: Dataset["schoolHolidays"],
+  city: string,
+  date: Date,
+): DatedSchoolHoliday | null {
+  const key = toISODate(date);
+  return schoolHolidays.dated.find((period) => period.cities.includes(city) && period.start <= key && key <= period.end) ?? null;
+}
+
 export function flagDaysOn(flagDays: FlagDay[], date: Date): FlagDay[] {
   const key = toISODate(date);
   return flagDays.filter((day) => day.date === key);

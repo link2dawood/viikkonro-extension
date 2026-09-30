@@ -30,6 +30,16 @@
   "copyWeek": { "message": "Copy week" },
   "copied": { "message": "Copied" },
   "copyFailed": { "message": "Copy failed" },
+  "calendarToggle": { "message": "Month view" },
+  "prevMonth": { "message": "Previous month" },
+  "nextMonth": { "message": "Next month" },
+  "weekColumn": { "message": "Wk" },
+  "selectWeek": {
+    "message": "Select week $WEEK$",
+    "placeholders": { "week": { "content": "$1", "example": "42" } }
+  },
+  "legendHoliday": { "message": "Holiday" },
+  "legendSchoolHoliday": { "message": "School holiday" },
   "copyText": {
     "message": "Week $WEEK$ ($RANGE$)",
     "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }

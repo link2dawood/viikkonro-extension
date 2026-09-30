@@ -30,6 +30,16 @@
   "copyWeek": { "message": "Kopioi viikko" },
   "copied": { "message": "Kopioitu" },
   "copyFailed": { "message": "Kopiointi epäonnistui" },
+  "calendarToggle": { "message": "Kuukausinäkymä" },
+  "prevMonth": { "message": "Edellinen kuukausi" },
+  "nextMonth": { "message": "Seuraava kuukausi" },
+  "weekColumn": { "message": "Vk" },
+  "selectWeek": {
+    "message": "Valitse viikko $WEEK$",
+    "placeholders": { "week": { "content": "$1", "example": "42" } }
+  },
+  "legendHoliday": { "message": "Pyhä" },
+  "legendSchoolHoliday": { "message": "Koululoma" },
   "copyText": {
     "message": "Viikko $WEEK$ ($RANGE$)",
     "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12.–18.10.2026" } }
