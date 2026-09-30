@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import markUrl from "../../assets/brand-mark.svg";
+import { CountdownBlock } from "../../components/CountdownBlock";
 import { ExternalLink } from "../../components/ExternalLink";
 import { HolidayBlock } from "../../components/HolidayBlock";
 import { CalendarIcon, GearIcon } from "../../components/icons";
@@ -94,6 +95,7 @@ export function App() {
         />
       )}
       <TodayBlock lang={lang} today={today} />
+      <CountdownBlock lang={lang} today={today} countdown={settings.countdown} />
       <HolidayBlock lang={lang} today={today} city={city} />
 
       <footer className="pop-foot">

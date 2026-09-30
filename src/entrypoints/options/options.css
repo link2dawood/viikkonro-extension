@@ -56,6 +56,32 @@
   border-radius: 11px;
 }
 
+.countdown-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0 14px;
+}
+.countdown-form label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.countdown-form .field {
+  width: 220px;
+}
+.countdown-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .opt-actions {
   display: flex;
   align-items: center;

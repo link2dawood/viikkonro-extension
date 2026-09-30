@@ -1,10 +1,19 @@
 import { browser } from "wxt/browser";
 import { resolveLang, type Lang } from "./i18n";
+import { parseISODate } from "./week";
 
 export type Language = "auto" | "fi" | "en" | "sv";
 export type BadgeFormat = "number" | "prefixed";
 export type CopyFormat = "text" | "iso" | "short" | "dates";
 export const COPY_FORMATS: readonly CopyFormat[] = ["text", "iso", "short", "dates"];
+
+export interface Countdown {
+  /** "YYYY-MM-DD". */
+  date: string;
+  label: string;
+}
+
+export const COUNTDOWN_LABEL_MAX = 40;
 
 export interface Settings {
   city: string | null;
@@ -16,6 +25,8 @@ export interface Settings {
   badgeHighlight: boolean;
   /** What the popup's copy button puts on the clipboard. */
   copyFormat: CopyFormat;
+  /** A date of the user's own, counted down to in the popup. */
+  countdown: Countdown | null;
 }
 
 export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
@@ -25,11 +36,19 @@ export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
   showCalendar: false,
   badgeHighlight: true,
   copyFormat: "text",
+  countdown: null,
 });
 
 // The only keys this extension ever writes; reset clears exactly these (FR-5.4).
 export const SETTINGS_KEY = "settings";
 export const BADGE_STATE_KEY = "badgeState";
+
+function normalizeCountdown(raw: unknown): Countdown | null {
+  if (typeof raw !== "object" || raw === null) return null;
+  const { date, label } = raw as Record<string, unknown>;
+  if (typeof date !== "string" || parseISODate(date) === null) return null;
+  return { date, label: typeof label === "string" ? label.trim().slice(0, COUNTDOWN_LABEL_MAX) : "" };
+}
 
 export function normalizeSettings(raw: unknown): Settings {
   const value = (typeof raw === "object" && raw !== null ? raw : {}) as Record<string, unknown>;
@@ -40,6 +59,7 @@ export function normalizeSettings(raw: unknown): Settings {
     showCalendar: value.showCalendar === true,
     badgeHighlight: value.badgeHighlight !== false,
     copyFormat: COPY_FORMATS.includes(value.copyFormat as CopyFormat) ? (value.copyFormat as CopyFormat) : "text",
+    countdown: normalizeCountdown(value.countdown),
   };
 }
 

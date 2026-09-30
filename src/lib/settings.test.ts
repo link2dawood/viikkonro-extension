@@ -51,9 +51,23 @@ describe("settings", () => {
         showCalendar: "yes",
         badgeHighlight: "no",
         copyFormat: "html",
+        countdown: { date: "2026-02-30", label: "Loma" },
       }),
     ).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings("junk")).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings({ language: "sv" }).language).toBe("sv");
+    expect(normalizeSettings({ countdown: "2026-12-24" }).countdown).toBeNull();
+  });
+
+  it("keeps a valid countdown, trimming its label", () => {
+    expect(normalizeSettings({ countdown: { date: "2027-06-01", label: "  Kesäloma  " } }).countdown).toEqual({
+      date: "2027-06-01",
+      label: "Kesäloma",
+    });
+    expect(normalizeSettings({ countdown: { date: "2027-06-01", label: 5 } }).countdown).toEqual({
+      date: "2027-06-01",
+      label: "",
+    });
+    expect(normalizeSettings({ countdown: { date: "2027-06-01", label: "x".repeat(99) } }).countdown?.label).toHaveLength(40);
   });
 });

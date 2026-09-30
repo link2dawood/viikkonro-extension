@@ -5,24 +5,75 @@ import { ExternalLink } from "../../components/ExternalLink";
 import { dataset } from "../../data/dataset";
 import { useSettings } from "../../hooks/useSettings";
 import { badgeText } from "../../lib/badge";
-import { t } from "../../lib/i18n";
 import { weekCopyText } from "../../lib/clipboard";
+import { t, type Lang } from "../../lib/i18n";
 import {
   COPY_FORMATS,
+  COUNTDOWN_LABEL_MAX,
   langFor,
   resetSettings,
   type BadgeFormat,
+  type Countdown,
   type Language,
   type Settings,
 } from "../../lib/settings";
 import { sitePath, siteUrl } from "../../lib/site";
-import { getISOWeek, getWeekRef } from "../../lib/week";
+import { getISOWeek, getWeekRef, parseISODate } from "../../lib/week";
 
 function Pill({ pressed, onClick, children }: { pressed: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button type="button" className="pill" aria-pressed={pressed} onClick={onClick}>
       {children}
     </button>
+  );
+}
+
+interface CountdownFormProps {
+  lang: Lang;
+  countdown: Countdown | null;
+  onSave: (countdown: Countdown | null) => void;
+}
+
+// A draft until saved, so half-typed values never reach the popup.
+function CountdownForm({ lang, countdown, onSave }: CountdownFormProps) {
+  const [label, setLabel] = useState(countdown?.label ?? "");
+  const [date, setDate] = useState(countdown?.date ?? "");
+  const valid = parseISODate(date) !== null;
+
+  return (
+    <form
+      className="countdown-form"
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (valid) onSave({ date, label: label.trim() });
+      }}
+    >
+      <label>
+        <span>{t(lang, "countdownLabel")}</span>
+        <input
+          type="text"
+          className="field"
+          value={label}
+          maxLength={COUNTDOWN_LABEL_MAX}
+          placeholder={t(lang, "countdownLabelPlaceholder")}
+          onChange={(event) => setLabel(event.target.value)}
+        />
+      </label>
+      <label>
+        <span>{t(lang, "countdownDate")}</span>
+        <input type="date" className="field" value={date} required onChange={(event) => setDate(event.target.value)} />
+      </label>
+      <div className="countdown-actions">
+        <button type="submit" className="btn" disabled={!valid}>
+          {t(lang, "countdownSave")}
+        </button>
+        {countdown && (
+          <button type="button" className="btn btn-secondary" onClick={() => onSave(null)}>
+            {t(lang, "countdownClear")}
+          </button>
+        )}
+      </div>
+    </form>
   );
 }
 
@@ -154,6 +205,18 @@ export function App() {
             </Pill>
           ))}
         </div>
+      </section>
+
+      <section className="panel opt-section">
+        <h2>{t(lang, "countdownTitle")}</h2>
+        <p className="note-soft">{t(lang, "countdownHint")}</p>
+        {/* Re-keyed on every saved change, so a reset or another tab's save refreshes the draft. */}
+        <CountdownForm
+          key={JSON.stringify(settings.countdown)}
+          lang={lang}
+          countdown={settings.countdown}
+          onSave={(countdown) => void save({ countdown })}
+        />
       </section>
 
       <section className="panel opt-section">
