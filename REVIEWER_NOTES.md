@@ -17,8 +17,9 @@ The build refuses to run when the bundled data doesn't cover the current and nex
 ## What the extension does
 
 - Shows the current ISO 8601 week number as the toolbar badge.
-- Popup: the week's dates, today's flag day, and the next school holiday for a city chosen in the options.
-- Address bar keyword `vk`: `vk 42`, `vk 42 2027` or `vk 13.10.2026` resolves to a week.
+- Popup: the week's dates and working days, today's flag day or public holiday, the next public holiday, and the next school holiday for a city chosen in the options. A button copies the week and its dates to the clipboard (`navigator.clipboard.writeText` on a click, so no clipboard permission).
+- Address bar keyword `vk`: `vk 42`, `vk 42 2027`, `vk 13.10.2026`, `vk +3`, `vk 42-50` or `vk juhannus` resolves to a week.
+- Keyboard shortcut: `_execute_action` with a suggested key (`Alt+Shift+W`) opens the popup. Commands need no permission.
 
 ## Permissions
 

@@ -9,8 +9,10 @@
 | | |
 | --- | --- |
 | **Toolbar badge** | The current ISO week (`42` or `vk42`), updated at local midnight. The tooltip shows the week's dates. |
-| **Popup** | Week number and date range, step to other weeks, the year's week bars, today's flag day, and the next school holiday (hiihtoloma or syysloma) for the chosen city, with a countdown. Each block links to the matching page on viikkonro.fi. |
-| **Address bar** | Keyword `vk`: `vk 42`, `vk 42 2027`, `vk 2026-W42`, `vk 13.10.2026`, `vk 2026-10-13`. Enter opens the week page. |
+| **Popup** | Week number and date range, step to other weeks, the year's week bars, the week's working days and public holidays, a copy button (`Viikko 42 (12.–18.10.2026)`), today's flag day or public holiday, a countdown to the next public holiday, and the next school holiday (hiihtoloma or syysloma) for the chosen city. Each block links to the matching page on viikkonro.fi. |
+| **Public holidays** | Finnish pyhäpäivät computed for any year (Easter-based dates, Juhannus and Pyhäinpäivä Saturdays), plus Juhannusaatto and Jouluaatto, which count as days off. Working days are Monday–Friday minus these. |
+| **Address bar** | Keyword `vk`: `vk 42`, `vk 42 2027`, `vk 2026-W42`, `vk 13.10.2026`, `vk 2026-10-13`, relative weeks `vk +3` / `vk -2`, ranges `vk 42-50` (weeks and working days), and holiday names `vk juhannus`, `vk joulu 2027`, `vk pääsiäinen`. Enter opens the (first) week page. Short weeks show their working days. |
+| **Keyboard shortcut** | `Alt+Shift+W` opens the popup (suggested key; the options page shows the key actually set, which the user can change in the browser's shortcut settings). |
 | **Settings** | City (21 cities), badge format, language (browser default, Finnish, English), reset. |
 | **Privacy** | Permissions `storage` and `alarms` only. No host permissions, no network requests, no analytics. |
 
@@ -50,7 +52,7 @@ After changing the source, run `pnpm build` again and click **Reload** on the ex
 | --- | --- |
 | `pnpm dev` / `pnpm dev:firefox` | Development build with hot reload |
 | `pnpm build` / `pnpm build:firefox` | Production build in `.output/chrome-mv3` / `.output/firefox-mv3` |
-| `pnpm test` | Vitest: ISO week math for every day 2024–2035, address bar parsing, holidays, settings, message catalogs, store listing limits |
+| `pnpm test` | Vitest: ISO week math for every day 2024–2035, address bar parsing, school and public holidays, working days, copy text, settings, message catalogs, store listing limits |
 | `pnpm check` | Typecheck, lint, test, both builds, bundle size guard, `web-ext lint` |
 | `pnpm zip` / `pnpm zip:firefox` | Store packages in `.output/`. The Firefox run also writes the sources zip AMO needs. |
 | `pnpm data:sync` | Regenerate the bundled data from the site repo (see below) |

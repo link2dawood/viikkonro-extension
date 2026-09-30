@@ -1,4 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { browser } from "wxt/browser";
 import markUrl from "../../assets/brand-mark.svg";
 import { ExternalLink } from "../../components/ExternalLink";
 import { dataset } from "../../data/dataset";
@@ -21,6 +22,8 @@ export function App() {
   const { settings, update } = useSettings();
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<"idle" | "saved" | "reset">("idle");
+  // undefined while loading; "" when the user has cleared the shortcut.
+  const [shortcut, setShortcut] = useState<string>();
   const lang = settings ? langFor(settings) : null;
 
   useEffect(() => {
@@ -28,6 +31,13 @@ export function App() {
     document.documentElement.lang = lang;
     document.title = `${t(lang, "optionsTitle")} · ${t(lang, "extShortName")}`;
   }, [lang]);
+
+  useEffect(() => {
+    void browser.commands
+      .getAll()
+      .then((commands) => setShortcut(commands.find((command) => command.name === "_execute_action")?.shortcut ?? ""))
+      .catch(() => setShortcut(""));
+  }, []);
 
   if (!settings || !lang) return null;
 
@@ -115,6 +125,21 @@ export function App() {
         <h2>{t(lang, "omniboxHelpTitle")}</h2>
         <p className="note-soft">{t(lang, "omniboxHelp")}</p>
       </section>
+
+      {shortcut !== undefined && (
+        <section className="panel opt-section">
+          <h2>{t(lang, "shortcutTitle")}</h2>
+          <p className="note-soft">
+            {shortcut ? (
+              <>
+                <kbd>{shortcut}</kbd> {t(lang, "shortcutHelp")}
+              </>
+            ) : (
+              t(lang, "shortcutNone")
+            )}
+          </p>
+        </section>
+      )}
 
       <div className="opt-actions">
         <button type="button" className="btn btn-secondary" onClick={() => void reset()}>

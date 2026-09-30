@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react";
+import { copyToClipboard, weekCopyText } from "../lib/clipboard";
 import { formatDateRange } from "../lib/format";
 import { t, type Lang } from "../lib/i18n";
+import { PUBLIC_HOLIDAY_NAME, weekWorkdays, workdaysText } from "../lib/publicHolidays";
 import { hasWeekPage, sitePath, siteUrl } from "../lib/site";
 import { getISOWeekRange, getWeeksInISOYear, type WeekRef } from "../lib/week";
 import { ExternalLink } from "./ExternalLink";
-import { ChevronLeftIcon, ChevronRightIcon } from "./icons";
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon, CopyIcon } from "./icons";
 
 interface Props {
   lang: Lang;
@@ -18,6 +21,20 @@ interface Props {
 export function WeekHero({ lang, today, viewed, isCurrent, onStep, onReset }: Props) {
   const { start, end } = getISOWeekRange(viewed.week, viewed.year);
   const totalWeeks = getWeeksInISOYear(viewed.year);
+  const { workdays, holidays } = weekWorkdays(viewed);
+  // The confirmation belongs to the week that was copied, so stepping away hides it.
+  const [copied, setCopied] = useState<{ week: number; year: number; ok: boolean } | null>(null);
+  const copyState =
+    copied && copied.week === viewed.week && copied.year === viewed.year ? (copied.ok ? "copied" : "failed") : "idle";
+
+  useEffect(() => {
+    if (!copied) return;
+    const timer = setTimeout(() => setCopied(null), 1600);
+    return () => clearTimeout(timer);
+  }, [copied]);
+
+  const copy = async () => setCopied({ ...viewed, ok: await copyToClipboard(weekCopyText(viewed, lang)) });
+  const copyLabel = t(lang, copyState === "copied" ? "copied" : copyState === "failed" ? "copyFailed" : "copyWeek");
   const number = (
     <>
       <span className="vk">{t(lang, "weekWord")}</span>
@@ -64,8 +81,26 @@ export function WeekHero({ lang, today, viewed, isCurrent, onStep, onReset }: Pr
         </button>
       </div>
 
-      <div className="range mono" aria-live="polite">
-        {formatDateRange(start, end, lang)}
+      <div className="range-row">
+        <span className="range mono" aria-live="polite">
+          {formatDateRange(start, end, lang)}
+        </span>
+        <button
+          type="button"
+          className={`copy-btn${copyState === "idle" ? "" : ` is-${copyState}`}`}
+          onClick={() => void copy()}
+          aria-label={copyLabel}
+          title={copyLabel}
+        >
+          {copyState === "copied" ? <CheckIcon /> : <CopyIcon />}
+        </button>
+        <span className="visually-hidden" role="status">
+          {copyState === "idle" ? "" : copyLabel}
+        </span>
+      </div>
+      <div className={`workdays${workdays < 5 ? " is-short" : ""}`}>
+        <b>{workdaysText(workdays, lang)}</b>
+        {holidays.length > 0 && <> · {holidays.map((holiday) => t(lang, PUBLIC_HOLIDAY_NAME[holiday.key])).join(", ")}</>}
       </div>
 
       <div className="progress">

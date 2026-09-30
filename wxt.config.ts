@@ -18,6 +18,9 @@ export default defineConfig({
     permissions: ["storage", "alarms"],
     omnibox: { keyword: "vk" },
     action: { default_title: "__MSG_extName__" },
+    // Opens the popup from the keyboard. Commands need no permission; the
+    // user can rebind or clear the key in the browser's shortcut settings.
+    commands: { _execute_action: { suggested_key: { default: "Alt+Shift+W" } } },
     ...(browser === "firefox" && {
       browser_specific_settings: {
         gecko: {

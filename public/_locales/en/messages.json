@@ -22,10 +22,29 @@
     "message": "Week $WEEK$ / $TOTAL$",
     "placeholders": { "week": { "content": "$1", "example": "37" }, "total": { "content": "$2", "example": "53" } }
   },
+  "workdaysOne": { "message": "1 working day" },
+  "workdaysMany": {
+    "message": "$COUNT$ working days",
+    "placeholders": { "count": { "content": "$1", "example": "3" } }
+  },
+  "copyWeek": { "message": "Copy week" },
+  "copied": { "message": "Copied" },
+  "copyFailed": { "message": "Copy failed" },
+  "copyText": {
+    "message": "Week $WEEK$ ($RANGE$)",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
 
   "todayLabel": { "message": "Today" },
   "flagDayLabel": { "message": "Flag day" },
   "nameDayLabel": { "message": "Name day" },
+  "publicHolidayLabel": { "message": "Public holiday" },
+  "nextPublicHolidayLabel": { "message": "Next holiday" },
+  "countdownTomorrow": { "message": "tomorrow" },
+  "countdownInDays": {
+    "message": "in $DAYS$ days",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
 
   "nextHolidayLabel": { "message": "Next school holiday" },
   "holidayHiihtoloma": { "message": "Winter holiday" },
@@ -59,6 +78,30 @@
     "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
   },
   "omniboxInvalid": { "message": "Not a valid week" },
+  "omniboxHoliday": {
+    "message": "$NAME$ $DATE$ · week $WEEK$",
+    "placeholders": { "name": { "content": "$1", "example": "Midsummer Day" }, "date": { "content": "$2", "example": "Saturday 20 Jun 2026" }, "week": { "content": "$3", "example": "25" } }
+  },
+  "omniboxRange": {
+    "message": "Weeks $WEEKS$: $RANGE$ · $COUNT$ weeks, $WORKDAYS$",
+    "placeholders": { "weeks": { "content": "$1", "example": "42–50" }, "range": { "content": "$2", "example": "12 Oct – 13 Dec 2026" }, "count": { "content": "$3", "example": "9" }, "workdays": { "content": "$4", "example": "44 working days" } }
+  },
+
+  "phNewYear": { "message": "New Year's Day" },
+  "phEpiphany": { "message": "Epiphany" },
+  "phGoodFriday": { "message": "Good Friday" },
+  "phEasterSunday": { "message": "Easter Sunday" },
+  "phEasterMonday": { "message": "Easter Monday" },
+  "phMayDay": { "message": "May Day" },
+  "phAscension": { "message": "Ascension Day" },
+  "phWhitSunday": { "message": "Whit Sunday" },
+  "phMidsummerEve": { "message": "Midsummer Eve" },
+  "phMidsummerDay": { "message": "Midsummer Day" },
+  "phAllSaints": { "message": "All Saints' Day" },
+  "phIndependence": { "message": "Independence Day" },
+  "phChristmasEve": { "message": "Christmas Eve" },
+  "phChristmasDay": { "message": "Christmas Day" },
+  "phBoxingDay": { "message": "Boxing Day" },
 
   "optionsEyebrow": { "message": "Viikko Nro extension" },
   "optionsTitle": { "message": "Settings" },
@@ -75,7 +118,10 @@
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
   "omniboxHelpTitle": { "message": "Address bar" },
-  "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027) or a date (13.10.2026)." },
+  "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027), a date (13.10.2026), weeks ahead or back (+3, -2), a range of weeks (42-50) or a holiday name (midsummer, christmas)." },
+  "shortcutTitle": { "message": "Keyboard shortcut" },
+  "shortcutHelp": { "message": "opens the popup. You can change it in your browser's extension shortcut settings." },
+  "shortcutNone": { "message": "No shortcut is set. You can set one in your browser's extension shortcut settings." },
   "reset": { "message": "Reset to defaults" },
   "saved": { "message": "Saved" },
   "resetDone": { "message": "Defaults restored" },

@@ -1,9 +1,19 @@
-import { formatDateRange } from "./format";
+import { formatDate, formatDateRange, formatWeekday } from "./format";
 import { t, type Lang } from "./i18n";
+import {
+  findPublicHolidays,
+  PUBLIC_HOLIDAY_NAME,
+  weekWorkdays,
+  workdaysBetween,
+  workdaysText,
+  type PublicHoliday,
+} from "./publicHolidays";
 import { hasWeekPage, sitePath, siteUrl } from "./site";
 import {
+  daysBetween,
   getISOWeekRange,
   getWeekRef,
+  getWeeksInISOYear,
   isValidWeek,
   makeDate,
   parseISODate,
@@ -13,37 +23,86 @@ import {
 
 export const MAX_SUGGESTIONS = 5;
 
-/** Weeks matching the input, best match first; [] when the input isn't a valid week. */
-export function parseOmniboxInput(input: string, today: Date): WeekRef[] {
+// Longest range "vk 1-53" can describe; also keeps a wrapped range ("50-3") sane.
+const MAX_RANGE_WEEKS = 53;
+// "vk +520" would walk ten years; cap relative jumps at about two years.
+const MAX_RELATIVE_WEEKS = 104;
+
+/** One address bar result. Every kind opens `ref`'s week page on Enter. */
+export type OmniboxMatch =
+  | { kind: "week"; ref: WeekRef }
+  | { kind: "range"; ref: WeekRef; end: WeekRef }
+  | { kind: "holiday"; ref: WeekRef; holiday: PublicHoliday };
+
+function week(ref: WeekRef): OmniboxMatch {
+  return { kind: "week", ref };
+}
+
+function parseRange(from: number, to: number, year: number): OmniboxMatch[] {
+  if (!isValidWeek(from, year)) return [];
+  // "50-3" wraps into the next week-year.
+  const endYear = to < from ? year + 1 : year;
+  if (!isValidWeek(to, endYear)) return [];
+  const end = { week: to, year: endYear };
+  const weeks = endYear === year ? to - from + 1 : getWeeksInISOYear(year) - from + 1 + to;
+  if (weeks > MAX_RANGE_WEEKS) return [];
+  return [{ kind: "range", ref: { week: from, year }, end }];
+}
+
+/** Matches for the input, best first; [] when the input isn't a valid week. */
+export function parseOmniboxQuery(input: string, today: Date): OmniboxMatch[] {
   const text = input.trim().replace(/\s+/g, " ");
   const current = getWeekRef(today);
   let match: RegExpExecArray | null;
-  let weeks: WeekRef[];
+  let matches: OmniboxMatch[];
 
   if (text === "") {
-    weeks = [current, shiftWeek(current, 1), shiftWeek(current, -1)];
+    matches = [current, shiftWeek(current, 1), shiftWeek(current, -1)].map(week);
   } else if ((match = /^(\d{1,2})$/.exec(text))) {
     // "42": this week-year first. Other years only as alternatives, so an
     // invalid week in this year (53 in a 52-week year) stays invalid.
-    const week = Number(match[1]);
-    if (!isValidWeek(week, current.year)) return [];
-    weeks = [current.year, current.year + 1, current.year - 1].map((year) => ({ week, year }));
+    const number = Number(match[1]);
+    if (!isValidWeek(number, current.year)) return [];
+    matches = [current.year, current.year + 1, current.year - 1].map((year) => week({ week: number, year }));
   } else if ((match = /^(\d{1,2})[ /](\d{4})$/.exec(text))) {
-    weeks = [{ week: Number(match[1]), year: Number(match[2]) }];
+    matches = [week({ week: Number(match[1]), year: Number(match[2]) })];
   } else if ((match = /^(\d{4})-?W(\d{1,2})$/i.exec(text))) {
-    weeks = [{ week: Number(match[2]), year: Number(match[1]) }];
+    matches = [week({ week: Number(match[2]), year: Number(match[1]) })];
+  } else if ((match = /^([+-])\s?(\d{1,3})$/.exec(text))) {
+    // "+3" / "-2": weeks from the current one.
+    const offset = Number(match[2]) * (match[1] === "-" ? -1 : 1);
+    matches = Math.abs(offset) <= MAX_RELATIVE_WEEKS ? [week(shiftWeek(current, offset))] : [];
+  } else if ((match = /^(\d{1,2}) ?[-–] ?(\d{1,2})(?:[ /](\d{4}))?$/.exec(text))) {
+    // "42-50" or "42-50 2027": a range of weeks.
+    matches = parseRange(Number(match[1]), Number(match[2]), match[3] ? Number(match[3]) : current.year);
   } else if ((match = /^(\d{1,2})\.(\d{1,2})\.?(\d{4})?$/.exec(text))) {
     // "13.10.2026", or "13.10." for this calendar year.
     const year = match[3] === undefined ? today.getFullYear() : Number(match[3]);
     const date = makeDate(year, Number(match[2]), Number(match[1]));
-    weeks = date ? [getWeekRef(date)] : [];
-  } else {
+    matches = date ? [week(getWeekRef(date))] : [];
+  } else if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
     const date = parseISODate(text);
-    weeks = date ? [getWeekRef(date)] : [];
+    matches = date ? [week(getWeekRef(date))] : [];
+  } else {
+    // "juhannus", "joulu 2027", "pääsiäinen".
+    const named = /^(.*?)(?: (\d{4}))?$/.exec(text) as RegExpExecArray;
+    const year = named[2] === undefined ? undefined : Number(named[2]);
+    matches = findPublicHolidays(named[1] ?? "", today, year).map((holiday) => ({
+      kind: "holiday",
+      ref: getWeekRef(holiday.date),
+      holiday,
+    }));
   }
 
   // Only weeks the site has a page for: Enter must never open a 404.
-  return weeks.filter((ref) => isValidWeek(ref.week, ref.year) && hasWeekPage(ref.year, today));
+  return matches.filter(
+    (candidate) => isValidWeek(candidate.ref.week, candidate.ref.year) && hasWeekPage(candidate.ref.year, today),
+  );
+}
+
+/** The weeks the input resolves to, best match first. */
+export function parseOmniboxInput(input: string, today: Date): WeekRef[] {
+  return parseOmniboxQuery(input, today).map((candidate) => candidate.ref);
 }
 
 export interface OmniboxSuggestions {
@@ -53,17 +112,51 @@ export interface OmniboxSuggestions {
 
 export function describeWeek(ref: WeekRef, lang: Lang): string {
   const { start, end } = getISOWeekRange(ref.week, ref.year);
-  return t(lang, "omniboxWeek", ref.week, formatDateRange(start, end, lang));
+  const text = t(lang, "omniboxWeek", ref.week, formatDateRange(start, end, lang));
+  // A short week is worth a mention; a normal five-day week isn't.
+  const { workdays } = weekWorkdays(ref);
+  return workdays < 5 ? `${text} · ${workdaysText(workdays, lang)}` : text;
+}
+
+export function describeMatch(match: OmniboxMatch, lang: Lang): string {
+  if (match.kind === "week") return describeWeek(match.ref, lang);
+  if (match.kind === "holiday") {
+    const { holiday } = match;
+    // Finnish writes weekday names in lowercase mid-sentence; English doesn't.
+    const weekday = lang === "fi" ? formatWeekday(holiday.date, lang).toLocaleLowerCase("fi-FI") : formatWeekday(holiday.date, lang);
+    return t(
+      lang,
+      "omniboxHoliday",
+      t(lang, PUBLIC_HOLIDAY_NAME[holiday.key]),
+      `${weekday} ${formatDate(holiday.date, lang)}`,
+      match.ref.week,
+    );
+  }
+  const start = getISOWeekRange(match.ref.week, match.ref.year).start;
+  const end = getISOWeekRange(match.end.week, match.end.year).end;
+  const weeks = (daysBetween(start, end) + 1) / 7;
+  return t(
+    lang,
+    "omniboxRange",
+    `${match.ref.week}–${match.end.week}`,
+    formatDateRange(start, end, lang),
+    weeks,
+    workdaysText(workdaysBetween(start, end), lang),
+  );
+}
+
+function contentFor(match: OmniboxMatch): string {
+  return `${match.ref.week} ${match.ref.year}`;
 }
 
 export function buildSuggestions(input: string, today: Date, lang: Lang): OmniboxSuggestions {
-  const [first, ...rest] = parseOmniboxInput(input, today);
+  const [first, ...rest] = parseOmniboxQuery(input, today);
   if (!first) return { defaultDescription: t(lang, "omniboxInvalid"), suggestions: [] };
   const typed = input.trim();
   return {
-    defaultDescription: describeWeek(first, lang),
+    defaultDescription: describeMatch(first, lang),
     suggestions: rest
-      .map((ref) => ({ content: `${ref.week} ${ref.year}`, description: describeWeek(ref, lang) }))
+      .map((match) => ({ content: contentFor(match), description: describeMatch(match, lang) }))
       // The browser drops a suggestion whose content equals the typed text.
       .filter((suggestion) => suggestion.content !== typed)
       .slice(0, MAX_SUGGESTIONS),

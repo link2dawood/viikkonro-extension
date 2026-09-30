@@ -22,10 +22,29 @@
     "message": "Viikko $WEEK$ / $TOTAL$",
     "placeholders": { "week": { "content": "$1", "example": "37" }, "total": { "content": "$2", "example": "53" } }
   },
+  "workdaysOne": { "message": "1 työpäivä" },
+  "workdaysMany": {
+    "message": "$COUNT$ työpäivää",
+    "placeholders": { "count": { "content": "$1", "example": "3" } }
+  },
+  "copyWeek": { "message": "Kopioi viikko" },
+  "copied": { "message": "Kopioitu" },
+  "copyFailed": { "message": "Kopiointi epäonnistui" },
+  "copyText": {
+    "message": "Viikko $WEEK$ ($RANGE$)",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12.–18.10.2026" } }
+  },
 
   "todayLabel": { "message": "Tänään" },
   "flagDayLabel": { "message": "Liputuspäivä" },
   "nameDayLabel": { "message": "Nimipäivä" },
+  "publicHolidayLabel": { "message": "Pyhäpäivä" },
+  "nextPublicHolidayLabel": { "message": "Seuraava pyhä" },
+  "countdownTomorrow": { "message": "huomenna" },
+  "countdownInDays": {
+    "message": "$DAYS$ päivän päästä",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
 
   "nextHolidayLabel": { "message": "Seuraava koululoma" },
   "holidayHiihtoloma": { "message": "Hiihtoloma" },
@@ -59,6 +78,30 @@
     "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12.–18.10.2026" } }
   },
   "omniboxInvalid": { "message": "Ei kelvollinen viikko" },
+  "omniboxHoliday": {
+    "message": "$NAME$ $DATE$ · viikko $WEEK$",
+    "placeholders": { "name": { "content": "$1", "example": "Juhannuspäivä" }, "date": { "content": "$2", "example": "lauantai 20.6.2026" }, "week": { "content": "$3", "example": "25" } }
+  },
+  "omniboxRange": {
+    "message": "Viikot $WEEKS$: $RANGE$ · $COUNT$ viikkoa, $WORKDAYS$",
+    "placeholders": { "weeks": { "content": "$1", "example": "42–50" }, "range": { "content": "$2", "example": "12.10.–13.12.2026" }, "count": { "content": "$3", "example": "9" }, "workdays": { "content": "$4", "example": "44 työpäivää" } }
+  },
+
+  "phNewYear": { "message": "Uudenvuodenpäivä" },
+  "phEpiphany": { "message": "Loppiainen" },
+  "phGoodFriday": { "message": "Pitkäperjantai" },
+  "phEasterSunday": { "message": "Pääsiäispäivä" },
+  "phEasterMonday": { "message": "2. pääsiäispäivä" },
+  "phMayDay": { "message": "Vappu" },
+  "phAscension": { "message": "Helatorstai" },
+  "phWhitSunday": { "message": "Helluntaipäivä" },
+  "phMidsummerEve": { "message": "Juhannusaatto" },
+  "phMidsummerDay": { "message": "Juhannuspäivä" },
+  "phAllSaints": { "message": "Pyhäinpäivä" },
+  "phIndependence": { "message": "Itsenäisyyspäivä" },
+  "phChristmasEve": { "message": "Jouluaatto" },
+  "phChristmasDay": { "message": "Joulupäivä" },
+  "phBoxingDay": { "message": "Tapaninpäivä" },
 
   "optionsEyebrow": { "message": "Viikko Nro -laajennus" },
   "optionsTitle": { "message": "Asetukset" },
@@ -75,7 +118,10 @@
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
   "omniboxHelpTitle": { "message": "Osoiterivi" },
-  "omniboxHelp": { "message": "Kirjoita osoiteriville vk ja välilyönti, sitten viikon numero (42), viikko ja vuosi (42 2027) tai päivämäärä (13.10.2026)." },
+  "omniboxHelp": { "message": "Kirjoita osoiteriville vk ja välilyönti, sitten viikon numero (42), viikko ja vuosi (42 2027), päivämäärä (13.10.2026), viikkoja eteen- tai taaksepäin (+3, -2), viikkoväli (42-50) tai pyhän nimi (juhannus, joulu)." },
+  "shortcutTitle": { "message": "Pikanäppäin" },
+  "shortcutHelp": { "message": "avaa ponnahdusikkunan. Voit vaihtaa näppäimen selaimen laajennusten pikanäppäinasetuksista." },
+  "shortcutNone": { "message": "Pikanäppäintä ei ole asetettu. Voit asettaa sen selaimen laajennusten pikanäppäinasetuksista." },
   "reset": { "message": "Palauta oletukset" },
   "saved": { "message": "Tallennettu" },
   "resetDone": { "message": "Oletukset palautettu" },
