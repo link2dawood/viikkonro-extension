@@ -13,7 +13,7 @@
 | **Public holidays** | Finnish pyhäpäivät computed for any year (Easter-based dates, Juhannus and Pyhäinpäivä Saturdays), plus Juhannusaatto and Jouluaatto, which count as days off. Working days are Monday–Friday minus these. |
 | **Address bar** | Keyword `vk`: `vk 42`, `vk 42 2027`, `vk 2026-W42`, `vk 13.10.2026`, `vk 2026-10-13`, relative weeks `vk +3` / `vk -2`, ranges `vk 42-50` (weeks and working days), holiday names `vk juhannus`, `vk joulu 2027`, `vk pääsiäinen`, and date ranges `vk 1.3.–15.6.` (days and working days). A date shows its weekday and the days and working days until then (`vk 24.12.`). Enter opens the (first) week page. Short weeks show their working days. |
 | **Keyboard shortcut** | `Alt+Shift+W` opens the popup (suggested key; the options page shows the key actually set, which the user can change in the browser's shortcut settings). |
-| **Settings** | City (21 cities), badge format, language (browser default, Finnish, English), reset. |
+| **Settings** | City (21 cities), badge format, special-day badge colours, copy format (`Viikko 42 (12.–18.10.2026)`, `2026-W42`, `vk 42` or the dates), language (browser default, Finnish, English), reset. |
 | **Privacy** | Permissions `storage` and `alarms` only. No host permissions, no network requests, no analytics. |
 
 The UI uses the site's design system: its colour tokens, the Bricolage Grotesque, Inter and IBM Plex Mono fonts, the hero card and the week comb.

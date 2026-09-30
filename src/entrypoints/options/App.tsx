@@ -6,9 +6,17 @@ import { dataset } from "../../data/dataset";
 import { useSettings } from "../../hooks/useSettings";
 import { badgeText } from "../../lib/badge";
 import { t } from "../../lib/i18n";
-import { langFor, resetSettings, type BadgeFormat, type Language, type Settings } from "../../lib/settings";
+import { weekCopyText } from "../../lib/clipboard";
+import {
+  COPY_FORMATS,
+  langFor,
+  resetSettings,
+  type BadgeFormat,
+  type Language,
+  type Settings,
+} from "../../lib/settings";
 import { sitePath, siteUrl } from "../../lib/site";
-import { getISOWeek } from "../../lib/week";
+import { getISOWeek, getWeekRef } from "../../lib/week";
 
 function Pill({ pressed, onClick, children }: { pressed: boolean; onClick: () => void; children: ReactNode }) {
   return (
@@ -54,6 +62,7 @@ export function App() {
   const needle = query.trim().toLocaleLowerCase("fi");
   const cities = dataset.schoolHolidays.cities.filter((city) => city.toLocaleLowerCase("fi").includes(needle));
   const week = getISOWeek(new Date());
+  const currentWeek = getWeekRef(new Date());
   const badgeFormats: BadgeFormat[] = ["number", "prefixed"];
   const languages: [Language, string][] = [
     ["auto", t(lang, "languageAuto")],
@@ -129,6 +138,18 @@ export function App() {
           {languages.map(([value, label]) => (
             <Pill key={value} pressed={settings.language === value} onClick={() => void save({ language: value })}>
               {label}
+            </Pill>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel opt-section">
+        <h2>{t(lang, "copyFormatLabel")}</h2>
+        <p className="note-soft">{t(lang, "copyFormatHint")}</p>
+        <div className="pills" role="group" aria-label={t(lang, "copyFormatLabel")}>
+          {COPY_FORMATS.map((format) => (
+            <Pill key={format} pressed={settings.copyFormat === format} onClick={() => void save({ copyFormat: format })}>
+              {weekCopyText(currentWeek, lang, format)}
             </Pill>
           ))}
         </div>

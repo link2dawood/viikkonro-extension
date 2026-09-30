@@ -43,7 +43,16 @@ describe("settings", () => {
   });
 
   it("ignores malformed stored values", () => {
-    expect(normalizeSettings({ city: 3, badgeFormat: "big", language: "de", showCalendar: "yes", badgeHighlight: "no" })).toEqual(DEFAULT_SETTINGS);
+    expect(
+      normalizeSettings({
+        city: 3,
+        badgeFormat: "big",
+        language: "de",
+        showCalendar: "yes",
+        badgeHighlight: "no",
+        copyFormat: "html",
+      }),
+    ).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings("junk")).toEqual(DEFAULT_SETTINGS);
   });
 });

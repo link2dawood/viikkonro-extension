@@ -3,6 +3,8 @@ import { resolveLang, type Lang } from "./i18n";
 
 export type Language = "auto" | "fi" | "en";
 export type BadgeFormat = "number" | "prefixed";
+export type CopyFormat = "text" | "iso" | "short" | "dates";
+export const COPY_FORMATS: readonly CopyFormat[] = ["text", "iso", "short", "dates"];
 
 export interface Settings {
   city: string | null;
@@ -12,6 +14,8 @@ export interface Settings {
   showCalendar: boolean;
   /** Recolour the badge on public holidays, flag days and the city's school holidays. */
   badgeHighlight: boolean;
+  /** What the popup's copy button puts on the clipboard. */
+  copyFormat: CopyFormat;
 }
 
 export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
@@ -20,6 +24,7 @@ export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
   language: "auto",
   showCalendar: false,
   badgeHighlight: true,
+  copyFormat: "text",
 });
 
 // The only keys this extension ever writes; reset clears exactly these (FR-5.4).
@@ -34,6 +39,7 @@ export function normalizeSettings(raw: unknown): Settings {
     language: value.language === "fi" || value.language === "en" ? value.language : "auto",
     showCalendar: value.showCalendar === true,
     badgeHighlight: value.badgeHighlight !== false,
+    copyFormat: COPY_FORMATS.includes(value.copyFormat as CopyFormat) ? (value.copyFormat as CopyFormat) : "text",
   };
 }
 

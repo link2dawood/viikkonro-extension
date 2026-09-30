@@ -78,6 +78,7 @@ export function App() {
         lang={lang}
         today={today}
         viewed={viewed}
+        copyFormat={settings.copyFormat}
         isCurrent={offset === 0}
         onStep={(delta) => setOffset((value) => value + delta)}
         onReset={() => setOffset(0)}

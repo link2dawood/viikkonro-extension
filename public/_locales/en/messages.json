@@ -154,6 +154,8 @@
   "languageAuto": { "message": "Browser language" },
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
+  "copyFormatLabel": { "message": "Copy format" },
+  "copyFormatHint": { "message": "What the popup's copy button puts on the clipboard." },
   "omniboxHelpTitle": { "message": "Address bar" },
   "omniboxHelp": { "message": "Type vk and a space in the address bar, then a week number (42), a week and year (42 2027), a date (13.10.2026), weeks ahead or back (+3, -2), a range of weeks (42-50), a holiday name (midsummer, christmas) or a date range (1.3.–15.6.). Dates also show the days and working days until then." },
   "shortcutTitle": { "message": "Keyboard shortcut" },
