@@ -108,6 +108,19 @@ export function App() {
             </Pill>
           ))}
         </div>
+        <h3>{t(lang, "badgeHighlightLabel")}</h3>
+        <p className="note-soft">{t(lang, "badgeHighlightHint")}</p>
+        <div className="pills" role="group" aria-label={t(lang, "badgeHighlightLabel")}>
+          {[true, false].map((value) => (
+            <Pill
+              key={String(value)}
+              pressed={settings.badgeHighlight === value}
+              onClick={() => void save({ badgeHighlight: value })}
+            >
+              {t(lang, value ? "on" : "off")}
+            </Pill>
+          ))}
+        </div>
       </section>
 
       <section className="panel opt-section">

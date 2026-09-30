@@ -10,6 +10,8 @@ export interface Settings {
   language: Language;
   /** The month view in the popup, toggled from its header. */
   showCalendar: boolean;
+  /** Recolour the badge on public holidays, flag days and the city's school holidays. */
+  badgeHighlight: boolean;
 }
 
 export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
@@ -17,6 +19,7 @@ export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
   badgeFormat: "number",
   language: "auto",
   showCalendar: false,
+  badgeHighlight: true,
 });
 
 // The only keys this extension ever writes; reset clears exactly these (FR-5.4).
@@ -30,6 +33,7 @@ export function normalizeSettings(raw: unknown): Settings {
     badgeFormat: value.badgeFormat === "prefixed" ? "prefixed" : "number",
     language: value.language === "fi" || value.language === "en" ? value.language : "auto",
     showCalendar: value.showCalendar === true,
+    badgeHighlight: value.badgeHighlight !== false,
   };
 }
 
