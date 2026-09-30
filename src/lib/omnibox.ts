@@ -1,4 +1,4 @@
-import { formatDate, formatDateRange, formatWeekday } from "./format";
+import { formatDate, formatDateRange, formatWeekdayInline } from "./format";
 import { t, type Lang } from "./i18n";
 import {
   findPublicHolidays,
@@ -170,9 +170,7 @@ export function relativeDayText(date: Date, today: Date, lang: Lang): string {
 }
 
 function weekdayAndDate(date: Date, lang: Lang): string {
-  // Finnish writes weekday names in lowercase mid-sentence; English doesn't.
-  const weekday = lang === "fi" ? formatWeekday(date, lang).toLocaleLowerCase("fi-FI") : formatWeekday(date, lang);
-  return `${weekday} ${formatDate(date, lang)}`;
+  return `${formatWeekdayInline(date, lang)} ${formatDate(date, lang)}`;
 }
 
 export function describeMatch(match: OmniboxMatch, lang: Lang, today: Date): string {

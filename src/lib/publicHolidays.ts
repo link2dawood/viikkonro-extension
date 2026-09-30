@@ -165,23 +165,23 @@ export function weekWorkdays(ref: WeekRef): WeekWorkdays {
 }
 
 // Address bar names: lowercase, with ä/ö/å folded so "paasiainen" matches too.
-// Each list holds the holiday's Finnish and English names plus common short forms.
+// Each list holds the holiday's Finnish, English and Swedish names plus common short forms.
 const SEARCH_NAMES: Record<PublicHolidayKey, string[]> = {
-  newYear: ["uudenvuodenpäivä", "uusivuosi", "new year"],
-  epiphany: ["loppiainen", "epiphany"],
-  goodFriday: ["pitkäperjantai", "good friday"],
-  easterSunday: ["pääsiäinen", "pääsiäispäivä", "easter"],
-  easterMonday: ["toinen pääsiäispäivä", "easter monday"],
-  mayDay: ["vappu", "may day"],
-  ascension: ["helatorstai", "ascension"],
-  whitSunday: ["helluntai", "helluntaipäivä", "whitsun", "pentecost"],
-  midsummerEve: ["juhannusaatto", "midsummer eve"],
-  midsummerDay: ["juhannus", "juhannuspäivä", "midsummer"],
-  allSaints: ["pyhäinpäivä", "all saints"],
-  independence: ["itsenäisyyspäivä", "independence day"],
-  christmasEve: ["jouluaatto", "christmas eve"],
-  christmasDay: ["joulu", "joulupäivä", "christmas"],
-  boxingDay: ["tapaninpäivä", "tapani", "boxing day"],
+  newYear: ["uudenvuodenpäivä", "uusivuosi", "new year", "nyårsdagen", "nyår"],
+  epiphany: ["loppiainen", "epiphany", "trettondagen"],
+  goodFriday: ["pitkäperjantai", "good friday", "långfredagen"],
+  easterSunday: ["pääsiäinen", "pääsiäispäivä", "easter", "påsk", "påskdagen"],
+  easterMonday: ["toinen pääsiäispäivä", "easter monday", "annandag påsk"],
+  mayDay: ["vappu", "may day", "första maj", "valborg"],
+  ascension: ["helatorstai", "ascension", "kristi himmelsfärdsdag"],
+  whitSunday: ["helluntai", "helluntaipäivä", "whitsun", "pentecost", "pingst", "pingstdagen"],
+  midsummerEve: ["juhannusaatto", "midsummer eve", "midsommarafton"],
+  midsummerDay: ["juhannus", "juhannuspäivä", "midsummer", "midsommar", "midsommardagen"],
+  allSaints: ["pyhäinpäivä", "all saints", "alla helgons dag"],
+  independence: ["itsenäisyyspäivä", "independence day", "självständighetsdagen"],
+  christmasEve: ["jouluaatto", "christmas eve", "julafton"],
+  christmasDay: ["joulu", "joulupäivä", "christmas", "jul", "juldagen"],
+  boxingDay: ["tapaninpäivä", "tapani", "boxing day", "annandag jul", "stefansdagen"],
 };
 
 export function foldName(text: string): string {

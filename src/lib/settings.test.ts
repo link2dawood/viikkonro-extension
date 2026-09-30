@@ -54,5 +54,6 @@ describe("settings", () => {
       }),
     ).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings("junk")).toEqual(DEFAULT_SETTINGS);
+    expect(normalizeSettings({ language: "sv" }).language).toBe("sv");
   });
 });

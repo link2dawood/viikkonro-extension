@@ -68,6 +68,7 @@ export function App() {
     ["auto", t(lang, "languageAuto")],
     ["fi", t(lang, "languageFi")],
     ["en", t(lang, "languageEn")],
+    ["sv", t(lang, "languageSv")],
   ];
 
   return (

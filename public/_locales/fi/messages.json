@@ -154,6 +154,7 @@
   "languageAuto": { "message": "Selaimen kieli" },
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
+  "languageSv": { "message": "Svenska" },
   "copyFormatLabel": { "message": "Kopioinnin muoto" },
   "copyFormatHint": { "message": "Mitä ponnahdusikkunan kopiointipainike kopioi leikepöydälle." },
   "omniboxHelpTitle": { "message": "Osoiterivi" },

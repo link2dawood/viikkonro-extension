@@ -1,7 +1,7 @@
 import { browser } from "wxt/browser";
 import { resolveLang, type Lang } from "./i18n";
 
-export type Language = "auto" | "fi" | "en";
+export type Language = "auto" | "fi" | "en" | "sv";
 export type BadgeFormat = "number" | "prefixed";
 export type CopyFormat = "text" | "iso" | "short" | "dates";
 export const COPY_FORMATS: readonly CopyFormat[] = ["text", "iso", "short", "dates"];
@@ -36,7 +36,7 @@ export function normalizeSettings(raw: unknown): Settings {
   return {
     city: typeof value.city === "string" && value.city !== "" ? value.city : null,
     badgeFormat: value.badgeFormat === "prefixed" ? "prefixed" : "number",
-    language: value.language === "fi" || value.language === "en" ? value.language : "auto",
+    language: value.language === "fi" || value.language === "en" || value.language === "sv" ? value.language : "auto",
     showCalendar: value.showCalendar === true,
     badgeHighlight: value.badgeHighlight !== false,
     copyFormat: COPY_FORMATS.includes(value.copyFormat as CopyFormat) ? (value.copyFormat as CopyFormat) : "text",

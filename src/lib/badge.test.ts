@@ -31,11 +31,12 @@ describe("badge", () => {
     expect(badgeText(5, "number", "fi")).toBe("5");
     expect(badgeText(42, "prefixed", "fi")).toBe("vk42");
     expect(badgeText(42, "prefixed", "en")).toBe("wk42");
+    expect(badgeText(42, "prefixed", "sv")).toBe("v42");
   });
 
   it("never exceeds Chrome's 4-character badge limit", () => {
     for (let week = 1; week <= 53; week++) {
-      for (const lang of ["fi", "en"] as const) {
+      for (const lang of ["fi", "en", "sv"] as const) {
         expect(badgeText(week, "prefixed", lang).length).toBeLessThanOrEqual(4);
       }
     }

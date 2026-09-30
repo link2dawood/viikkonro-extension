@@ -154,6 +154,7 @@
   "languageAuto": { "message": "Browser language" },
   "languageFi": { "message": "Suomi" },
   "languageEn": { "message": "English" },
+  "languageSv": { "message": "Svenska" },
   "copyFormatLabel": { "message": "Copy format" },
   "copyFormatHint": { "message": "What the popup's copy button puts on the clipboard." },
   "omniboxHelpTitle": { "message": "Address bar" },

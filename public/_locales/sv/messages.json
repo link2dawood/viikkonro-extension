@@ -1,0 +1,169 @@
+{
+  "extName": {
+    "message": "Viikko Nro – ISO-veckonummer i verktygsfältet",
+    "description": "Extension name in the stores and browser UI. Max 75 characters."
+  },
+  "extShortName": { "message": "Viikko Nro" },
+  "extDescription": {
+    "message": "Vilken vecka är det? Veckans nummer i verktygsfältet, veckans datum, finska flaggdagar och skollov. Fungerar offline.",
+    "description": "Store and manifest description. Max 132 characters."
+  },
+  "siteLinkLabel": { "message": "viikkonro.fi" },
+  "settings": { "message": "Inställningar" },
+
+  "nowLabel": { "message": "Just nu är det" },
+  "selectedWeekLabel": { "message": "Vald vecka" },
+  "backToCurrent": { "message": "Denna vecka" },
+  "weekWord": { "message": "Vecka" },
+  "prevWeek": { "message": "Föregående vecka" },
+  "nextWeek": { "message": "Nästa vecka" },
+  "yearLabel": { "message": "År" },
+  "weekOfTotal": {
+    "message": "Vecka $WEEK$ / $TOTAL$",
+    "placeholders": { "week": { "content": "$1", "example": "37" }, "total": { "content": "$2", "example": "53" } }
+  },
+  "workdaysOne": { "message": "1 arbetsdag" },
+  "workdaysMany": {
+    "message": "$COUNT$ arbetsdagar",
+    "placeholders": { "count": { "content": "$1", "example": "3" } }
+  },
+  "copyWeek": { "message": "Kopiera vecka" },
+  "copied": { "message": "Kopierat" },
+  "copyFailed": { "message": "Kopieringen misslyckades" },
+  "calendarToggle": { "message": "Månadsvy" },
+  "prevMonth": { "message": "Föregående månad" },
+  "nextMonth": { "message": "Nästa månad" },
+  "weekColumn": { "message": "V" },
+  "selectWeek": {
+    "message": "Välj vecka $WEEK$",
+    "placeholders": { "week": { "content": "$1", "example": "42" } }
+  },
+  "legendHoliday": { "message": "Helgdag" },
+  "legendSchoolHoliday": { "message": "Skollov" },
+  "copyText": {
+    "message": "Vecka $WEEK$ ($RANGE$)",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
+
+  "todayLabel": { "message": "I dag" },
+  "flagDayLabel": { "message": "Flaggdag" },
+  "nameDayLabel": { "message": "Namnsdag" },
+  "publicHolidayLabel": { "message": "Helgdag" },
+  "nextPublicHolidayLabel": { "message": "Nästa helgdag" },
+  "countdownTomorrow": { "message": "i morgon" },
+  "countdownInDays": {
+    "message": "om $DAYS$ dagar",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
+
+  "nextHolidayLabel": { "message": "Nästa skollov" },
+  "holidayHiihtoloma": { "message": "Sportlov" },
+  "holidaySyysloma": { "message": "Höstlov" },
+  "holidayStartsToday": { "message": "börjar i dag" },
+  "holidayStartsTomorrow": { "message": "börjar i morgon" },
+  "holidayStartsInDays": {
+    "message": "börjar om $DAYS$ dagar",
+    "placeholders": { "days": { "content": "$1", "example": "31" } }
+  },
+  "holidayOngoing": { "message": "pågår nu" },
+  "holidayNotConfirmed": { "message": "Datumet är inte bekräftat ännu" },
+  "confidenceEstimated": { "message": "⚠ Uppskattning" },
+  "confidenceUnknown": { "message": "— Inte bekräftat" },
+  "chooseCity": { "message": "Välj stad" },
+  "chooseCityHint": { "message": "Visa nästa skollov i din stad." },
+
+  "dataDate": {
+    "message": "Uppgifter $DATE$",
+    "placeholders": { "date": { "content": "$1", "example": "11 Sept 2026" } }
+  },
+  "dataStale": { "message": "Uppgifterna är över fyra månader gamla. Uppdatera tillägget." },
+
+  "badgePrefix": { "message": "v", "description": "Badge prefix. With a two-digit week the badge must stay within 4 characters." },
+  "badgeTooltip": {
+    "message": "Vecka $WEEK$ · $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
+  "omniboxWeek": {
+    "message": "Vecka $WEEK$: $RANGE$",
+    "placeholders": { "week": { "content": "$1", "example": "42" }, "range": { "content": "$2", "example": "12–18 Oct 2026" } }
+  },
+  "omniboxInvalid": { "message": "Ingen giltig vecka" },
+  "omniboxHoliday": {
+    "message": "$NAME$ $DATE$ · vecka $WEEK$",
+    "placeholders": { "name": { "content": "$1", "example": "Midsummer Day" }, "date": { "content": "$2", "example": "Saturday 20 Jun 2026" }, "week": { "content": "$3", "example": "25" } }
+  },
+  "omniboxRange": {
+    "message": "Veckor $WEEKS$: $RANGE$ · $COUNT$ veckor, $WORKDAYS$",
+    "placeholders": { "weeks": { "content": "$1", "example": "42–50" }, "range": { "content": "$2", "example": "12 Oct – 13 Dec 2026" }, "count": { "content": "$3", "example": "9" }, "workdays": { "content": "$4", "example": "44 working days" } }
+  },
+  "omniboxDate": {
+    "message": "$DATE$ · vecka $WEEK$ · $WHEN$",
+    "placeholders": { "date": { "content": "$1", "example": "Thursday 24 Dec 2026" }, "week": { "content": "$2", "example": "52" }, "when": { "content": "$3", "example": "in 85 days, 58 working days until then" } }
+  },
+  "omniboxDateRange": {
+    "message": "$RANGE$ · $DAYS$, $WORKDAYS$",
+    "placeholders": { "range": { "content": "$1", "example": "1 Mar – 15 Jun 2027" }, "days": { "content": "$2", "example": "107 days" }, "workdays": { "content": "$3", "example": "73 working days" } }
+  },
+  "daysOne": { "message": "1 dag" },
+  "daysMany": {
+    "message": "$COUNT$ dagar",
+    "placeholders": { "count": { "content": "$1", "example": "107" } }
+  },
+  "whenToday": { "message": "i dag" },
+  "whenYesterday": { "message": "i går" },
+  "whenAgo": {
+    "message": "för $DAYS$ dagar sedan",
+    "placeholders": { "days": { "content": "$1", "example": "3" } }
+  },
+  "whenAhead": {
+    "message": "$IN$, $WORKDAYS$ till dess",
+    "placeholders": { "in": { "content": "$1", "example": "in 85 days" }, "workdays": { "content": "$2", "example": "58 working days" } }
+  },
+
+  "phNewYear": { "message": "Nyårsdagen" },
+  "phEpiphany": { "message": "Trettondagen" },
+  "phGoodFriday": { "message": "Långfredagen" },
+  "phEasterSunday": { "message": "Påskdagen" },
+  "phEasterMonday": { "message": "Annandag påsk" },
+  "phMayDay": { "message": "Första maj" },
+  "phAscension": { "message": "Kristi himmelsfärdsdag" },
+  "phWhitSunday": { "message": "Pingstdagen" },
+  "phMidsummerEve": { "message": "Midsommarafton" },
+  "phMidsummerDay": { "message": "Midsommardagen" },
+  "phAllSaints": { "message": "Alla helgons dag" },
+  "phIndependence": { "message": "Självständighetsdagen" },
+  "phChristmasEve": { "message": "Julafton" },
+  "phChristmasDay": { "message": "Juldagen" },
+  "phBoxingDay": { "message": "Annandag jul" },
+
+  "optionsEyebrow": { "message": "Viikko Nro-tillägget" },
+  "optionsTitle": { "message": "Inställningar" },
+  "optionsIntro": { "message": "Tillägget fungerar helt offline och samlar inte in några uppgifter. Inställningarna sparas i din webbläsare." },
+  "cityLabel": { "message": "Stad" },
+  "cityHint": { "message": "Popup-fönstret visar nästa skollov i den här staden." },
+  "citySearch": { "message": "Sök stad" },
+  "cityNone": { "message": "Ingen stad" },
+  "cityNoResults": { "message": "Inga träffar." },
+  "badgeFormatLabel": { "message": "Ikonens märkning" },
+  "badgeFormatHint": { "message": "Vad ikonen i verktygsfältet visar." },
+  "badgeHighlightLabel": { "message": "Markera särskilda dagar" },
+  "badgeHighlightHint": { "message": "Ikonens färg ändras på helgdagar (röd), flaggdagar (blå) och under din stads skollov (gul)." },
+  "on": { "message": "På" },
+  "off": { "message": "Av" },
+  "languageLabel": { "message": "Språk" },
+  "languageAuto": { "message": "Webbläsarens språk" },
+  "languageFi": { "message": "Suomi" },
+  "languageEn": { "message": "English" },
+  "languageSv": { "message": "Svenska" },
+  "copyFormatLabel": { "message": "Kopieringsformat" },
+  "copyFormatHint": { "message": "Vad popup-fönstrets kopieringsknapp kopierar till urklipp." },
+  "omniboxHelpTitle": { "message": "Adressfältet" },
+  "omniboxHelp": { "message": "Skriv vk och ett mellanslag i adressfältet, sedan ett veckonummer (42), en vecka och ett år (42 2027), ett datum (13.10.2026), veckor framåt eller bakåt (+3, -2), ett veckointervall (42-50), en helgdag (midsommar, jul) eller ett datumintervall (1.3.–15.6.). För datum visas också dagar och arbetsdagar till dess." },
+  "shortcutTitle": { "message": "Kortkommando" },
+  "shortcutHelp": { "message": "öppnar popup-fönstret. Du kan ändra det i webbläsarens inställningar för kortkommandon." },
+  "shortcutNone": { "message": "Inget kortkommando har ställts in. Du kan ställa in ett i webbläsarens inställningar för kortkommandon." },
+  "reset": { "message": "Återställ standardinställningarna" },
+  "saved": { "message": "Sparat" },
+  "resetDone": { "message": "Standardinställningarna har återställts" },
+  "privacyLink": { "message": "Integritet (på finska)" }
+}

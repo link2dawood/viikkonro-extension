@@ -132,6 +132,17 @@ describe("buildSuggestions", () => {
     expect(describe("1.3.–15.6.", "en")).toMatch(/^1 Mar\s*–\s*15 Jun 2026 · 107 days, 72 working days$/);
   });
 
+  it("speaks Swedish", () => {
+    expect(buildSuggestions("42", today, "sv").defaultDescription).toBe("Vecka 42: 12.–18.10.2026");
+    expect(buildSuggestions("midsommar 2026", today, "sv").defaultDescription).toBe(
+      "Midsommardagen lördag 20.6.2026 · vecka 25",
+    );
+    expect(buildSuggestions("jul", today, "sv").defaultDescription).toBe("Juldagen fredag 25.12.2026 · vecka 52");
+    expect(buildSuggestions("13.10.", today, "sv").defaultDescription).toBe(
+      "tisdag 13.10.2026 · vecka 42 · om 32 dagar, 22 arbetsdagar till dess",
+    );
+  });
+
   it("names the holiday, its date and week", () => {
     const result = buildSuggestions("juhannus", today, "fi");
     expect(result.defaultDescription).toBe("Juhannuspäivä lauantai 26.6.2027 · viikko 25");
