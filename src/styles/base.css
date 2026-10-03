@@ -5,21 +5,90 @@
 
 :root {
   --paper: #e7eceb;
+  --paper-glow: rgba(31, 122, 92, 0.09);
   --card: #f5f8f7;
   --ink: #15211f;
   --ink-soft: #56655f;
+  --lead: #243430;
   --line: rgba(21, 33, 31, 0.12);
+  --hover: rgba(21, 33, 31, 0.05);
+  --comb-empty: rgba(21, 33, 31, 0.14);
   --accent: #1f7a5c;
   --accent-deep: #16573f;
+  --accent-hover: #11432f;
   --accent-soft: rgba(31, 122, 92, 0.12);
+  --on-accent: #fff;
+  --focus: rgba(31, 122, 92, 0.4);
   --amber: #e0a23b;
   --holiday: #b04a2f;
   --flag: #0b4ea2;
+  --warn-bg: rgba(224, 162, 59, 0.16);
+  --warn-ink: #8a6414;
+  --muted-bg: rgba(120, 120, 120, 0.14);
+  --muted-ink: #5a5a5a;
+  --field-bg: #fff;
   --radius: 16px;
   --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --font-ui: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   color-scheme: light;
+}
+
+/* Dark follows the system unless the Theme setting picks one (data-theme on
+   <html>, set by useTheme). The two blocks below hold the same values. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1716;
+    --paper-glow: rgba(63, 174, 134, 0.1);
+    --card: #172220;
+    --ink: #e3ebe8;
+    --ink-soft: #9aaba5;
+    --lead: #c9d6d1;
+    --line: rgba(227, 235, 232, 0.13);
+    --hover: rgba(227, 235, 232, 0.07);
+    --comb-empty: rgba(227, 235, 232, 0.16);
+    --accent: #3fae86;
+    --accent-deep: #7fd3b1;
+    --accent-hover: #a3e2c7;
+    --accent-soft: rgba(63, 174, 134, 0.18);
+    --on-accent: #0f1716;
+    --focus: rgba(63, 174, 134, 0.55);
+    --amber: #e8b14f;
+    --holiday: #f08b70;
+    --flag: #7aaef7;
+    --warn-bg: rgba(232, 177, 79, 0.16);
+    --warn-ink: #f0c77a;
+    --muted-bg: rgba(200, 200, 200, 0.12);
+    --muted-ink: #b8b8b8;
+    --field-bg: #0f1716;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1716;
+  --paper-glow: rgba(63, 174, 134, 0.1);
+  --card: #172220;
+  --ink: #e3ebe8;
+  --ink-soft: #9aaba5;
+  --lead: #c9d6d1;
+  --line: rgba(227, 235, 232, 0.13);
+  --hover: rgba(227, 235, 232, 0.07);
+  --comb-empty: rgba(227, 235, 232, 0.16);
+  --accent: #3fae86;
+  --accent-deep: #7fd3b1;
+  --accent-hover: #a3e2c7;
+  --accent-soft: rgba(63, 174, 134, 0.18);
+  --on-accent: #0f1716;
+  --focus: rgba(63, 174, 134, 0.55);
+  --amber: #e8b14f;
+  --holiday: #f08b70;
+  --flag: #7aaef7;
+  --warn-bg: rgba(232, 177, 79, 0.16);
+  --warn-ink: #f0c77a;
+  --muted-bg: rgba(200, 200, 200, 0.12);
+  --muted-ink: #b8b8b8;
+  --field-bg: #0f1716;
+  color-scheme: dark;
 }
 
 * {
@@ -29,7 +98,7 @@
 body {
   margin: 0;
   background:
-    radial-gradient(1100px 560px at 85% -12%, rgba(31, 122, 92, 0.09), transparent 60%),
+    radial-gradient(1100px 560px at 85% -12%, var(--paper-glow), transparent 60%),
     var(--paper);
   color: var(--ink);
   font-family: var(--font-ui);
@@ -47,7 +116,7 @@ button {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(31, 122, 92, 0.4);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -72,7 +141,7 @@ h2 {
 
 .lead {
   font-size: 16px;
-  color: #243430;
+  color: var(--lead);
 }
 
 .eyebrow {
@@ -159,7 +228,7 @@ h2 {
 }
 .comb i {
   flex: 1;
-  background: rgba(21, 33, 31, 0.14);
+  background: var(--comb-empty);
   border-radius: 2px;
   height: 38%;
   transition:
@@ -209,7 +278,7 @@ a.ql:hover {
 }
 .pill[aria-pressed="true"] {
   background: var(--accent-deep);
-  color: #fff;
+  color: var(--on-accent);
   border-color: var(--accent-deep);
 }
 
@@ -218,7 +287,7 @@ a.ql:hover {
   align-items: center;
   gap: 8px;
   background: var(--accent-deep);
-  color: #fff;
+  color: var(--on-accent);
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
@@ -228,7 +297,7 @@ a.ql:hover {
   cursor: pointer;
 }
 .btn:hover {
-  background: #11432f;
+  background: var(--accent-hover);
 }
 .btn-secondary {
   background: transparent;
@@ -258,12 +327,12 @@ a.ql:hover {
   white-space: nowrap;
 }
 .confidence-estimated {
-  background: rgba(224, 162, 59, 0.16);
-  color: #8a6414;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
 }
 .confidence-unknown {
-  background: rgba(120, 120, 120, 0.14);
-  color: #5a5a5a;
+  background: var(--muted-bg);
+  color: var(--muted-ink);
 }
 
 .note-soft {

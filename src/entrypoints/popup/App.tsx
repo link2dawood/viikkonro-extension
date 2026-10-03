@@ -9,6 +9,7 @@ import { TodayBlock } from "../../components/TodayBlock";
 import { WeekHero } from "../../components/WeekHero";
 import { dataset } from "../../data/dataset";
 import { useSettings } from "../../hooks/useSettings";
+import { useTheme } from "../../hooks/useTheme";
 import { refreshBadge } from "../../lib/badge";
 import { weekForMonth, weeksBetween } from "../../lib/calendar";
 import { formatDate } from "../../lib/format";
@@ -23,6 +24,7 @@ import { getWeekRef, parseISODate, shiftWeek, type WeekRef } from "../../lib/wee
 // open (FR-2.7).
 export function App() {
   const { settings, update } = useSettings();
+  useTheme(settings?.theme);
   const [today] = useState(() => new Date());
   const [offset, setOffset] = useState(0);
   const lang = settings ? langFor(settings) : null;

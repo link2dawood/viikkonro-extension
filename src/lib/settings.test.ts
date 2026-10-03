@@ -52,10 +52,12 @@ describe("settings", () => {
         badgeHighlight: "no",
         copyFormat: "html",
         countdown: { date: "2026-02-30", label: "Loma" },
+        theme: "sepia",
       }),
     ).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings("junk")).toEqual(DEFAULT_SETTINGS);
     expect(normalizeSettings({ language: "sv" }).language).toBe("sv");
+    expect(normalizeSettings({ theme: "dark" }).theme).toBe("dark");
     expect(normalizeSettings({ countdown: "2026-12-24" }).countdown).toBeNull();
   });
 

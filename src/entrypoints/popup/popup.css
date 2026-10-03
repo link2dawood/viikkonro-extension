@@ -30,7 +30,7 @@ body {
   cursor: pointer;
 }
 .icon-btn:hover {
-  background: rgba(21, 33, 31, 0.05);
+  background: var(--hover);
   color: var(--ink);
 }
 
@@ -119,7 +119,7 @@ a.week-big:hover .num {
   color: var(--accent-deep);
 }
 .copy-btn.is-failed {
-  color: #b04a2f;
+  color: var(--holiday);
 }
 .workdays {
   margin-top: 2px;
@@ -335,7 +335,7 @@ a.today-row:hover .today-text {
   text-decoration: underline;
 }
 .tag-soft {
-  background: rgba(21, 33, 31, 0.06);
+  background: var(--hover);
   color: var(--ink-soft);
 }
 .next-holiday-when {
@@ -423,7 +423,7 @@ a.today-row:hover .today-text {
   margin: 0;
   padding: 6px 10px;
   border-radius: 8px;
-  background: rgba(224, 162, 59, 0.16);
-  color: #8a6414;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
   font-size: 12px;
 }

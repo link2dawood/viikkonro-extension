@@ -4,6 +4,7 @@ import markUrl from "../../assets/brand-mark.svg";
 import { ExternalLink } from "../../components/ExternalLink";
 import { dataset } from "../../data/dataset";
 import { useSettings } from "../../hooks/useSettings";
+import { useTheme } from "../../hooks/useTheme";
 import { badgeText } from "../../lib/badge";
 import { weekCopyText } from "../../lib/clipboard";
 import { t, type Lang } from "../../lib/i18n";
@@ -16,6 +17,7 @@ import {
   type Countdown,
   type Language,
   type Settings,
+  type Theme,
 } from "../../lib/settings";
 import { sitePath, siteUrl } from "../../lib/site";
 import { getISOWeek, getWeekRef, parseISODate } from "../../lib/week";
@@ -79,6 +81,7 @@ function CountdownForm({ lang, countdown, onSave }: CountdownFormProps) {
 
 export function App() {
   const { settings, update } = useSettings();
+  useTheme(settings?.theme);
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<"idle" | "saved" | "reset">("idle");
   // undefined while loading; "" when the user has cleared the shortcut.
@@ -120,6 +123,11 @@ export function App() {
     ["fi", t(lang, "languageFi")],
     ["en", t(lang, "languageEn")],
     ["sv", t(lang, "languageSv")],
+  ];
+  const themes: [Theme, string][] = [
+    ["auto", t(lang, "themeAuto")],
+    ["light", t(lang, "themeLight")],
+    ["dark", t(lang, "themeDark")],
   ];
 
   return (
@@ -189,6 +197,17 @@ export function App() {
         <div className="pills" role="group" aria-label={t(lang, "languageLabel")}>
           {languages.map(([value, label]) => (
             <Pill key={value} pressed={settings.language === value} onClick={() => void save({ language: value })}>
+              {label}
+            </Pill>
+          ))}
+        </div>
+      </section>
+
+      <section className="panel opt-section">
+        <h2>{t(lang, "themeLabel")}</h2>
+        <div className="pills" role="group" aria-label={t(lang, "themeLabel")}>
+          {themes.map(([value, label]) => (
+            <Pill key={value} pressed={settings.theme === value} onClick={() => void save({ theme: value })}>
               {label}
             </Pill>
           ))}

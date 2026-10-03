@@ -7,6 +7,9 @@ export type BadgeFormat = "number" | "prefixed";
 export type CopyFormat = "text" | "iso" | "short" | "dates";
 export const COPY_FORMATS: readonly CopyFormat[] = ["text", "iso", "short", "dates"];
 
+export type Theme = "auto" | "light" | "dark";
+export const THEMES: readonly Theme[] = ["auto", "light", "dark"];
+
 export interface Countdown {
   /** "YYYY-MM-DD". */
   date: string;
@@ -27,6 +30,8 @@ export interface Settings {
   copyFormat: CopyFormat;
   /** A date of the user's own, counted down to in the popup. */
   countdown: Countdown | null;
+  /** "auto" follows the system's light/dark preference. */
+  theme: Theme;
 }
 
 export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
@@ -37,6 +42,7 @@ export const DEFAULT_SETTINGS: Readonly<Settings> = Object.freeze({
   badgeHighlight: true,
   copyFormat: "text",
   countdown: null,
+  theme: "auto",
 });
 
 // The only keys this extension ever writes; reset clears exactly these (FR-5.4).
@@ -60,6 +66,7 @@ export function normalizeSettings(raw: unknown): Settings {
     badgeHighlight: value.badgeHighlight !== false,
     copyFormat: COPY_FORMATS.includes(value.copyFormat as CopyFormat) ? (value.copyFormat as CopyFormat) : "text",
     countdown: normalizeCountdown(value.countdown),
+    theme: THEMES.includes(value.theme as Theme) ? (value.theme as Theme) : "auto",
   };
 }
 

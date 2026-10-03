@@ -51,7 +51,7 @@
   font-family: var(--font-mono);
   font-size: 15px;
   color: var(--ink);
-  background: #fff;
+  background: var(--field-bg);
   border: 1px solid var(--line);
   border-radius: 11px;
 }
