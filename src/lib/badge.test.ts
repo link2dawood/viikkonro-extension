@@ -14,7 +14,10 @@ const plain: BadgeOptions = { badgeFormat: "number", badgeHighlight: true, city:
 
 // A fixture, so re-syncing the real data never changes these tests.
 const data: Pick<Dataset, "flagDays" | "schoolHolidays"> = {
-  flagDays: [{ date: "2026-10-10", name: "Aleksis Kiven päivä", altName: null, slug: "aleksis-kivi" }],
+  flagDays: [
+    { date: "2026-10-10", name: "Aleksis Kiven päivä", altName: null, nameEn: "Aleksis Kivi Day", nameSv: "Aleksis Kivis dag", slug: "aleksis-kivi" },
+    { date: "2026-12-06", name: "Itsenäisyyspäivä", altName: null, nameEn: "Independence Day", nameSv: "Självständighetsdagen", slug: "itsenaisyyspaiva" },
+  ],
   schoolHolidays: {
     years: [2026],
     cities: ["Helsinki"],
@@ -68,12 +71,17 @@ describe("badge", () => {
       "Viikko 53 · 28.12.2026–3.1.2027 · 4 työpäivää\nTänään: Uudenvuodenpäivä",
     );
     expect(badgeTitle(new Date(2026, 9, 10), null, "en", data)).toMatch(
-      /^Week 41 · 5\s*–\s*11 Oct 2026 · 5 working days\nToday: Aleksis Kiven päivä$/,
+      /^Week 41 · 5\s*–\s*11 Oct 2026 · 5 working days\nToday: Aleksis Kivi Day$/,
     );
     expect(badgeTitle(new Date(2026, 9, 13), "Helsinki", "sv", data)).toBe(
       "Vecka 42 · 12.–18.10.2026 · 5 arbetsdagar\nI dag: Höstlov",
     );
     expect(badgeTitle(new Date(2026, 9, 13), null, "fi", data)).toBe("Viikko 42 · 12.–18.10.2026 · 5 työpäivää");
+    // A public holiday that is also a flag day is named once.
+    expect(badgeTitle(new Date(2026, 11, 6), null, "fi", data)).toBe(
+      "Viikko 49 · 30.11.–6.12.2026 · 5 työpäivää\nTänään: Itsenäisyyspäivä",
+    );
+    expect(badgeTitle(new Date(2026, 11, 6), null, "sv", data)).toMatch(/\nI dag: Självständighetsdagen$/);
   });
 });
 

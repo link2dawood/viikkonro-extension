@@ -5,6 +5,7 @@ import type {
   SchoolHolidayType,
   UndatedSchoolHoliday,
 } from "../data/types";
+import type { Lang } from "./i18n";
 import { daysBetween, getISOWeekRange, parseISODate, startOfDay, toISODate } from "./week";
 
 export type UpcomingHoliday =
@@ -64,6 +65,13 @@ export function schoolHolidayOn(
 ): DatedSchoolHoliday | null {
   const key = toISODate(date);
   return schoolHolidays.dated.find((period) => period.cities.includes(city) && period.start <= key && key <= period.end) ?? null;
+}
+
+/** The flag day's name in `lang`, falling back to the Finnish one. */
+export function flagDayName(day: FlagDay, lang: Lang): string {
+  if (lang === "en") return day.nameEn ?? day.name;
+  if (lang === "sv") return day.nameSv ?? day.name;
+  return day.name;
 }
 
 export function flagDaysOn(flagDays: FlagDay[], date: Date): FlagDay[] {

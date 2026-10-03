@@ -2,7 +2,7 @@ import { browser } from "wxt/browser";
 import { dataset } from "../data/dataset";
 import type { Dataset } from "../data/types";
 import { formatDateRange } from "./format";
-import { flagDaysOn, schoolHolidayOn } from "./holidays";
+import { flagDayName, flagDaysOn, schoolHolidayOn } from "./holidays";
 import { t, type Lang } from "./i18n";
 import { PUBLIC_HOLIDAY_NAME, publicHolidaysOn, weekWorkdays, workdaysText } from "./publicHolidays";
 import { BADGE_STATE_KEY, getSettings, langFor, type BadgeFormat, type Settings } from "./settings";
@@ -52,7 +52,10 @@ export function badgeHighlightFor(
   return null;
 }
 
-/** Today's public holidays, flag days and the city's school holiday, by name. */
+/**
+ * Today's public holidays, flag days and the city's school holiday, by name.
+ * A day that is both (Itsenäisyyspäivä) is named once.
+ */
 export function specialDayNames(
   date: Date,
   city: string | null,
@@ -60,11 +63,12 @@ export function specialDayNames(
   data: Pick<Dataset, "flagDays" | "schoolHolidays"> = dataset,
 ): string[] {
   const school = city === null ? null : schoolHolidayOn(data.schoolHolidays, city, date);
-  return [
+  const names = [
     ...publicHolidaysOn(date).map((holiday) => t(lang, PUBLIC_HOLIDAY_NAME[holiday.key])),
-    ...flagDaysOn(data.flagDays, date).map((flagDay) => flagDay.name),
+    ...flagDaysOn(data.flagDays, date).map((flagDay) => flagDayName(flagDay, lang)),
     ...(school ? [t(lang, school.type === "hiihtoloma" ? "holidayHiihtoloma" : "holidaySyysloma")] : []),
   ];
+  return [...new Set(names)];
 }
 
 /** "Viikko 52 · 21.–27.12.2026 · 3 työpäivää", plus a second line for a special day. */

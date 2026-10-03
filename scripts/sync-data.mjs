@@ -70,6 +70,9 @@ const flagDays = years.flatMap((year) =>
     date: isoDate(day.date),
     name: day.name,
     altName: day.altName,
+    // English and Swedish names; null when built from a site without them.
+    nameEn: day.nameEn ?? null,
+    nameSv: day.nameSv ?? null,
     slug: day.slug,
   })),
 );

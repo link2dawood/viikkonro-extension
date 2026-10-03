@@ -26,6 +26,8 @@ export interface FlagDay {
   date: string;
   name: string;
   altName: string | null;
+  nameEn: string | null;
+  nameSv: string | null;
   slug: string;
 }
 

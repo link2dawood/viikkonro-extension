@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-11",
+  "generatedAt": "2026-10-03",
   "source": {
     "site": "viikkonro.fi",
-    "commit": "d9cb579"
+    "commit": "ab53e78"
   },
   "years": [
     2026,
@@ -236,168 +236,352 @@
       "date": "2026-02-05",
       "name": "J. L. Runebergin päivä",
       "altName": null,
+      "nameEn": "J. L. Runeberg Day",
+      "nameSv": "J. L. Runebergs dag",
       "slug": "runebergin-paiva"
     },
     {
       "date": "2026-02-28",
       "name": "Kalevalan päivä",
-      "altName": null,
+      "altName": "suomalaisen kulttuurin päivä",
+      "nameEn": "Kalevala Day",
+      "nameSv": "Kalevaladagen",
       "slug": "kalevalan-paiva"
     },
     {
       "date": "2026-03-19",
       "name": "Minna Canthin päivä",
-      "altName": null,
+      "altName": "tasa-arvon päivä",
+      "nameEn": "Minna Canth Day",
+      "nameSv": "Minna Canths dag",
       "slug": "minna-canthin-paiva"
     },
     {
       "date": "2026-04-09",
       "name": "Mikael Agricolan päivä / Suomen kielen päivä",
       "altName": null,
+      "nameEn": "Mikael Agricola Day / Day of the Finnish Language",
+      "nameSv": "Mikael Agricolas dag / Finska språkets dag",
       "slug": "suomen-kielen-paiva"
+    },
+    {
+      "date": "2026-04-27",
+      "name": "Kansallinen veteraanipäivä",
+      "altName": null,
+      "nameEn": "National Veterans' Day",
+      "nameSv": "Nationella veterandagen",
+      "slug": "veteraanipaiva"
+    },
+    {
+      "date": "2026-05-01",
+      "name": "Vappu",
+      "altName": "suomalaisen työn päivä",
+      "nameEn": "May Day",
+      "nameSv": "Första maj",
+      "slug": "vappu"
     },
     {
       "date": "2026-05-09",
       "name": "Eurooppa-päivä",
       "altName": null,
+      "nameEn": "Europe Day",
+      "nameSv": "Europadagen",
       "slug": "eurooppa-paiva"
     },
     {
       "date": "2026-05-10",
       "name": "Äitienpäivä",
       "altName": null,
+      "nameEn": "Mother's Day",
+      "nameSv": "Mors dag",
       "slug": "aitienpaiva"
     },
     {
       "date": "2026-05-12",
       "name": "J. V. Snellmanin päivä",
-      "altName": null,
+      "altName": "suomalaisuuden päivä",
+      "nameEn": "J. V. Snellman Day",
+      "nameSv": "J. V. Snellmans dag",
       "slug": "snellmanin-paiva"
+    },
+    {
+      "date": "2026-05-17",
+      "name": "Kaatuneitten muistopäivä",
+      "altName": null,
+      "nameEn": "Remembrance Day for the Fallen",
+      "nameSv": "De stupades minnesdag",
+      "slug": "kaatuneitten-muistopaiva"
     },
     {
       "date": "2026-06-04",
       "name": "Puolustusvoimain lippujuhlan päivä",
+      "altName": null,
+      "nameEn": "Flag Day of the Finnish Defence Forces",
+      "nameSv": "Försvarsmaktens fanfest",
+      "slug": "puolustusvoimain-lippujuhla"
+    },
+    {
+      "date": "2026-06-20",
+      "name": "Juhannuspäivä",
       "altName": "Suomen lipun päivä",
+      "nameEn": "Midsummer Day",
+      "nameSv": "Midsommardagen",
       "slug": "suomen-lipun-paiva"
     },
     {
       "date": "2026-07-06",
       "name": "Eino Leinon päivä",
-      "altName": null,
+      "altName": "runon ja suven päivä",
+      "nameEn": "Eino Leino Day",
+      "nameSv": "Eino Leinos dag",
       "slug": "eino-leinon-paiva"
+    },
+    {
+      "date": "2026-08-29",
+      "name": "Suomen luonnon päivä",
+      "altName": null,
+      "nameEn": "Day of Finnish Nature",
+      "nameSv": "Finska naturens dag",
+      "slug": "suomen-luonnon-paiva"
+    },
+    {
+      "date": "2026-10-01",
+      "name": "Miina Sillanpään päivä",
+      "altName": "kansalaisvaikuttamisen päivä",
+      "nameEn": "Miina Sillanpää Day",
+      "nameSv": "Miina Sillanpääs dag",
+      "slug": "miina-sillanpaan-paiva"
     },
     {
       "date": "2026-10-10",
       "name": "Aleksis Kiven päivä",
-      "altName": null,
+      "altName": "suomalaisen kirjallisuuden päivä",
+      "nameEn": "Aleksis Kivi Day",
+      "nameSv": "Aleksis Kivis dag",
       "slug": "aleksis-kiven-paiva"
     },
     {
       "date": "2026-10-24",
       "name": "YK:n päivä",
       "altName": null,
+      "nameEn": "United Nations Day",
+      "nameSv": "FN-dagen",
       "slug": "ykn-paiva"
     },
     {
       "date": "2026-11-06",
       "name": "Ruotsalaisuuden päivä",
       "altName": null,
+      "nameEn": "Finnish Swedish Heritage Day",
+      "nameSv": "Svenska dagen",
       "slug": "ruotsalaisuuden-paiva"
     },
     {
       "date": "2026-11-08",
       "name": "Isänpäivä",
       "altName": null,
+      "nameEn": "Father's Day",
+      "nameSv": "Fars dag",
       "slug": "isanpaiva"
+    },
+    {
+      "date": "2026-11-20",
+      "name": "Lapsen oikeuksien päivä",
+      "altName": null,
+      "nameEn": "Day of Children's Rights",
+      "nameSv": "Barnets rättigheters dag",
+      "slug": "lapsen-oikeuksien-paiva"
+    },
+    {
+      "date": "2026-12-06",
+      "name": "Itsenäisyyspäivä",
+      "altName": null,
+      "nameEn": "Independence Day",
+      "nameSv": "Självständighetsdagen",
+      "slug": "itsenaisyyspaiva"
     },
     {
       "date": "2026-12-08",
       "name": "Jean Sibeliuksen päivä",
-      "altName": null,
+      "altName": "suomalaisen musiikin päivä",
+      "nameEn": "Jean Sibelius Day",
+      "nameSv": "Jean Sibelius dag",
       "slug": "sibeliuksen-paiva"
     },
     {
       "date": "2027-02-05",
       "name": "J. L. Runebergin päivä",
       "altName": null,
+      "nameEn": "J. L. Runeberg Day",
+      "nameSv": "J. L. Runebergs dag",
       "slug": "runebergin-paiva"
     },
     {
       "date": "2027-02-28",
       "name": "Kalevalan päivä",
-      "altName": null,
+      "altName": "suomalaisen kulttuurin päivä",
+      "nameEn": "Kalevala Day",
+      "nameSv": "Kalevaladagen",
       "slug": "kalevalan-paiva"
     },
     {
       "date": "2027-03-19",
       "name": "Minna Canthin päivä",
-      "altName": null,
+      "altName": "tasa-arvon päivä",
+      "nameEn": "Minna Canth Day",
+      "nameSv": "Minna Canths dag",
       "slug": "minna-canthin-paiva"
     },
     {
       "date": "2027-04-09",
       "name": "Mikael Agricolan päivä / Suomen kielen päivä",
       "altName": null,
+      "nameEn": "Mikael Agricola Day / Day of the Finnish Language",
+      "nameSv": "Mikael Agricolas dag / Finska språkets dag",
       "slug": "suomen-kielen-paiva"
+    },
+    {
+      "date": "2027-04-27",
+      "name": "Kansallinen veteraanipäivä",
+      "altName": null,
+      "nameEn": "National Veterans' Day",
+      "nameSv": "Nationella veterandagen",
+      "slug": "veteraanipaiva"
+    },
+    {
+      "date": "2027-05-01",
+      "name": "Vappu",
+      "altName": "suomalaisen työn päivä",
+      "nameEn": "May Day",
+      "nameSv": "Första maj",
+      "slug": "vappu"
     },
     {
       "date": "2027-05-09",
       "name": "Eurooppa-päivä",
       "altName": null,
+      "nameEn": "Europe Day",
+      "nameSv": "Europadagen",
       "slug": "eurooppa-paiva"
     },
     {
       "date": "2027-05-09",
       "name": "Äitienpäivä",
       "altName": null,
+      "nameEn": "Mother's Day",
+      "nameSv": "Mors dag",
       "slug": "aitienpaiva"
     },
     {
       "date": "2027-05-12",
       "name": "J. V. Snellmanin päivä",
-      "altName": null,
+      "altName": "suomalaisuuden päivä",
+      "nameEn": "J. V. Snellman Day",
+      "nameSv": "J. V. Snellmans dag",
       "slug": "snellmanin-paiva"
+    },
+    {
+      "date": "2027-05-16",
+      "name": "Kaatuneitten muistopäivä",
+      "altName": null,
+      "nameEn": "Remembrance Day for the Fallen",
+      "nameSv": "De stupades minnesdag",
+      "slug": "kaatuneitten-muistopaiva"
     },
     {
       "date": "2027-06-04",
       "name": "Puolustusvoimain lippujuhlan päivä",
+      "altName": null,
+      "nameEn": "Flag Day of the Finnish Defence Forces",
+      "nameSv": "Försvarsmaktens fanfest",
+      "slug": "puolustusvoimain-lippujuhla"
+    },
+    {
+      "date": "2027-06-26",
+      "name": "Juhannuspäivä",
       "altName": "Suomen lipun päivä",
+      "nameEn": "Midsummer Day",
+      "nameSv": "Midsommardagen",
       "slug": "suomen-lipun-paiva"
     },
     {
       "date": "2027-07-06",
       "name": "Eino Leinon päivä",
-      "altName": null,
+      "altName": "runon ja suven päivä",
+      "nameEn": "Eino Leino Day",
+      "nameSv": "Eino Leinos dag",
       "slug": "eino-leinon-paiva"
+    },
+    {
+      "date": "2027-08-28",
+      "name": "Suomen luonnon päivä",
+      "altName": null,
+      "nameEn": "Day of Finnish Nature",
+      "nameSv": "Finska naturens dag",
+      "slug": "suomen-luonnon-paiva"
+    },
+    {
+      "date": "2027-10-01",
+      "name": "Miina Sillanpään päivä",
+      "altName": "kansalaisvaikuttamisen päivä",
+      "nameEn": "Miina Sillanpää Day",
+      "nameSv": "Miina Sillanpääs dag",
+      "slug": "miina-sillanpaan-paiva"
     },
     {
       "date": "2027-10-10",
       "name": "Aleksis Kiven päivä",
-      "altName": null,
+      "altName": "suomalaisen kirjallisuuden päivä",
+      "nameEn": "Aleksis Kivi Day",
+      "nameSv": "Aleksis Kivis dag",
       "slug": "aleksis-kiven-paiva"
     },
     {
       "date": "2027-10-24",
       "name": "YK:n päivä",
       "altName": null,
+      "nameEn": "United Nations Day",
+      "nameSv": "FN-dagen",
       "slug": "ykn-paiva"
     },
     {
       "date": "2027-11-06",
       "name": "Ruotsalaisuuden päivä",
       "altName": null,
+      "nameEn": "Finnish Swedish Heritage Day",
+      "nameSv": "Svenska dagen",
       "slug": "ruotsalaisuuden-paiva"
     },
     {
       "date": "2027-11-14",
       "name": "Isänpäivä",
       "altName": null,
+      "nameEn": "Father's Day",
+      "nameSv": "Fars dag",
       "slug": "isanpaiva"
+    },
+    {
+      "date": "2027-11-20",
+      "name": "Lapsen oikeuksien päivä",
+      "altName": null,
+      "nameEn": "Day of Children's Rights",
+      "nameSv": "Barnets rättigheters dag",
+      "slug": "lapsen-oikeuksien-paiva"
+    },
+    {
+      "date": "2027-12-06",
+      "name": "Itsenäisyyspäivä",
+      "altName": null,
+      "nameEn": "Independence Day",
+      "nameSv": "Självständighetsdagen",
+      "slug": "itsenaisyyspaiva"
     },
     {
       "date": "2027-12-08",
       "name": "Jean Sibeliuksen päivä",
-      "altName": null,
+      "altName": "suomalaisen musiikin päivä",
+      "nameEn": "Jean Sibelius Day",
+      "nameSv": "Jean Sibelius dag",
       "slug": "sibeliuksen-paiva"
     }
   ],

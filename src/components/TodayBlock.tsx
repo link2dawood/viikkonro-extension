@@ -1,6 +1,6 @@
 import { dataset } from "../data/dataset";
 import { formatDate, formatWeekday } from "../lib/format";
-import { flagDaysOn, nameDaysOn } from "../lib/holidays";
+import { flagDayName, flagDaysOn, nameDaysOn } from "../lib/holidays";
 import { t, type Lang } from "../lib/i18n";
 import { nextPublicHoliday, PUBLIC_HOLIDAY_NAME, publicHolidaysOn } from "../lib/publicHolidays";
 import { sitePath, siteUrl } from "../lib/site";
@@ -10,7 +10,10 @@ export function TodayBlock({ lang, today }: { lang: Lang; today: Date }) {
   const flagDays = flagDaysOn(dataset.flagDays, today);
   // Always [] until the site's name-day licensing clears and sync-data bundles them.
   const names = nameDaysOn(dataset.nameDays, today);
-  const holidaysToday = publicHolidaysOn(today);
+  // Itsenäisyyspäivä, Vappu and Juhannuspäivä are both: one row with both tags.
+  const flagNames = new Set(flagDays.map((flagDay) => flagDayName(flagDay, lang)));
+  const holidayNames = publicHolidaysOn(today).map((holiday) => t(lang, PUBLIC_HOLIDAY_NAME[holiday.key]));
+  const holidaysOnly = holidayNames.filter((name) => !flagNames.has(name));
   const next = nextPublicHoliday(today);
   const countdown = next.daysUntil === 1 ? t(lang, "countdownTomorrow") : t(lang, "countdownInDays", next.daysUntil);
 
@@ -20,10 +23,10 @@ export function TodayBlock({ lang, today }: { lang: Lang; today: Date }) {
       <div className="today-date">
         {formatWeekday(today, lang)} <span className="mono">{formatDate(today, lang)}</span>
       </div>
-      {holidaysToday.map((holiday) => (
-        <div key={holiday.key} className="today-row">
+      {holidaysOnly.map((name) => (
+        <div key={name} className="today-row">
           <span className="tag">{t(lang, "publicHolidayLabel")}</span>
-          <span className="today-text">{t(lang, PUBLIC_HOLIDAY_NAME[holiday.key])}</span>
+          <span className="today-text">{name}</span>
         </div>
       ))}
       {flagDays.map((flagDay) => (
@@ -32,8 +35,11 @@ export function TodayBlock({ lang, today }: { lang: Lang; today: Date }) {
           className="today-row"
           href={siteUrl(sitePath.flagDays(today.getFullYear()), "popup", flagDay.slug)}
         >
+          {holidayNames.includes(flagDayName(flagDay, lang)) && (
+            <span className="tag">{t(lang, "publicHolidayLabel")}</span>
+          )}
           <span className="tag">{t(lang, "flagDayLabel")}</span>
-          <span className="today-text">{flagDay.name}</span>
+          <span className="today-text">{flagDayName(flagDay, lang)}</span>
         </ExternalLink>
       ))}
       {names.length > 0 && (

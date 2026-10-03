@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Dataset } from "../data/types";
-import { flagDaysOn, isDataStale, nameDaysOn, nextSchoolHoliday, schoolHolidayOn } from "./holidays";
+import { flagDayName, flagDaysOn, isDataStale, nameDaysOn, nextSchoolHoliday, schoolHolidayOn } from "./holidays";
 
 const sourceUrl = "https://example.test/source";
 
@@ -72,14 +72,22 @@ describe("nextSchoolHoliday", () => {
 });
 
 describe("flagDaysOn / nameDaysOn", () => {
+  const kivi = { name: "Aleksis Kiven päivä", altName: null, nameEn: "Aleksis Kivi Day", nameSv: "Aleksis Kivis dag", slug: "aleksis-kiven-paiva" };
   const flagDays = [
-    { date: "2026-10-10", name: "Aleksis Kiven päivä", altName: null, slug: "aleksis-kiven-paiva" },
-    { date: "2027-10-10", name: "Aleksis Kiven päivä", altName: null, slug: "aleksis-kiven-paiva" },
+    { date: "2026-10-10", ...kivi },
+    { date: "2027-10-10", ...kivi },
   ];
 
   it("matches the exact calendar date", () => {
     expect(flagDaysOn(flagDays, new Date(2026, 9, 10, 18))).toEqual([flagDays[0]]);
     expect(flagDaysOn(flagDays, new Date(2026, 9, 11))).toEqual([]);
+  });
+
+  it("names a flag day in the chosen language, falling back to Finnish", () => {
+    expect(flagDayName(flagDays[0]!, "fi")).toBe("Aleksis Kiven päivä");
+    expect(flagDayName(flagDays[0]!, "en")).toBe("Aleksis Kivi Day");
+    expect(flagDayName(flagDays[0]!, "sv")).toBe("Aleksis Kivis dag");
+    expect(flagDayName({ ...flagDays[0]!, nameEn: null }, "en")).toBe("Aleksis Kiven päivä");
   });
 
   it("returns no name days until they are bundled", () => {
