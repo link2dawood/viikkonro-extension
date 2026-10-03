@@ -5,7 +5,7 @@ import dataset from "../../src/data/generated/dataset.json";
 
 const read = (file: string) => readFileSync(path.join(import.meta.dirname, file), "utf8").trim();
 
-describe.each(["fi", "en"])("store listing (%s)", (lang) => {
+describe.each(["fi", "en", "sv"])("store listing (%s)", (lang) => {
   const summary = read(`${lang}/summary.txt`);
   const description = read(`${lang}/description.txt`);
 
@@ -24,7 +24,7 @@ describe.each(["fi", "en"])("store listing (%s)", (lang) => {
   });
 
   it("states the city count the extension ships", () => {
-    const match = /(\d+) (suomalaista kaupunkia|Finnish cities)/.exec(description);
+    const match = /(\d+) (suomalaista kaupunkia|Finnish cities|finländska städer)/.exec(description);
     expect(Number(match?.[1])).toBe(dataset.schoolHolidays.cities.length);
   });
 });

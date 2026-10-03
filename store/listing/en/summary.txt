@@ -1,1 +1,1 @@
-What week is it? Viikko Nro shows the current ISO 8601 week number in your browser toolbar, plus the week's dates, today's Finnish flag day and the next school holiday in your city. Works offline and collects no data.
+What week is it? Viikko Nro shows the current ISO 8601 week number in your browser toolbar, plus the week's dates and working days, Finnish flag days and public holidays, and the next school holiday in your city. Works offline.

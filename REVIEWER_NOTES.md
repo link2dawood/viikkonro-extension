@@ -18,12 +18,13 @@ The build refuses to run when the bundled data doesn't cover the current and nex
 
 - Shows the current ISO 8601 week number as the toolbar badge.
 - Popup: the week's dates and working days, today's flag day or public holiday, the next public holiday, and the next school holiday for a city chosen in the options. A button copies the week and its dates to the clipboard (`navigator.clipboard.writeText` on a click, so no clipboard permission).
-- Address bar keyword `vk`: `vk 42`, `vk 42 2027`, `vk 13.10.2026`, `vk +3`, `vk 42-50` or `vk juhannus` resolves to a week.
+- Address bar keyword `vk`: `vk 42`, `vk 42 2027`, `vk 13.10.2026`, `vk +3`, `vk 42-50`, `vk juhannus` or `vk 1.3.–15.6.` resolves to a week; dates and ranges also show day and working-day counts.
+- Optional month calendar, own countdown and dark theme in the popup; Finnish, English and Swedish UI.
 - Keyboard shortcut: `_execute_action` with a suggested key (`Alt+Shift+W`) opens the popup. Commands need no permission.
 
 ## Permissions
 
-- `storage`: the three user settings (city, badge format, language) and the last badge state.
+- `storage`: the user's settings (city, badge format and colours, language, theme, copy format, month view on/off, an optional countdown date and label) and the last badge state.
 - `alarms`: updates the badge at local midnight, with an hourly fallback.
 
 No host permissions, no content scripts, no remote code and no network requests. The extension collects no data (`data_collection_permissions: none`).

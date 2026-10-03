@@ -1,21 +1,28 @@
 Viikko Nro shows the current week number in your browser toolbar. Week numbers follow the international ISO 8601 standard used in Finland and much of Europe. The extension is made by viikkonro.fi.
 
 TOOLBAR
-The icon shows the current week number, for example 42 or wk42. It updates by itself at midnight, and hovering over the icon shows the week's dates.
+The icon shows the current week number, for example 42 or wk42. It updates by itself at midnight. Hovering over the icon shows the week's dates and its number of working days. The icon turns red on Finnish public holidays, blue on flag days and yellow during your city's school holiday.
 
 POPUP
-• The week's dates from Monday to Sunday and how far the year has come
-• Arrows to step to earlier and later weeks
-• Today's Finnish flag day, for example Aleksis Kivi Day
+• The week's dates, working days and public holidays
+• A month view with week numbers beside the days, like a paper calendar
+• Copy the week in one click for an email or a ticket
+• Today's flag day or public holiday and the days to the next holiday
+• Your own countdown to a date you choose, such as a summer holiday
 • The next winter or autumn school holiday in the city you choose, with a countdown
+
+The keyboard shortcut Alt+Shift+W opens the popup.
 
 School holiday dates come from official decisions by the Finnish National Agency for Education and the cities. The extension covers 21 Finnish cities. If a city has not confirmed a holiday yet, the extension says so instead of guessing.
 
 ADDRESS BAR
-Type vk, a space and a week number or date in the address bar:
+Type vk and a space in the address bar:
 • vk 42 – the dates of week 42
-• vk 42 2027 – week 42 of 2027
 • vk 13.10.2026 – the week a date falls in
+• vk +3 – three weeks from now
+• vk midsummer – the date and week of Midsummer
+• vk 24.12. – days and working days until Christmas Eve
+• vk 1.3.–15.6. – days and working days in a range
 Press Enter to open that week's page on viikkonro.fi.
 
 PRIVACY
@@ -29,7 +36,10 @@ Weeks start on Monday, and week 1 is the week that contains the year's first Thu
 How many weeks are in a year?
 52 or 53. 2026 has 53 weeks, and week 53 runs from 28 December 2026 to 3 January 2027.
 
+How are working days counted?
+Working days are Monday to Friday minus Finnish public holidays and Midsummer and Christmas Eves. For example, week 52 of 2026 has three working days.
+
 Which languages does it support?
-Finnish and English. It follows your browser's language, and you can change it in the settings.
+Finnish, Swedish and English. It follows your browser's language, and you can change it in the settings. There is also a dark theme.
 
 More information: https://viikkonro.fi

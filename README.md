@@ -78,8 +78,8 @@ It covers the current and next calendar year, and the build fails if either is m
 | `public/icon/16.png`, `32.png` | Pixel-aligned redraws in `src/assets/icons/`, so the toolbar icon stays sharp | `pnpm icons` |
 | `public/icon/48.png`, `96.png`, `128.png` | `src/assets/brand-mark.svg` (the site favicon). The 128 px icon has Chrome's required 16 px padding. | `pnpm icons` |
 | `store/icon-128x128.png`, `store/edge-logo-300x300.png` | Same mark | `pnpm icons` |
-| `store/<fi,en>/promo-small-440x280.png`, `promo-marquee-1400x560.png` | Real extension captures on the site design | `pnpm store:assets` |
-| `store/<fi,en>/screenshot-1…4-*.png` (1280×800) | Same | `pnpm store:assets` |
+| `store/<fi,en,sv>/promo-small-440x280.png`, `promo-marquee-1400x560.png` | Real extension captures on the site design | `pnpm store:assets` |
+| `store/<fi,en,sv>/screenshot-1…5-*.png` (1280×800) | Same | `pnpm store:assets` |
 | `store/listing/<fi,en>/summary.txt`, `description.txt` | SEO/GEO-optimized store copy | edited by hand |
 
 ## Publishing

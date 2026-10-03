@@ -31,7 +31,7 @@ For later releases, first raise `version` in `package.json`. The stores reject a
 
 - [ ] The privacy policy section from [store-listing.md](store-listing.md#privacy-policy-section-for-viikkonrofitietosuoja) is live on https://viikkonro.fi/tietosuoja.
 - [ ] You have tried the build locally in Chrome and Firefox (next section).
-- [ ] The screenshots in `store/fi/` and `store/en/` look right.
+- [ ] The screenshots in `store/fi/`, `store/en/` and `store/sv/` look right.
 - [ ] `https://viikkonro.fi/ota-yhteytta` works. It is the support URL and the page shown after uninstall.
 
 ## 2. Try it locally first
@@ -65,7 +65,7 @@ Check that the badge shows the week, the popup opens, the settings save, and typ
 1. Click **New item** and upload `viikkonro-extension-<version>-chrome.zip`.
 2. **Store listing** tab: fill in the fields from [store-listing.md → Chrome Web Store](store-listing.md#chrome-web-store-fields).
    - Paste the Finnish description, add the screenshots, store icon and both promo tiles.
-   - Click **Add language**, choose English, and paste the English description with the English screenshots.
+   - Click **Add language**, choose English, and paste the English description with the English screenshots. Do the same for Swedish with `store/listing/sv/` and `store/sv/`.
    - The name and short description come from the package, so there is nothing to type for them.
 3. **Privacy** tab: paste the single purpose statement and the `storage` and `alarms` justifications, answer **No** to remote code, tick no data types, tick the three certifications, and enter the privacy policy URL.
 4. **Distribution** tab: visibility **Public**, regions **All regions**. You can restrict this to Finland, but English users abroad search for ISO week numbers too.
@@ -83,7 +83,7 @@ Edge uses the same Chrome zip. Edge is 11% of desktop browsing in Finland, so it
 2. Click **Create new extension** and upload `viikkonro-extension-<version>-chrome.zip`.
 3. **Availability:** Public, all markets.
 4. **Properties:** category Productivity, privacy policy URL, website and support URL. Mature content: No.
-5. **Store listings:** add Finnish and English. For each, paste the description, then upload the 300×300 logo, promo tiles and screenshots for that language, and add the search terms. All values are in [store-listing.md → Edge](store-listing.md#microsoft-edge-add-ons-fields).
+5. **Store listings:** add Finnish, English and Swedish. For each, paste the description, then upload the 300×300 logo, promo tiles and screenshots for that language, and add the search terms. All values are in [store-listing.md → Edge](store-listing.md#microsoft-edge-add-ons-fields).
 6. **Submit.** In *Notes for certification*, paste `REVIEWER_NOTES.md`.
 
 Certification takes up to 7 business days.
@@ -102,7 +102,7 @@ Certification takes up to 7 business days.
    - Paste the Finnish summary and description.
    - Category Other, support contact, license (All Rights Reserved unless you want open source).
 6. In **Notes to reviewer**, paste `REVIEWER_NOTES.md`. It has the build commands.
-7. Submit. Then open **Edit Product Page** to upload the screenshots under **Images**, and use **Manage translations** to add the English summary and description.
+7. Submit. Then open **Edit Product Page** to upload the screenshots under **Images**, and use **Manage translations** to add the English and Swedish summaries and descriptions.
 
 Automatic validation runs in minutes, and the add-on appears once it is signed. Because source code is attached, a human reviewer may also check it, which can take days to a few weeks. The page is `https://addons.mozilla.org/firefox/addon/viikko-nro/`.
 

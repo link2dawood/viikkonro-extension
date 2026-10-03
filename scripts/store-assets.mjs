@@ -1,5 +1,5 @@
 // Store graphics at the exact sizes the Chrome Web Store, Microsoft Edge
-// Add-ons and Firefox Add-ons ask for, in Finnish and English:
+// Add-ons and Firefox Add-ons ask for, in Finnish, English and Swedish:
 //
 //   store/<lang>/promo-small-440x280.png         CWS small promo tile / Edge small tile
 //   store/<lang>/promo-marquee-1400x560.png      CWS marquee / Edge large tile
@@ -31,9 +31,9 @@ if (!existsSync(path.join(extensionDir, "manifest.json"))) {
 }
 mkdirSync(workDir, { recursive: true });
 
-const LANGS = ["fi", "en"];
+const LANGS = ["fi", "en", "sv"];
 const dataset = readJson("src/data/generated/dataset.json");
-const messages = { fi: readJson("public/_locales/fi/messages.json"), en: readJson("public/_locales/en/messages.json") };
+const messages = Object.fromEntries(LANGS.map((lang) => [lang, readJson(`public/_locales/${lang}/messages.json`)]));
 
 // A fixed "today" so every run produces the same images: the first flag day
 // on or after the data date, at 10:00, so the popup shows a flag-day row and
@@ -42,42 +42,52 @@ const showcaseDate = parseISODate(dataset.flagDays.find((day) => day.date >= dat
 const now = new Date(showcaseDate.getFullYear(), showcaseDate.getMonth(), showcaseDate.getDate(), 10);
 const currentWeek = getWeekRef(now);
 const SHOWCASE_CITY = "Helsinki";
+// The own-countdown row in screenshot 2: the next 1 June after the showcase date.
+const COUNTDOWN_DATE = `${now.getFullYear() + 1}-06-01`;
 
 const COPY = {
   fi: {
     tileHeadline: "Viikkonumero<br>aina näkyvissä",
     marqueeEyebrow: "Chrome · Edge · Firefox",
     marqueeHeadline: "Mikä viikko nyt on?<br>Näet sen aina.",
-    marqueeSub: "Viikkonumero työkalupalkissa, liputuspäivät ja oman kaupungin koululomat. Toimii ilman verkkoyhteyttä.",
-    marqueeChips: ["ISO 8601", "Ei tietojen keruuta", "Suomi · English"],
+    marqueeSub: "Viikkonumero työkalupalkissa, työpäivät, pyhät, liputuspäivät ja oman kaupungin koululomat. Toimii ilman verkkoyhteyttä.",
+    marqueeChips: ["ISO 8601", "Ei tietojen keruuta", "Suomi · Svenska · English"],
+    countdownLabel: "Kesäloma",
     shots: [
       {
         id: "1-toolbar",
         eyebrow: "Työkalupalkki",
         title: "Viikkonumero aina näkyvissä",
-        lead: "Kuluvan viikon numero näkyy kuvakkeessa ja vaihtuu itsestään maanantaina keskiyöllä.",
-        points: ["Viikkonumerot ISO 8601 -standardin mukaan", "Viikon päivämäärät yhdellä klikkauksella", "Selaa edellisiä ja tulevia viikkoja"],
+        lead: "Kuluvan viikon numero näkyy kuvakkeessa ja vaihtuu itsestään. Pyhinä ja liputuspäivinä kuvake vaihtaa väriä.",
+        points: ["Viikkonumerot ISO 8601 -standardin mukaan", "Viikon päivämäärät ja työpäivät", "Kopioi viikko yhdellä painalluksella"],
       },
       {
         id: "2-calendar",
-        eyebrow: "Tänään",
-        title: "Liputuspäivät ja koululomat",
-        lead: "Näe päivän liputuspäivä ja oman kaupunkisi seuraava hiihto- tai syysloma.",
-        points: ["Päivän liputuspäivä", "Koululomat 21 kaupungille", "Lähteinä Opetushallitus ja kaupungit"],
+        eyebrow: "Kalenteri",
+        title: "Kuukausi, pyhät ja koululomat",
+        lead: "Viikkonumerot päivien vieressä kuten paperikalenterissa. Pyhät, liputuspäivät ja koululomat on merkitty.",
+        points: ["Päivät seuraavaan pyhään", "Oma laskuri esimerkiksi lomaan", "Koululomat 21 kaupungille"],
       },
       {
         id: "3-address-bar",
         eyebrow: "Osoiterivi",
         title: "Kirjoita vk 42",
-        lead: "Anna viikon numero, viikko ja vuosi tai päivämäärä. Päivämäärät näkyvät heti, ja Enter avaa viikon sivun.",
-        examples: ["vk 42", "vk 42 2027", "vk 13.10.2026"],
+        lead: "Anna viikko, päivämäärä, pyhän nimi tai päivämääräväli. Näet viikon, päivät ja työpäivät, ja Enter avaa viikon sivun.",
+        examples: ["vk 42", "vk +3", "vk juhannus", "vk 24.12.", "vk 1.3.–15.6."],
       },
       {
         id: "4-settings",
         eyebrow: "Asetukset",
         title: "Ei tiliä. Ei tietojen keruuta.",
-        lead: "Valitse kaupunki, kuvakkeen merkintä ja kieli. Laajennus toimii kokonaan ilman verkkoyhteyttä.",
-        points: ["Vain kaksi käyttöoikeutta", "Suomeksi ja englanniksi", "Chrome, Edge ja Firefox"],
+        lead: "Valitse kaupunki, kuvakkeen merkintä, kopioinnin muoto, kieli ja teema. Laajennus toimii kokonaan ilman verkkoyhteyttä.",
+        points: ["Vain kaksi käyttöoikeutta", "Suomeksi, ruotsiksi ja englanniksi", "Chrome, Edge ja Firefox"],
+      },
+      {
+        id: "5-dark",
+        eyebrow: "Tumma teema",
+        title: "Myös illalla",
+        lead: "Tumma teema seuraa käyttöjärjestelmän asetusta, tai sen voi valita itse.",
+        points: ["Vaalea, tumma tai järjestelmän mukaan", "Pikanäppäin Alt+Shift+W", "Sama ulkoasu kuin viikkonro.fi"],
       },
     ],
   },
@@ -85,36 +95,89 @@ const COPY = {
     tileHeadline: "Week number<br>always in view",
     marqueeEyebrow: "Chrome · Edge · Firefox",
     marqueeHeadline: "What week is it?<br>Always in view.",
-    marqueeSub: "The ISO week number in your toolbar, plus Finnish flag days and school holidays for your city. Works offline.",
-    marqueeChips: ["ISO 8601", "No data collection", "Suomi · English"],
+    marqueeSub: "The ISO week number in your toolbar, plus working days, Finnish public holidays, flag days and school holidays. Works offline.",
+    marqueeChips: ["ISO 8601", "No data collection", "Suomi · Svenska · English"],
+    countdownLabel: "Summer holiday",
     shots: [
       {
         id: "1-toolbar",
         eyebrow: "Toolbar",
         title: "The week number, always in view",
-        lead: "The current week number sits on the icon and changes by itself at midnight on Monday.",
-        points: ["ISO 8601 week numbers", "The week's dates in one click", "Step through past and future weeks"],
+        lead: "The current week number sits on the icon and changes by itself. On holidays and flag days the icon changes colour.",
+        points: ["ISO 8601 week numbers", "The week's dates and working days", "Copy the week in one click"],
       },
       {
         id: "2-calendar",
-        eyebrow: "Today",
-        title: "Flag days and school holidays",
-        lead: "See today's Finnish flag day and the next winter or autumn holiday in your city.",
-        points: ["Today's flag day", "School holidays for 21 cities", "Sourced from official decisions"],
+        eyebrow: "Calendar",
+        title: "The month, holidays and school breaks",
+        lead: "Week numbers beside the days, like a paper calendar, with public holidays, flag days and school holidays marked.",
+        points: ["Days to the next public holiday", "Your own countdown, e.g. to a holiday", "School holidays for 21 cities"],
       },
       {
         id: "3-address-bar",
         eyebrow: "Address bar",
         title: "Type vk 42",
-        lead: "Enter a week number, a week and year, or a date. The dates appear at once, and Enter opens the week's page.",
-        examples: ["vk 42", "vk 42 2027", "vk 13.10.2026"],
+        lead: "Enter a week, a date, a holiday name or a date range. See the week, the days and working days, and Enter opens the week's page.",
+        examples: ["vk 42", "vk +3", "vk midsummer", "vk 24.12.", "vk 1.3.–15.6."],
       },
       {
         id: "4-settings",
         eyebrow: "Settings",
         title: "No account. No data collection.",
-        lead: "Choose a city, the badge format and the language. The extension works fully offline.",
-        points: ["Only two permissions", "Finnish and English", "Chrome, Edge and Firefox"],
+        lead: "Choose a city, the badge format, the copy format, the language and the theme. The extension works fully offline.",
+        points: ["Only two permissions", "Finnish, Swedish and English", "Chrome, Edge and Firefox"],
+      },
+      {
+        id: "5-dark",
+        eyebrow: "Dark theme",
+        title: "Easy on the eyes",
+        lead: "The dark theme follows your system setting, or you can pick it yourself.",
+        points: ["Light, dark or match system", "Keyboard shortcut Alt+Shift+W", "The same design as viikkonro.fi"],
+      },
+    ],
+  },
+  sv: {
+    tileHeadline: "Veckonumret<br>alltid synligt",
+    marqueeEyebrow: "Chrome · Edge · Firefox",
+    marqueeHeadline: "Vilken vecka är det?<br>Alltid synligt.",
+    marqueeSub: "Veckonumret i verktygsfältet, arbetsdagar, finländska helgdagar, flaggdagar och skollov i din stad. Fungerar offline.",
+    marqueeChips: ["ISO 8601", "Ingen datainsamling", "Suomi · Svenska · English"],
+    countdownLabel: "Sommarlov",
+    shots: [
+      {
+        id: "1-toolbar",
+        eyebrow: "Verktygsfältet",
+        title: "Veckonumret alltid synligt",
+        lead: "Veckans nummer syns på ikonen och byts av sig självt. På helgdagar och flaggdagar byter ikonen färg.",
+        points: ["Veckonummer enligt ISO 8601", "Veckans datum och arbetsdagar", "Kopiera veckan med ett klick"],
+      },
+      {
+        id: "2-calendar",
+        eyebrow: "Kalender",
+        title: "Månaden, helgdagar och skollov",
+        lead: "Veckonummer bredvid dagarna, som i en papperskalender. Helgdagar, flaggdagar och skollov är markerade.",
+        points: ["Dagar till nästa helgdag", "Egen nedräkning, till exempel till ett lov", "Skollov för 21 städer"],
+      },
+      {
+        id: "3-address-bar",
+        eyebrow: "Adressfältet",
+        title: "Skriv vk 42",
+        lead: "Ange en vecka, ett datum, en helgdag eller ett datumintervall. Du ser veckan, dagarna och arbetsdagarna, och Enter öppnar veckans sida.",
+        examples: ["vk 42", "vk +3", "vk midsommar", "vk 24.12.", "vk 1.3.–15.6."],
+      },
+      {
+        id: "4-settings",
+        eyebrow: "Inställningar",
+        title: "Inget konto. Ingen datainsamling.",
+        lead: "Välj stad, ikonens märkning, kopieringsformat, språk och tema. Tillägget fungerar helt offline.",
+        points: ["Bara två behörigheter", "På finska, svenska och engelska", "Chrome, Edge och Firefox"],
+      },
+      {
+        id: "5-dark",
+        eyebrow: "Mörkt tema",
+        title: "Skonsamt för ögonen",
+        lead: "Det mörka temat följer systemets inställning, eller så väljer du det själv.",
+        points: ["Ljust, mörkt eller som systemet", "Kortkommandot Alt+Shift+W", "Samma utseende som viikkonro.fi"],
       },
     ],
   },
@@ -144,24 +207,37 @@ async function settle() {
   await page.waitForTimeout(300);
 }
 
-for (const lang of LANGS) {
-  await page.setViewportSize({ width: 360, height: 900 });
-  await page.goto(`${extensionUrl}/popup.html`);
-  await page.evaluate(
-    (settings) => chrome.storage.sync.set({ settings }),
-    { city: SHOWCASE_CITY, badgeFormat: "number", language: lang },
-  );
+async function showPopup(settings, ready) {
+  await page.evaluate((value) => chrome.storage.sync.set({ settings: value }), settings);
   await page.reload();
-  await page.locator(".holiday-row").waitFor();
+  await page.locator(ready).waitFor();
   await settle();
+}
+
+// A full-width slice of the popup from the top of `first` to the bottom of `last`.
+async function popupSlice(first, last, file) {
+  const top = await page.locator(first).boundingBox();
+  const bottom = await page.locator(last).boundingBox();
+  await page.screenshot({
+    path: work(file),
+    clip: { x: 0, y: top.y - 10, width: 360, height: bottom.y + bottom.height - top.y + 20 },
+  });
+}
+
+for (const lang of LANGS) {
+  const base = { city: SHOWCASE_CITY, badgeFormat: "number", language: lang };
+  await page.setViewportSize({ width: 360, height: 1400 });
+  await page.goto(`${extensionUrl}/popup.html`);
+  await showPopup(base, ".holiday-row");
   await page.locator(".popup").screenshot({ path: work(`popup-${lang}.png`) });
 
-  const today = await page.locator(".today").boundingBox();
-  const holiday = await page.locator(".holiday").boundingBox();
-  await page.screenshot({
-    path: work(`today-${lang}.png`),
-    clip: { x: today.x, y: today.y, width: today.width, height: holiday.y + holiday.height - today.y },
-  });
+  // The month view and the newer rows: next public holiday and an own countdown.
+  const countdown = { date: COUNTDOWN_DATE, label: COPY[lang].countdownLabel };
+  await showPopup({ ...base, showCalendar: true, countdown }, ".calendar");
+  await popupSlice(".calendar", ".countdown", `calendar-${lang}.png`);
+
+  await showPopup({ ...base, showCalendar: true, theme: "dark" }, ".calendar");
+  await popupSlice(".hero-card", ".calendar", `dark-${lang}.png`);
 
   await page.setViewportSize({ width: 760, height: 1000 });
   await page.goto(`${extensionUrl}/options.html`);
@@ -314,17 +390,17 @@ function omniboxRows(lang) {
 }
 
 function screenshots(lang) {
-  const [toolbarShot, calendarShot, addressShot, settingsShot] = COPY[lang].shots;
+  const [toolbarShot, calendarShot, addressShot, settingsShot, darkShot] = COPY[lang].shots;
   const popup = fileUrl(work(`popup-${lang}.png`));
   return [
     [toolbarShot, screenshotPage(lang, toolbarShot,
       `<div class="window" style="left:590px;top:64px;width:620px;height:672px">${toolbar("viikkonro.fi")}${skeleton}
         <img class="popup-shot" style="right:12px;top:64px" src="${popup}" alt=""></div>`)],
     [calendarShot, screenshotPage(lang, calendarShot,
-      `<div class="stage"><img src="${fileUrl(work(`today-${lang}.png`))}" alt=""></div>`,
-      `.stage { position: absolute; left: 606px; top: 50%; transform: translateY(-50%); padding: 22px; border-radius: 22px;
+      `<div class="stage"><img src="${fileUrl(work(`calendar-${lang}.png`))}" alt=""></div>`,
+      `.stage { position: absolute; left: 640px; top: 50%; transform: translateY(-50%); padding: 14px; border-radius: 22px;
          background: var(--paper); box-shadow: 0 40px 90px rgba(15,42,33,.22), 0 0 0 1px rgba(21,33,31,.08); }
-       .stage img { display: block; width: 560px; }`)],
+       .stage img { display: block; width: 470px; }`)],
     [addressShot, screenshotPage(lang, addressShot,
       `<div class="window" style="left:590px;top:190px;width:620px;height:430px">
          ${toolbar(`<span class="kw"><img src="${MARK}" alt="">Viikko Nro</span><span>42</span><span class="caret"></span>`)}
@@ -343,6 +419,11 @@ function screenshots(lang) {
     [settingsShot, screenshotPage(lang, settingsShot,
       `<div class="window" style="left:590px;top:64px;width:620px;height:672px">${toolbar("chrome-extension://viikko-nro/options.html")}
         <img style="display:block;width:620px" src="${fileUrl(work(`options-${lang}.png`))}" alt=""></div>`)],
+    [darkShot, screenshotPage(lang, darkShot,
+      `<div class="stage dark"><img src="${fileUrl(work(`dark-${lang}.png`))}" alt=""></div>`,
+      `.stage { position: absolute; left: 660px; top: 50%; transform: translateY(-50%); padding: 14px; border-radius: 22px;
+         background: #0f1716; box-shadow: 0 40px 90px rgba(15,42,33,.35), 0 0 0 1px rgba(21,33,31,.2); }
+       .stage img { display: block; width: 440px; }`)],
   ];
 }
 

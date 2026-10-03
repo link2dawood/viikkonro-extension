@@ -1,0 +1,1 @@
+Vilken vecka är det? Viikko Nro visar veckans nummer enligt ISO 8601 i webbläsarens verktygsfält, samt veckans datum och arbetsdagar, finländska flaggdagar och helgdagar och nästa skollov i din stad. Fungerar offline.

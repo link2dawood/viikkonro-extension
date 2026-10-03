@@ -1,1 +1,1 @@
-Mikä viikko nyt on? Viikko Nro näyttää kuluvan viikon numeron ISO 8601 -standardin mukaan selaimen työkalupalkissa sekä viikon päivämäärät, päivän liputuspäivän ja kaupunkisi seuraavan koululoman. Toimii ilman verkkoyhteyttä, ei kerää tietoja.
+Mikä viikko nyt on? Viikko Nro näyttää kuluvan viikon numeron ISO 8601 -standardin mukaan selaimen työkalupalkissa sekä viikon päivämäärät, työpäivät, liputuspäivät ja kaupunkisi seuraavan koululoman. Toimii ilman verkkoyhteyttä.

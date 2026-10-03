@@ -1,0 +1,45 @@
+Viikko Nro visar veckans nummer i webbläsarens verktygsfält. Veckonumret räknas enligt den internationella standarden ISO 8601, som används i Finland och stora delar av Europa. Tillägget görs av viikkonro.fi.
+
+VERKTYGSFÄLTET
+Ikonen visar den aktuella veckans nummer, till exempel 42 eller v42. Numret uppdateras av sig självt vid midnatt. När du för musen över ikonen ser du veckans datum och antalet arbetsdagar. Ikonen blir röd på finländska helgdagar, blå på flaggdagar och gul under din stads skollov.
+
+POPUP-FÖNSTRET
+• Veckans datum, arbetsdagar och helgdagar
+• En månadsvy med veckonummer bredvid dagarna, som i en papperskalender
+• Kopiera veckan med ett klick till ett mejl eller ett ärende
+• Dagens flaggdag eller helgdag och dagarna till nästa helgdag
+• En egen nedräkning till ett datum du väljer, till exempel sommarsemestern
+• Nästa sportlov eller höstlov i den stad du väljer, med nedräkning
+
+Kortkommandot Alt+Shift+W öppnar popup-fönstret.
+
+Skollovens datum bygger på officiella beslut av Utbildningsstyrelsen och städerna. Tillägget täcker 21 finländska städer. Om en stad ännu inte har bekräftat sitt lov säger tillägget det i stället för att gissa.
+
+ADRESSFÄLTET
+Skriv vk och ett mellanslag i adressfältet:
+• vk 42 – datumen för vecka 42
+• vk 13.10.2026 – veckan som ett datum infaller under
+• vk +3 – om tre veckor
+• vk midsommar – midsommarens datum och vecka
+• vk 24.12. – dagar och arbetsdagar till julafton
+• vk 1.3.–15.6. – dagar och arbetsdagar i ett intervall
+Enter öppnar veckans sida på viikkonro.fi.
+
+INTEGRITET
+Tillägget samlar inte in några uppgifter och har ingen analys eller reklam. Det fungerar offline och ber bara om två behörigheter: lagring för dina inställningar och alarm för uppdateringen vid midnatt. Tillägget kan inte se innehållet på sidorna du besöker.
+
+VANLIGA FRÅGOR
+
+Hur räknas veckonumret?
+Veckan börjar på måndag, och vecka 1 är den vecka som innehåller årets första torsdag. Därför kan de första dagarna i januari höra till föregående års sista vecka.
+
+Hur många veckor har ett år?
+52 eller 53. År 2026 har 53 veckor, och vecka 53 pågår 28.12.2026–3.1.2027.
+
+Hur räknas arbetsdagarna?
+Arbetsdagar är måndag till fredag minus finländska helgdagar samt midsommarafton och julafton. Vecka 52 år 2026 har till exempel tre arbetsdagar.
+
+Vilka språk finns?
+Finska, svenska och engelska. Språket följer webbläsarens språk och kan ändras i inställningarna. Det finns också ett mörkt tema.
+
+Mer information: https://viikkonro.fi

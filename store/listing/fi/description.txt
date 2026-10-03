@@ -1,21 +1,28 @@
 Viikko Nro näyttää kuluvan viikon numeron selaimen työkalupalkissa. Viikkonumero lasketaan kansainvälisen ISO 8601 -standardin mukaan, joten se vastaa suomalaisia kalentereita ja työvuorolistoja. Laajennuksen tekee viikkonro.fi.
 
 TYÖKALUPALKKI
-Kuvakkeessa näkyy kuluvan viikon numero, esimerkiksi 42 tai vk42. Numero päivittyy itsestään keskiyöllä, ja kun viet hiiren kuvakkeen päälle, näet viikon päivämäärät.
+Kuvakkeessa näkyy kuluvan viikon numero, esimerkiksi 42 tai vk42. Numero päivittyy itsestään keskiyöllä. Kun viet hiiren kuvakkeen päälle, näet viikon päivämäärät ja työpäivien määrän. Pyhäpäivinä kuvake muuttuu punaiseksi, liputuspäivinä siniseksi ja oman kaupunkisi koululomalla keltaiseksi.
 
 PONNAHDUSIKKUNA
-• Viikon päivämäärät maanantaista sunnuntaihin ja vuoden eteneminen
-• Nuolet edellisiin ja tuleviin viikkoihin
-• Päivän liputuspäivä, esimerkiksi Aleksis Kiven päivä
+• Viikon päivämäärät, työpäivät ja viikon pyhät
+• Kuukausinäkymä, jossa viikkonumerot ovat päivien vieressä kuten paperikalenterissa
+• Kopioi viikko yhdellä painalluksella sähköpostiin tai tikettiin
+• Päivän liputuspäivä tai pyhäpäivä ja päivät seuraavaan pyhään
+• Oma laskuri valitsemaasi päivään, esimerkiksi kesälomaan
 • Valitsemasi kaupungin seuraava hiihto- tai syysloma ja päivät lomaan
+
+Pikanäppäin Alt+Shift+W avaa ponnahdusikkunan.
 
 Koululomien päivämäärät perustuvat Opetushallituksen ja kaupunkien virallisiin päätöksiin. Laajennus kattaa 21 suomalaista kaupunkia. Jos kaupunki ei ole vielä vahvistanut lomaansa, laajennus kertoo sen eikä arvaa päivämäärää.
 
 OSOITERIVI
-Kirjoita osoiteriville vk, välilyönti ja viikon numero tai päivämäärä:
+Kirjoita osoiteriville vk ja välilyönti:
 • vk 42 – viikon 42 päivämäärät
-• vk 42 2027 – viikko 42 vuonna 2027
 • vk 13.10.2026 – viikko, jolle päivämäärä osuu
+• vk +3 – kolmen viikon päästä
+• vk juhannus – juhannuksen päivämäärä ja viikko
+• vk 24.12. – päivät ja työpäivät jouluaattoon
+• vk 1.3.–15.6. – välin päivät ja työpäivät
 Enter avaa viikon sivun viikkonro.fi-palvelussa.
 
 YKSITYISYYS
@@ -29,7 +36,10 @@ Viikko alkaa maanantaista. Vuoden ensimmäinen viikko on se, jolle osuu vuoden e
 Montako viikkoa vuodessa on?
 52 tai 53. Vuodessa 2026 on 53 viikkoa, ja viikko 53 kestää 28.12.2026–3.1.2027.
 
+Miten työpäivät lasketaan?
+Työpäiviä ovat maanantai–perjantai, kun niistä vähennetään Suomen pyhäpäivät sekä juhannus- ja jouluaatto. Esimerkiksi viikolla 52 vuonna 2026 on kolme työpäivää.
+
 Millä kielillä laajennus toimii?
-Suomeksi ja englanniksi. Kieli seuraa selaimen kieltä, ja sen voi vaihtaa asetuksista.
+Suomeksi, ruotsiksi ja englanniksi. Kieli seuraa selaimen kieltä, ja sen voi vaihtaa asetuksista. Laajennuksessa on myös tumma teema.
 
 Lisätietoa: https://viikkonro.fi
